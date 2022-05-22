@@ -1,17 +1,27 @@
 {
   "name": "grayscale-to-alpha",
-  "version": "1.0.0",
-  "main": "index.js",
+  "description": "Converts grayscale PNG file to transparent one, mimicking the behavior of 'multiply' blend mode in Photoshop",
+  "version": "0.1.0",
+  "source": "src/cli.js",
+  "main": "dist/main.js",
   "author": {
     "name": "Francesco Carrella",
     "email": "francesco.carrella@gmail.com"
   },
   "license": "MIT",
   "dependencies": {
+    "buffer": "^6.0.3",
     "colord": "^2.9.2",
-    "pngjs3": "^6.0.1"
+    "commander": "^9.2.0",
+    "pngjs3": "^6.0.1",
+    "progress": "^2.0.3",
+    "prompt-confirm": "^2.0.4"
   },
   "devDependencies": {
+    "@vercel/ncc": "^0.33.4",
     "nodemon": "^2.0.16"
+  },
+  "engines": {
+    "node": ">=10"
   }
 }
