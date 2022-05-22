@@ -1,0 +1,17 @@
+{
+  "name": "grayscale-to-alpha",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": {
+    "name": "Francesco Carrella",
+    "email": "francesco.carrella@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "colord": "^2.9.2",
+    "pngjs3": "^6.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
