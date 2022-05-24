@@ -1,7 +1,7 @@
 {
-  "name": "grayscale-to-alpha",
-  "description": "Converts grayscale PNG file to transparent one, mimicking the behavior of 'multiply' blend mode in Photoshop",
-  "version": "0.1.0",
+  "name": "transparentize",
+  "description": "Remove background color of a PNG file to make it transparent. With blank background color the effect mimicking the behavior of 'multiply' blend mode in Photoshop",
+  "version": "0.2.0",
   "source": "src/cli.js",
   "main": "dist/main.js",
   "author": {
@@ -11,7 +11,6 @@
   "license": "MIT",
   "dependencies": {
     "buffer": "^6.0.3",
-    "colord": "^2.9.2",
     "commander": "^9.2.0",
     "pngjs3": "^6.0.1",
     "progress": "^2.0.3",

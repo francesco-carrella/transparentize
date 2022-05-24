@@ -10,10 +10,12 @@ program
   .description(packageInfo.description)
   .version(packageInfo.version);
 
-program
+  program
   .argument('<input_file>', 'png image file to make it transparent')
   .argument('[output_file]', 'output Png file; if not specified `<input_file>-transparent.png` will be used')
-  .option('-b, --maximumPixelBrightness <transparency_threshold>', 'maximum brightness percentage of a pixel to make it transparent', 100)
+  // TODO: add output override flag
+  // TODO: add background color option
   .action(main)
+
 
 program.parse()

@@ -1,11 +1,11 @@
 const fs = require('fs');
 const PNG = require('pngjs3/dist/pngjs3').default;
-const { colord } = require('colord');
 const { program } = require('commander');
-var ProgressBar = require('progress');
+const ProgressBar = require('progress');
 
 const packageInfo = require('../package.json');
 const { verifyInputFile, createOutputFileName, verifyOutputFile, brightnessToColorValue } = require('./utils');
+const { transparentify } = require('./utils/color');
 
 async function main(inputFile, outputFile, options) {
   try {
@@ -13,7 +13,7 @@ async function main(inputFile, outputFile, options) {
     if(!outputFile) {
       outputFile = createOutputFileName(inputFile)
     }
-    await verifyOutputFile(outputFile)
+    // await verifyOutputFile(outputFile)
 
     fs.createReadStream(inputFile)
       .pipe(
@@ -32,11 +32,15 @@ async function main(inputFile, outputFile, options) {
           this.pack().pipe(fs.createWriteStream(outputFile));
           console.log(`Image processed successfully. The output file is '${outputFile}'.`);
         } catch (e) {
-          program.error(`err: A problem occured while processing image. This seems an unexpected error. Please report this issue at ${packageInfo.author.email} to help us improve this tool.`);
+          console.log(e);
+          console.log(' ');
+          program.error(`err: A problem occured while processing image. This seems an unexpected error. Please report this issue at ${packageInfo.author.email} to help us improve this tool.`, e);
         }
       })
   } catch (e) {
-    console.log('err: A generic error occured.');
+    console.log(e);
+    console.log(' ');
+    program.error('err: A generic error occured.');
   }
 }
 
@@ -56,19 +60,19 @@ function processImage(image, options) {
 
 function processPixel(image, x, y, options) {
   var idx = (image.width * y + x) * 4;
-            
-  const pixelColor = colord({
+
+  const pixelColor = {
     r: image.data[idx], 
     g: image.data[idx + 1], 
-    b: image.data[idx + 2],
-    a: image.data[idx + 3]
-  });
+    b:  image.data[idx + 2],
+    a: 1
+  }
 
-  const brightness = pixelColor.brightness();
-  const transparentize = brightness <= options.maximumPixelBrightness / 100;
+  const newColor = transparentify(pixelColor);
 
-  image.data[idx] = transparentize ? 0 : brightnessToColorValue(brightness);
-  image.data[idx + 1] = transparentize ? 0 : brightnessToColorValue(brightness);
-  image.data[idx + 2] = transparentize ? 0 : brightnessToColorValue(brightness);
-  image.data[idx + 3] = transparentize ? brightnessToColorValue(brightness, true) : 255;
+  image.data[idx] = newColor.r
+  image.data[idx + 1] = newColor.g
+  image.data[idx + 2] = newColor.b
+  image.data[idx + 3] = newColor.a * 255
+
 }
