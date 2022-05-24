@@ -3,8 +3,9 @@
 import { program } from 'commander';
 
 import packageInfo from '../../package.json';
-import handlers from './handlers';
 import { processPng } from '../lib';
+import handlers from './handlers';
+import handleError from './handleError';
 
 function run() {
   program
@@ -20,12 +21,16 @@ function run() {
     // TODO: add quiet mode option
 
   program
-    .action((inputFile, outputFile, cliOptions) => {
-      const options = {
-        ...cliOptions,
-        ...handlers,
-      };
-      processPng(inputFile, outputFile, options);
+    .action(async (inputFile, outputFile, cliOptions) => {
+      try{
+        const options = {
+          ...cliOptions,
+          ...handlers,
+        };
+        await processPng(inputFile, outputFile, options);
+      } catch(e) {
+        handleError(e)
+      }
     })
 
   program.parse()

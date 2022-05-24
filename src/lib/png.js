@@ -4,6 +4,7 @@ import PNG from 'pngjs3/dist/pngjs3';
 import { verifyInputFile, createOutputFileName, verifyOutputFile } from '../utils/files';
 import { callIfExists } from '../utils/generic';
 import { processImage } from './process';
+import { throwBestError, PngProcessError, WriteOutputFileError, PngParseError } from './errors';
 
 export async function processPng(inputFile, outputFile, options) {
   try {
@@ -26,25 +27,25 @@ export async function processPng(inputFile, outputFile, options) {
         }),
       )
       .on('error', function (e) {
-        callIfExists(options.onPngProcessError, e, inputFile, outputFile, options);
+        throwBestError(e, new PngParseError(inputFile, options, e))
       })
       .on('parsed', function () {
         try {
           processImage(this, options);
-
           try {
             callIfExists(options.onWriteOutputFileStart, outputFile, options);
             this.pack().pipe(fs.createWriteStream(outputFile));
             callIfExists(options.onWriteOutputFileEnd, outputFile, options);
           } catch (e) {
-            callIfExists(options.onWriteOutputFileError, e, outputFile, options);
+            throwBestError(e, new WriteOutputFileError(outputFile, options, e));
           }
           
           callIfExists(options.onPngProcessEnd, inputFile, outputFile, options);
         } catch (e) {
-          callIfExists(options.onPngProcessError, e, inputFile, outputFile, options);        }
+          throwBestError(e, new PngProcessError(inputFile, outputFile, options, e))
+        }
       })
   } catch (e) {
-    callIfExists(options.onPngProcessError, e, inputFile, outputFile, options);
+    throwBestError(e, new PngProcessError(inputFile, outputFile, options, e))
   }
 }

@@ -21,6 +21,7 @@
   "dependencies": {
     "buffer": "^6.0.3",
     "commander": "^9.2.0",
+    "es6-error": "^4.1.1",
     "pngjs3": "^6.0.1",
     "progress": "^2.0.3",
     "prompt-confirm": "^2.0.4"

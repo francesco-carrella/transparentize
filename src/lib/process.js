@@ -1,5 +1,6 @@
 import { transparentify } from '../utils/color';
 import { callIfExists } from '../utils/generic';
+import { ImageProcessError, throwBestError } from './errors';
 
 export function processImage(image, options) {
   
@@ -18,7 +19,7 @@ export function processImage(image, options) {
 
     callIfExists(options.onImageProcessEnd, image, options);
   } catch (e) {
-    callIfExists(options.onImageProcessError, image, options, e);
+    throwBestError(e, new ImageProcessError(image, options, e))
   }
 }
 

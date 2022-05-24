@@ -2,7 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import { Buffer } from 'node:buffer';
 
-import { callIfExists, callIfExistsAsync } from '../utils/generic';
+import { callIfExistsAsync } from '../utils/generic';
+import { InputFileNotFoundError, PngFileNotValidError, throwBestError } from '../lib';
 
 function isValidPng(filePath) {
   let buffer = Buffer.alloc(8);
@@ -24,10 +25,10 @@ function isValidPng(filePath) {
 
 export function verifyInputFile(inputFile, options) {
   if(!fs.existsSync(inputFile)) {
-    callIfExists(options.onInputFileNotFoundError, inputFile, options);
+    throwBestError(new InputFileNotFoundError(inputFile, options));
   }
   if (!isValidPng(inputFile)) {
-    callIfExists(options.onInputFileNotValidError, inputFile, options);
+    throwBestError(new PngFileNotValidError(inputFile, options));
   }
   return true
 }
