@@ -1,9 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import { Buffer } from 'node:buffer';
-import { program } from 'commander';
-import Confirm from 'prompt-confirm';
 
+import { callIfExists, callIfExistsAsync } from '../utils/generic';
 
 function isValidPng(filePath) {
   let buffer = Buffer.alloc(8);
@@ -23,26 +22,19 @@ function isValidPng(filePath) {
   )
 }
 
-export function verifyInputFile(inputFile) {
+export function verifyInputFile(inputFile, options) {
   if(!fs.existsSync(inputFile)) {
-    program.error(`err: The input file '${inputFile}' does not exists. Please check the <input_file> argument and retry.`);
+    callIfExists(options.onInputFileNotFoundError, inputFile, options);
   }
   if (!isValidPng(inputFile)) {
-    program.error(`err: The input file '${inputFile}' does not seem to be a valid PNG file. Please check the <input_file> argument and retry.`);
+    callIfExists(options.onInputFileNotValidError, inputFile, options);
   }
   return true
 }
 
-export async function verifyOutputFile(outputFile) {
+export async function verifyOutputFile(outputFile, options) {
   if(fs.existsSync(outputFile)) {
-    await new Confirm(`The file '${outputFile}' already exists. Do you want to overwrite it?`)
-      .run()
-      .then(function(overrideOutputFile) {
-        if(!overrideOutputFile) {
-          program.error(`err: The output file '${outputFile}' already exists. Please check the <output_file> argument and retry.`);
-        }
-      });
-
+    await callIfExistsAsync(options.onOutputFileExists, outputFile, options);
   }
 }
 
@@ -50,9 +42,4 @@ export function createOutputFileName(inputFile) {
   const inputPath = path.dirname(inputFile)
   const inputFileName = path.parse(inputFile).name
   return path.join(inputPath, `${inputFileName}-transparent.png`)
-}
-
-export function brightnessToColorValue(brightness, inverse = false) {
-  const colorValue = Math.round(brightness * 255);
-  return inverse ? 255 - colorValue : colorValue;
 }

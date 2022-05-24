@@ -2,7 +2,7 @@
   "name": "transparentize",
   "description": "Remove background color of a PNG file to make it transparent. With blank background color the effect mimicking the behavior of 'multiply' blend mode in Photoshop",
   "version": "0.2.0",
-  "source": "src/cli.js",
+  "source": "src/cli/index.js",
   "main": "dist/main.js",
   "author": {
     "name": "Francesco Carrella",
@@ -11,8 +11,12 @@
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cli:build": "esbuild src/cli.js  --platform=node --target=node10.4 --bundle --outfile=dist/bin/transparentize",
-    "cli:watch": "yarn cli:build --watch"
+    "cli:build": "esbuild src/cli/index.js  --platform=node --target=node10.4 --bundle --outfile=dist/bin/transparentize",
+    "cli:watch": "yarn cli:build --watch",
+    "lib:build": "esbuild src/lib/index.js  --platform=node --target=node10.4 --bundle --outfile=dist/lib/transparentize.js",
+    "lib:watch": "yarn lib:build --watch",
+    "build": "yarn lib:build && yarn cli:build",
+    "watch": "yarn lib:watch && yarn cli:watch"
   },
   "dependencies": {
     "buffer": "^6.0.3",
