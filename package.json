@@ -9,6 +9,11 @@
     "email": "francesco.carrella@gmail.com"
   },
   "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cli:build": "esbuild src/cli.js  --platform=node --target=node10.4 --bundle --outfile=dist/bin/transparentize",
+    "cli:watch": "yarn cli:build --watch"
+  },
   "dependencies": {
     "buffer": "^6.0.3",
     "commander": "^9.2.0",
@@ -17,8 +22,7 @@
     "prompt-confirm": "^2.0.4"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.33.4",
-    "nodemon": "^2.0.16"
+    "esbuild": "^0.14.39"
   },
   "engines": {
     "node": ">=10"

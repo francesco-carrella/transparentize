@@ -1,9 +1,9 @@
-#!/usr/bin/env node
+#!/usr/bin/env node 
 
-const { program } = require('commander');
+import { program } from 'commander';
 
-const packageInfo = require('../package.json');
-const main = require('./main');
+import packageInfo from '../package.json';
+import main from './main';
 
 program
   .name(packageInfo.name)

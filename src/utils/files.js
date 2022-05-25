@@ -1,8 +1,8 @@
-const fs = require('fs')
-const path = require('path')
-const { Buffer } = require('node:buffer')
-const { program } = require('commander');
-const Confirm = require('prompt-confirm');
+import fs from 'fs';
+import path from 'path';
+import { Buffer } from 'node:buffer';
+import { program } from 'commander';
+import Confirm from 'prompt-confirm';
 
 
 function isValidPng(filePath) {
@@ -23,7 +23,7 @@ function isValidPng(filePath) {
   )
 }
 
-function verifyInputFile(inputFile) {
+export function verifyInputFile(inputFile) {
   if(!fs.existsSync(inputFile)) {
     program.error(`err: The input file '${inputFile}' does not exists. Please check the <input_file> argument and retry.`);
   }
@@ -33,7 +33,7 @@ function verifyInputFile(inputFile) {
   return true
 }
 
-async function verifyOutputFile(outputFile) {
+export async function verifyOutputFile(outputFile) {
   if(fs.existsSync(outputFile)) {
     await new Confirm(`The file '${outputFile}' already exists. Do you want to overwrite it?`)
       .run()
@@ -46,20 +46,13 @@ async function verifyOutputFile(outputFile) {
   }
 }
 
-function createOutputFileName(inputFile) {
+export function createOutputFileName(inputFile) {
   const inputPath = path.dirname(inputFile)
   const inputFileName = path.parse(inputFile).name
   return path.join(inputPath, `${inputFileName}-transparent.png`)
 }
 
-function brightnessToColorValue(brightness, inverse = false) {
+export function brightnessToColorValue(brightness, inverse = false) {
   const colorValue = Math.round(brightness * 255);
   return inverse ? 255 - colorValue : colorValue;
-}
-
-module.exports = {
-  verifyInputFile,
-  verifyOutputFile,
-  createOutputFileName,
-  brightnessToColorValue,
 }

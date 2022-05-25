@@ -1,13 +1,13 @@
-const fs = require('fs');
-const PNG = require('pngjs3/dist/pngjs3').default;
-const { program } = require('commander');
-const ProgressBar = require('progress');
+import fs from 'fs';
+import PNG from 'pngjs3/dist/pngjs3';
+import { program } from 'commander';
+import ProgressBar from 'progress';
 
-const packageInfo = require('../package.json');
-const { verifyInputFile, createOutputFileName, verifyOutputFile, brightnessToColorValue } = require('./utils');
-const { transparentify } = require('./utils/color');
+import packageInfo from '../package.json';
+import { verifyInputFile, createOutputFileName } from './utils/files';
+import { transparentify } from './utils/color';
 
-async function main(inputFile, outputFile, options) {
+export default async function main(inputFile, outputFile, options) {
   try {
     verifyInputFile(inputFile)
     if(!outputFile) {
@@ -43,8 +43,6 @@ async function main(inputFile, outputFile, options) {
     program.error('err: A generic error occured.');
   }
 }
-
-module.exports = main
 
 
 function processImage(image, options) {
