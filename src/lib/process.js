@@ -6,16 +6,12 @@ export function processImage(image, options) {
   
   try {
     callIfExists(options.onImageProcessStart, image, options);
-        
-    console.time('processImage')
 
     for (var x = 0; x < image.width; x++) {
       for (var y = 0; y < image.height; y++) {
         processPixel(image, x, y, options);
       }
     }
-
-    console.timeEnd('processImage') 
 
     callIfExists(options.onImageProcessEnd, image, options);
   } catch (e) {
@@ -31,7 +27,7 @@ export function processPixel(image, x, y, options) {
   const pixelColor = {
     r: image.data[idx], 
     g: image.data[idx + 1], 
-    b:  image.data[idx + 2],
+    b: image.data[idx + 2],
     a: 1
   }
   

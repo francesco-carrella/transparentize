@@ -1,50 +1,50 @@
-import fs from 'fs';
-import PNG from 'pngjs3/dist/pngjs3';
+import { encode as encodePng, decode as decodePng } from 'fast-png';
 
-import { verifyInputFile, createOutputFileName, verifyOutputFile } from '../utils/files';
+import { readFileAsync, writeFileAsync, verifyInputFile, verifyOutputFile, createOutputFileName } from '../utils/files';
 import { callIfExists } from '../utils/generic';
 import { processImage } from './process';
 import { throwBestError, PngProcessError, WriteOutputFileError, PngParseError } from './errors';
+
+async function readPng(inputFilename, options) {
+  try {
+    callIfExists(options.onReadInputFileStart, inputFilename, options)
+    const imageBuffer = await readFileAsync(inputFilename);
+    const image = decodePng(imageBuffer);
+    callIfExists(options.onReadInputFileEnd, inputFilename, options)
+    return image
+  } catch (e) {
+    throwBestError(e, new PngParseError(inputFilename, options, e));
+  }
+}
+
+async function writePng(image, outputFile, options) {
+  try {
+    callIfExists(options.onWriteOutputFileStart, outputFile, options);
+    const imageData = encodePng(image);
+    await writeFileAsync(outputFile, imageData);
+    callIfExists(options.onWriteOutputFileEnd, outputFile, options);
+  } catch (e) {
+    throwBestError(e, new WriteOutputFileError(outputFile, options, e));
+  }
+}
 
 export async function processPng(inputFile, outputFile, options) {
   try {
     callIfExists(options.onPngProcessStart, inputFile, outputFile, options);
     
-    verifyInputFile(inputFile, options)
+    verifyInputFile(inputFile, options);
 
     if(!outputFile) {
       outputFile = createOutputFileName(inputFile, options)
     }
-    
-    await verifyOutputFile(outputFile, options)
 
-    fs.createReadStream(inputFile)
-      .pipe(
-        new PNG({
-          filterType: 4,
-          inputColorType: 6,
-          colorType: 6,
-        }),
-      )
-      .on('error', function (e) {
-        throwBestError(e, new PngParseError(inputFile, options, e))
-      })
-      .on('parsed', function () {
-        try {
-          processImage(this, options);
-          try {
-            callIfExists(options.onWriteOutputFileStart, outputFile, options);
-            this.pack().pipe(fs.createWriteStream(outputFile));
-            callIfExists(options.onWriteOutputFileEnd, outputFile, options);
-          } catch (e) {
-            throwBestError(e, new WriteOutputFileError(outputFile, options, e));
-          }
-          
-          callIfExists(options.onPngProcessEnd, inputFile, outputFile, options);
-        } catch (e) {
-          throwBestError(e, new PngProcessError(inputFile, outputFile, options, e))
-        }
-      })
+    await verifyOutputFile(outputFile, options);
+
+    const image = await readPng(inputFile, options);
+    processImage(image, options);
+    await writePng(image, outputFile, options);
+
+    callIfExists(options.onPngProcessEnd, inputFile, outputFile, options);
   } catch (e) {
     throwBestError(e, new PngProcessError(inputFile, outputFile, options, e))
   }

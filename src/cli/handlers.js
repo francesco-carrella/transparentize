@@ -1,14 +1,10 @@
-import { OutputFileExistsError, throwBestError } from '../lib';
 import { showMessage, showConfirm, showProgressBar } from './ui';
 
 let progressBar;
 
 const handlers = {
   onOutputFileExists: async (outputFile, options) => {
-    const overrideOutputFile = await showConfirm(`The output file '${outputFile}' already exists. Do you want to overwrite it?`);
-    if(!overrideOutputFile) {
-      throwBestError(new OutputFileExistsError(outputFile, options))
-    }
+    return await showConfirm(`The output file '${outputFile}' already exists. Do you want to overwrite it?`);
   },
   // onPngProcessStart: (inputFile, outputFile, options) => {},
   // onPngProcessEnd: (inputFile, outputFile, options) => {},

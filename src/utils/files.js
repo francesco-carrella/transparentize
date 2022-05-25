@@ -1,11 +1,15 @@
 import fs from 'fs';
+import { promisify } from 'util';
 import path from 'path';
 import { Buffer } from 'node:buffer';
 
-import { callIfExistsAsync } from '../utils/generic';
-import { InputFileNotFoundError, PngFileNotValidError, throwBestError } from '../lib';
+import { callIfExistsAsync, isFunction } from '../utils/generic';
+import { throwBestError, InputFileNotFoundError, PngFileNotValidError, OutputFileExistsError } from '../lib';
 
-function isValidPng(filePath) {
+export const readFileAsync = promisify(fs.readFile)
+export const writeFileAsync = promisify(fs.writeFile)
+
+export function isValidPng(filePath) {
   let buffer = Buffer.alloc(8);
   const fileDescriptor = fs.openSync(filePath, 'r');
   const bytesRead = fs.readSync(fileDescriptor, buffer, { length: 8 });
@@ -23,8 +27,12 @@ function isValidPng(filePath) {
   )
 }
 
+export function fileExists(filePath) {
+  return fs.existsSync(filePath)
+}
+
 export function verifyInputFile(inputFile, options) {
-  if(!fs.existsSync(inputFile)) {
+  if(!fileExists(inputFile)) {
     throwBestError(new InputFileNotFoundError(inputFile, options));
   }
   if (!isValidPng(inputFile)) {
@@ -34,8 +42,14 @@ export function verifyInputFile(inputFile, options) {
 }
 
 export async function verifyOutputFile(outputFile, options) {
-  if(fs.existsSync(outputFile)) {
-    await callIfExistsAsync(options.onOutputFileExists, outputFile, options);
+  const outputFileAlreadyExists = fileExists(outputFile);
+  if(outputFileAlreadyExists) {
+    if(isFunction(options.onOutputFileExists)) {
+      const overrideOutputFile = await callIfExistsAsync(options.onOutputFileExists, outputFile, options);
+      if(!overrideOutputFile) {
+        throwBestError(new OutputFileExistsError(outputFile, options))
+      }
+    }
   }
 }
 
