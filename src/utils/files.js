@@ -1,13 +1,97 @@
 import fs from 'fs';
-import { promisify } from 'util';
 import path from 'path';
+import { promisify } from 'util';
 import { Buffer } from 'node:buffer';
+import { isAbsolutePath as isValidNominalPathValidator } from 'path-validation'
 
-import { callIfExistsAsync, isFunction } from '../utils/generic';
-import { throwBestError, InputFileNotFoundError, PngFileNotValidError, OutputFileExistsError } from '../lib';
+import { throwBestError, InputFileNotFoundError, PngFileNotValidError, OutputFileAlreadyExistsError, OutputPathNotValidError, OutputDirectoryNotValidError, OutputDirectoryNotWritableError } from '../lib';
 
 export const readFileAsync = promisify(fs.readFile)
 export const writeFileAsync = promisify(fs.writeFile)
+
+export function absolutePath(inPath = '.') {
+  return path.resolve(inPath)
+}
+
+export function isValidNominalPath(inPath) {
+  return isValidNominalPathValidator(absolutePath(inPath))
+}
+
+export function pathExists(inPath) {
+  return fs.existsSync(inPath)
+}
+
+export function isDirectory(dirPath) {
+  return pathExists(dirPath) && fs.lstatSync(dirPath).isDirectory()
+}
+
+export function isFile(filePath) {
+  return pathExists(filePath) && fs.lstatSync(filePath).isFile()
+}
+
+export function isDirectoryWritable(dirPath) {
+  try {
+    fs.accessSync(dirPath, fs.constants.W_OK)
+    return true
+  } catch (e) {
+    return false
+  }
+}
+
+export function isFileExtension (filePath, extension) {
+  return path.extname(filePath) === extension
+}
+
+export function ensureFileExtension(filePath, extension = '') {
+  if(!isFileExtension(filePath, extension)) {
+    const { name, dir } = path.parse(filePath)
+    filePath = path.join(dir, `${name}${extension}`)
+  }
+  return filePath
+}
+
+export function verifyInputFile(inputFile, options) {
+  if(!pathExists(inputFile)) {
+    throwBestError(new InputFileNotFoundError(inputFile, options));
+  }
+  if (!isValidPng(inputFile)) {
+    throwBestError(new PngFileNotValidError(inputFile, options));
+  }
+  return true
+}
+
+export function verifyOutputFileNominalPath(outputFile, options) {
+  if(!isValidNominalPath(outputFile)) {
+    throwBestError(new OutputPathNotValidError(outputFile, options));
+  }
+  return true
+}
+
+export function verifyOutputDirectory(outputFile, options) {
+  const outputDir = path.dirname(outputFile || '.')
+  if(!pathExists(outputDir) || !isDirectory(outputDir)) {
+    throwBestError(new OutputDirectoryNotValidError(outputDir, options));
+  }
+  if(!isDirectoryWritable(outputDir)) {
+    throwBestError(new OutputDirectoryNotWritableError(outputDir, options));
+  }
+  return true
+}
+
+export function verifyOutputFileDontExists(outputFile, options) {
+  if(!options.allowOverride && pathExists(outputFile)) {  
+    throwBestError(new OutputFileAlreadyExistsError(outputFile, options))
+  }
+  return true
+}
+
+export function verifyOutputFile(outputFile, options) {
+  return (
+    verifyOutputFileNominalPath(outputFile, options) &&
+    verifyOutputDirectory(outputFile, options) &&
+    verifyOutputFileDontExists(outputFile, options)
+  )
+}
 
 export function isValidPng(filePath) {
   let buffer = Buffer.alloc(8);
@@ -25,38 +109,4 @@ export function isValidPng(filePath) {
 		buffer[6] === 0x1A &&
 		buffer[7] === 0x0A
   )
-}
-
-export function fileExists(filePath) {
-  return fs.existsSync(filePath)
-}
-
-export function verifyInputFile(inputFile, options) {
-  if(!fileExists(inputFile)) {
-    throwBestError(new InputFileNotFoundError(inputFile, options));
-  }
-  if (!isValidPng(inputFile)) {
-    throwBestError(new PngFileNotValidError(inputFile, options));
-  }
-  return true
-}
-
-export async function verifyOutputFile(outputFile, options) {
-  if(options.allowOverride) return true
-  const outputFileAlreadyExists = fileExists(outputFile);
-  if(outputFileAlreadyExists) {
-    if(isFunction(options.onOutputFileExists)) {
-      const overrideOutputFile = await callIfExistsAsync(options.onOutputFileExists, outputFile, options);
-      if(!overrideOutputFile) {
-        throwBestError(new OutputFileExistsError(outputFile, options))
-      }
-    }
-  }
-  return true
-}
-
-export function createOutputFileName(inputFile) {
-  const inputPath = path.dirname(inputFile)
-  const inputFileName = path.parse(inputFile).name
-  return path.join(inputPath, `${inputFileName}-transparent.png`)
 }

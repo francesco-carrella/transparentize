@@ -3,13 +3,6 @@ import { showProgressMessage, showConfirm, showProgressBar, chalk } from './ui';
 let progressBar;
 
 const handlers = {
-  onOutputFileExists: async (outputFile, options) => {
-    if(options.replaceInput) {
-      return await showConfirm(`Are you sure you want to replace the input file '${chalk.underline(outputFile)}' with the transparentized version?`);
-    } else {
-      return await showConfirm(`The output file '${chalk.underline(outputFile)}' already exists. Do you want to overwrite it?`);
-    }
-  },
   onReadInputFileStart: (inputFilename, options) => {
     if(options.quiet) return
     showProgressMessage(`⏳  Reading input file '${chalk.underline(inputFilename)}'...`);

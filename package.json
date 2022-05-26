@@ -24,6 +24,7 @@
     "commander": "^9.2.0",
     "es6-error": "^4.1.1",
     "fast-png": "^6.1.0",
+    "path-validation": "^0.2.3",
     "progress": "^2.0.3",
     "yesno": "^0.3.1"
   },

@@ -1,6 +1,6 @@
 import { encode as encodePng, decode as decodePng } from 'fast-png';
 
-import { readFileAsync, writeFileAsync, verifyInputFile, verifyOutputFile, createOutputFileName } from '../utils/files';
+import { readFileAsync, writeFileAsync, verifyInputFile, verifyOutputFile } from '../utils/files';
 import { callIfExists } from '../utils/generic';
 import { processImage } from './process';
 import { throwBestError, PngProcessError, WriteOutputFileError, PngParseError } from './errors';
@@ -34,11 +34,7 @@ export async function processPng(inputFile, outputFile, options) {
     
     verifyInputFile(inputFile, options);
 
-    if(!outputFile) {
-      outputFile = createOutputFileName(inputFile, options)
-    }
-
-    await verifyOutputFile(outputFile, options);
+    verifyOutputFile(outputFile, options);
 
     const image = await readPng(inputFile, options);
     processImage(image, options);

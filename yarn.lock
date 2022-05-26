@@ -185,6 +185,11 @@ pako@^2.0.4:
   resolved "https://registry.yarnpkg.com/pako/-/pako-2.0.4.tgz#6cebc4bbb0b6c73b0d5b8d7e8476e2b2fbea576d"
   integrity sha512-v8tweI900AUkZN6heMU/4Uy4cXRc2AYNRggVmTR+dEncawDJgCdLMximOVA2p4qO57WMynangsfGRb5WD6L1Bg==
 
+path-validation@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/path-validation/-/path-validation-0.2.3.tgz#70a3e5762b83e531397942854d44c99e83c8818e"
+  integrity sha512-SSMuyxeFiYKggQDvDVS+Fpy8cJXr8cOAjIGlwg8PN0xRCLd3gg5JwsNFkD4DUxaMMlbs4p9w0xQN7rGuW/QzVA==
+
 progress@^2.0.3:
   version "2.0.3"
   resolved "https://registry.npmjs.org/progress/-/progress-2.0.3.tgz"

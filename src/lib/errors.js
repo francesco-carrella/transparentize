@@ -36,7 +36,34 @@ export class PngFileNotValidError extends BaseError {
   }
 }
 
-export class OutputFileExistsError extends BaseError {
+export class OutputPathNotValidError extends BaseError {
+  constructor(outputFile, options) {
+    const message = `The output file '${outputFile}' is not a valid file path.`;
+    super(message, options)
+    this.name = 'OutputPathNotValidError'
+    this.outputFile = outputFile
+  }
+}
+
+export class OutputDirectoryNotValidError extends BaseError {
+  constructor(outputFile, options) {
+    const message = `The output directory '${outputFile}' is not valid.`;
+    super(message, options)
+    this.name = 'OutputDirectoryNotValidError'
+    this.outputFile = outputFile
+  }
+}
+
+export class OutputDirectoryNotWritableError extends BaseError {
+  constructor(outputFile, options) {
+    const message = `The output directory '${outputFile}' is not writeable.`;
+    super(message, options)
+    this.name = 'OutputDirectoryNotWritableError'
+    this.outputFile = outputFile
+  }
+}
+
+export class OutputFileAlreadyExistsError extends BaseError {
   constructor(outputFile, options) {
     const message = `The output file '${outputFile}' already exists.`;
     super(message, options)

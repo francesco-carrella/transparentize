@@ -1,6 +1,6 @@
 import packageInfo from '../../package.json';
-import { exitWithMessage, exitWithError, chalk } from './ui';
-import { GenericError, InputFileNotFoundError, PngFileNotValidError, OutputFileExistsError, PngProcessError, ImageProcessError, WriteOutputFileError } from '../lib';
+import { exitWithError, chalk } from './ui';
+import { GenericError, InputFileNotFoundError, PngFileNotValidError, OutputPathNotValidError, OutputDirectoryNotValidError, OutputDirectoryNotWritableError, PngProcessError, ImageProcessError, WriteOutputFileError } from '../lib';
 
 export default function handleError(error, options) {
   switch(true) {
@@ -13,12 +13,16 @@ export default function handleError(error, options) {
       exitWithError(`The input file '${chalk.white.underline(error.inputFile)}' does not seem to be a valid PNG file. Please check the <input_file> argument and retry.`);
       break
 
-    case error instanceof OutputFileExistsError:
-      if(options.replaceInput) {
-        exitWithMessage(`  Aborted!`);
-      } else {
-        exitWithError(`The output file '${chalk.white.underline(error.outputFile)}' already exists. Please check the <output_file> argument and retry.`);
-      }
+    case error instanceof OutputPathNotValidError:
+      exitWithError(`${chalk.underline(error.outputFile)} is not a valid output file or path.`);
+      break
+
+    case error instanceof OutputDirectoryNotValidError:
+      exitWithError(`${chalk.underline(error.outputFile)} is not a valid output directory.`);
+      break
+
+    case error instanceof OutputDirectoryNotWritableError:
+      exitWithError(`${chalk.underline(error.outputFile)} directory is not writable.`);
       break
 
     case error instanceof PngProcessError:
