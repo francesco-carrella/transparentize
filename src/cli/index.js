@@ -12,15 +12,16 @@ function run() {
   program
     .name(packageInfo.name)
     .description(packageInfo.description)
-    .version(packageInfo.version);
-
-  program
-    .argument('<input_file>', 'png image file to make it transparent')
-    .argument('[output_file]', 'output Png file; if not specified `<input_file>-transparent.png` will be used')
-    .option('-n, --no-colors', 'Suppress status messages colors and emoji') // remove colors from the output using chalk: https://github.com/chalk/chalk#supportscolor
-    .option('-q, --quiet', 'Suppress status messages logging', false)
-    .option('-o, --override-input', 'Override input file with the transparetised version. Incompatible with [output_file] argument.')
-    .option('-y, --allow-override', 'Override existing files without further confirmation.')
+    
+    program
+    .argument('<input_file>', 'Png image file to make it transparent.')
+    .argument('[output_file]', 'Output Png file; if not specified `<input_file>-transparent.png` will be used.')
+    .option('-r, --replace-input', 'Replace the input file with the transparetised version. Incompatible with [output_file] argument.')
+    .option('-o, --allow-override', 'Override existing files without further confirmation.')
+    .option('-n, --no-colors', 'Suppress status messages colors and emoji.') // remove colors from the output using chalk: https://github.com/chalk/chalk#supportscolor
+    .option('-q, --quiet', 'Suppress status messages logging.')
+    .version(packageInfo.version, '-v, --version', 'Output the current version.')
+    .helpOption('-h, --help', 'Display help for command.')
     // TODO: add background color option
 
   program
@@ -32,7 +33,7 @@ function run() {
       try {
         setupUi(options);
 
-        if(cliOptions.overrideInput) {
+        if(cliOptions.replaceInput) {
           if(outputFile) {
             exitWithError('Incompatible arguments: [output_file] and -o/--override-input');
           }

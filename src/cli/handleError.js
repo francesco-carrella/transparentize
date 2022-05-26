@@ -14,7 +14,7 @@ export default function handleError(error, options) {
       break
 
     case error instanceof OutputFileExistsError:
-      if(options.overrideInput) {
+      if(options.replaceInput) {
         exitWithMessage(`  Aborted!`);
       } else {
         exitWithError(`The output file '${chalk.white.underline(error.outputFile)}' already exists. Please check the <output_file> argument and retry.`);
