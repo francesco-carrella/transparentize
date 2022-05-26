@@ -20,11 +20,12 @@
   },
   "dependencies": {
     "buffer": "^6.0.3",
+    "chalk": "^5.0.1",
     "commander": "^9.2.0",
     "es6-error": "^4.1.1",
     "fast-png": "^6.1.0",
     "progress": "^2.0.3",
-    "prompt-confirm": "^2.0.4"
+    "yesno": "^0.3.1"
   },
   "devDependencies": {
     "esbuild": "^0.14.39"
