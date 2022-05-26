@@ -42,6 +42,7 @@ export function verifyInputFile(inputFile, options) {
 }
 
 export async function verifyOutputFile(outputFile, options) {
+  if(options.allowOverride) return true
   const outputFileAlreadyExists = fileExists(outputFile);
   if(outputFileAlreadyExists) {
     if(isFunction(options.onOutputFileExists)) {
@@ -51,6 +52,7 @@ export async function verifyOutputFile(outputFile, options) {
       }
     }
   }
+  return true
 }
 
 export function createOutputFileName(inputFile) {

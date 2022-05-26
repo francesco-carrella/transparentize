@@ -17,9 +17,9 @@ function run() {
   program
     .argument('<input_file>', 'png image file to make it transparent')
     .argument('[output_file]', 'output Png file; if not specified `<input_file>-transparent.png` will be used')
-    // TODO: add output file override flag
     .option('-n, --no-colors', 'Suppress status messages colors and emoji') // remove colors from the output using chalk: https://github.com/chalk/chalk#supportscolor
     .option('-q, --quiet', 'Suppress status messages logging', false)
+    .option('-y, --allow-override', 'Override existing files without further confirmation.')
     // TODO: add background color option
 
   program
