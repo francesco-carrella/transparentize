@@ -18,8 +18,8 @@ function run() {
     .argument('<input_file>', 'Png image file to make it transparent.')
     .argument('[output]', 'Output path or file; if not specified `<input_file>-transparent.png` will be used.')
     .option('-r, --replace-input', 'Replace the input file with the transparetised version. Incompatible with [output_file] argument.')
-    .option('-o, --allow-override', 'Override existing files without further confirmation.')
-    .option('-n, --no-colors', 'Suppress status messages colors and emoji.') // remove colors from the output using chalk: https://github.com/chalk/chalk#supportscolor
+    .option('-o, --allow-override', 'Allow to override files without confirmation.')
+    .option('-n, --no-stdout-colors', 'Suppress colors and emoji on the messages/prompts.') // remove colors from the output using chalk: https://github.com/chalk/chalk#supportscolor
     .option('-q, --quiet', 'Suppress status messages logging.')
     .version(packageInfo.version, '-v, --version', 'Output the current version.')
     .helpOption('-h, --help', 'Display help for command.')

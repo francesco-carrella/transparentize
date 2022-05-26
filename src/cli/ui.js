@@ -10,7 +10,7 @@ export let chalk
 
 export function setupUi(options) {
   quiet = options.quiet
-  disableNonAnsi = !options.colors || process.env.NO_COLOR || !supportsColor.hasBasic
+  disableNonAnsi = !options.stdoutColors || process.env.NO_COLOR || !supportsColor.hasBasic
   chalk = new Chalk({
     level: disableNonAnsi ? 0 : undefined
   });
