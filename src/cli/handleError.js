@@ -1,8 +1,8 @@
 import packageInfo from '../../package.json';
-import { exitWithError, chalk } from './ui';
+import { exitWithMessage, exitWithError, chalk } from './ui';
 import { GenericError, InputFileNotFoundError, PngFileNotValidError, OutputFileExistsError, PngProcessError, ImageProcessError, WriteOutputFileError } from '../lib';
 
-export default function handleError(error) {
+export default function handleError(error, options) {
   switch(true) {
 
     case error instanceof InputFileNotFoundError:
@@ -14,7 +14,11 @@ export default function handleError(error) {
       break
 
     case error instanceof OutputFileExistsError:
-      exitWithError(`The output file '${chalk.white.underline(error.outputFile)}' already exists. Please check the <output_file> argument and retry.`);
+      if(options.overrideInput) {
+        exitWithMessage(`  Aborted!`);
+      } else {
+        exitWithError(`The output file '${chalk.white.underline(error.outputFile)}' already exists. Please check the <output_file> argument and retry.`);
+      }
       break
 
     case error instanceof PngProcessError:

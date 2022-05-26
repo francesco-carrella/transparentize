@@ -54,6 +54,11 @@ export function showProgressBar(total, message = '') {
   });
 }
 
+export function exitWithMessage(message) {
+  showMessage(message)
+  process.exit(1)
+}
+  
 export function exitWithError(message = 'An error occurred', error) {
   if(error) {
     if(error.image) {
