@@ -36,17 +36,26 @@ export class InputFileNotValidError extends BaseError {
   }
 }
 
-export class UnsupportedImageFormat extends BaseError {
+export class UnsupportedImageFormatError extends BaseError {
   constructor(imageFormatKey, filePath, options) {
     const message = 
-      imageFormatKey && filePath ? `Unsupported image format '${imageFormatKey}' for file '${filePath}'.` :
+      imageFormatKey && filePath ? `Unsupported image format '${imageFormatKey}' for the file '${filePath}'.` :
       imageFormatKey ? `Unsupported image format: '${imageFormatKey}'.` :
-      filePath ? `Unsupported image format for file '${filePath}'.` : 
+      filePath ? `Unsupported image format for the file '${filePath}'.` : 
       `Unsupported image format.`;
     super(message, options)
     this.name = 'UnsupportedImageFormat'
     if(filePath) this.filePath = filePath
     if(imageFormatKey) this.imageFormatKey = imageFormatKey
+  }
+} 
+
+export class UnsupportedTiffImageFormatError extends BaseError {
+  constructor(inputFile, options, originalError) {
+    const message = `Unsupported TIFF image format on file ${inputFile}. ${originalError.message}.`;
+    super(message, options, originalError)
+    this.name = 'UnsupportedTiffImageFormatError'
+    if(inputFile) this.inputFile = inputFile
   }
 } 
 

@@ -180,6 +180,11 @@ iobuffer@^5.0.4:
   resolved "https://registry.yarnpkg.com/iobuffer/-/iobuffer-5.1.0.tgz#5a8baf7bf46c7c6b34a4652075bcf7ccee8a5e08"
   integrity sha512-2BYQoYadP3FkVPfqGxs4WO6z3HWGZokJfIkgOARn4P4ipVQCHJnPyva7rJLVmnRA7XTk8ZoLwutuutGeMpu3PA==
 
+jpeg-js@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/jpeg-js/-/jpeg-js-0.4.3.tgz#6158e09f1983ad773813704be80680550eff977b"
+  integrity sha512-ru1HWKek8octvUHFHvE5ZzQ1yAsJmIvRdGWvSoKV52XKyuyYA437QWDttXT8eZXDSbuMpHlLzPDZUPd6idIz+Q==
+
 pako@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/pako/-/pako-2.0.4.tgz#6cebc4bbb0b6c73b0d5b8d7e8476e2b2fbea576d"

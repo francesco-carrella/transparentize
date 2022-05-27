@@ -3,7 +3,7 @@
 import { program } from 'commander';
 
 import packageInfo from '../../package.json';
-import { processFile } from '../lib';
+import { processFile, supportedImageFormat } from '../lib';
 import { ensureOutputFile } from './utils/outputFilename';
 import handlers from './handlers';
 import handleError from './handleError';
@@ -15,7 +15,7 @@ function run() {
     .description(packageInfo.description)
     
   program
-    .argument('<input_file>', 'Png image file to make it transparent.')
+    .argument('<input_file>', `Image file to be 'transparentized'. Supported formats: ${supportedImageFormat.join(', ')}.`)
     .argument('[output]', 'Output path or file; if not specified `<input_file>-transparent.png` will be used.')
     .option('-r, --replace-input', 'Replace the input file with the transparetised version. Incompatible with [output_file] argument.')
     .option('-o, --allow-override', 'Allow to override files without confirmation.')

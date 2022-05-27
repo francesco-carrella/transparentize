@@ -1,14 +1,18 @@
 import { getFileExtension, unifyFileExtension } from '../../utils/files';
-import { UnsupportedImageFormat } from '../errors';
+import { UnsupportedImageFormatError } from '../errors';
 import png from './png';
+import jpeg from './jpeg';
 
 export const imageFormats = {
   png,
+  jpeg,
 };
+
+export const supportedFormats = Object.keys(imageFormats);
 
 export function getImageFormat(formatKey, options) {
   if(!imageFormats[formatKey]) {
-    throw new UnsupportedImageFormat(formatKey, null, options);
+    throw new UnsupportedImageFormatError(formatKey, null, options);
   }
   return imageFormats[formatKey];
 }
@@ -39,5 +43,5 @@ export function getBestImageFormatNameForFile(filePath, options) {
   })
   const best = bestOverall || bestByValidator || bestByExtension
   if(best) return best
-  throw new UnsupportedImageFormat(null, filePath, options);
+  throw new UnsupportedImageFormatError(null, filePath, options);
 }

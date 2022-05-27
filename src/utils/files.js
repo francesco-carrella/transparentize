@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { Buffer } from 'node:buffer';
 import { promisify } from 'util';
 import { isAbsolutePath as isValidNominalPathValidator } from 'path-validation'
 
@@ -64,6 +65,20 @@ export function unifyFileExtension(fileExtension, withDot = true) {
     fileExtension = fileExtension.replace(dotRE, '');
   }
   return fileExtension
+}
+
+export function readChunk(filePath, length) {
+	let buffer = Buffer.alloc(length);
+	const fileDescriptor = fs.openSync(filePath, 'r');
+	try {
+		const bytesRead = fs.readSync(fileDescriptor, buffer, { length });
+		if (bytesRead < length) {
+			buffer = buffer.slice(0, bytesRead);
+		}
+		return buffer;
+	} finally {
+		fs.closeSync(fileDescriptor);
+	}
 }
 
 export function verifyInputFile(inputFile, options) {

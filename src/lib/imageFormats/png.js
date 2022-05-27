@@ -1,7 +1,5 @@
-import fs from 'fs'
-
 import { encode as encodePng, decode as decodePng } from 'fast-png';
-import { readFileAsync, writeFileAsync } from '../../utils/files';
+import { readFileAsync, writeFileAsync, readChunk } from '../../utils/files';
 
 const png = {
   name: 'png',
@@ -16,12 +14,9 @@ const png = {
     await writeFileAsync(outputFile, imageData);
   },
   validate: (inputFile) => {
-    let buffer = Buffer.alloc(8);
-    const fileDescriptor = fs.openSync(inputFile, 'r');
-    const bytesRead = fs.readSync(fileDescriptor, buffer, { length: 8 });
+    const buffer = readChunk(inputFile, 8)
   
     return (
-      bytesRead === 8 &&
       buffer[0] === 0x89 &&
       buffer[1] === 0x50 &&
       buffer[2] === 0x4E &&

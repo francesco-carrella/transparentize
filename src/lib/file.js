@@ -40,9 +40,9 @@ export async function processFile(inputFile, outputFile, options) {
     verifyOutputFile(outputFile, options);
 
     const image = await readFile(inputFile, options);
-    console.time('processImage');
+    // console.time('processImage');
     processImage(image, options);
-    console.timeEnd('processImage');
+    // console.timeEnd('processImage');
     await writeFile(image, outputFile, options);
 
     callIfExists(options.onProcessFileEnd, inputFile, outputFile, options);

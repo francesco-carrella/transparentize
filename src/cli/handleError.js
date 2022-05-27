@@ -1,6 +1,6 @@
 import packageInfo from '../../package.json';
 import { exitWithError, chalk } from './ui';
-import { GenericError, InputFileNotFoundError, InputFileNotValidError, OutputPathNotValidError, OutputDirectoryNotValidError, OutputDirectoryNotWritableError, FileProcessError, ImageProcessError, WriteOutputFileError } from '../lib';
+import { GenericError, InputFileNotFoundError, InputFileNotValidError, UnsupportedImageFormatError, OutputPathNotValidError, OutputDirectoryNotValidError, OutputDirectoryNotWritableError, FileProcessError, ImageProcessError, WriteOutputFileError } from '../lib';
 
 export default function handleError(error, options) {
   switch(true) {
@@ -11,6 +11,10 @@ export default function handleError(error, options) {
 
     case error instanceof InputFileNotValidError:
       exitWithError(`The input file '${chalk.white.underline(error.inputFile)}' does not seem to be a valid ${chalk.white.underline(options.inputFormat)} file. Please check the <input_file> argument and retry.`);
+      break
+
+    case error instanceof UnsupportedImageFormatError:
+      exitWithError(`${error.message} Please check the <input_file> argument and retry.`);
       break
 
     case error instanceof OutputPathNotValidError:
