@@ -14,7 +14,7 @@ export class GenericError extends BaseError {
   constructor(options, originalError) {
     const message = `An error occurred. Please report the issue at ${packageInfo.author.email}`;
     super(message, options, originalError)
-    this.name = 'InputFileNotFoundError'
+    this.name = 'GenericError'
   }
 }
 
@@ -27,14 +27,28 @@ export class InputFileNotFoundError extends BaseError {
   }
 }
 
-export class PngFileNotValidError extends BaseError {
-  constructor(pngFile, options) {
-    const message = `The file '${pngFile}' does seems to be in a valid png format.`;
+export class InputFileNotValidError extends BaseError {
+  constructor(inputFile, options) {
+    const message = `The file '${inputFile}' does seems to be in a valid ${options.inputFormat} format.`;
     super(message, options)
     this.name = 'InputFileNotValidError'
-    this.inputFile = pngFile
+    this.inputFile = inputFile
   }
 }
+
+export class UnsupportedImageFormat extends BaseError {
+  constructor(imageFormatKey, filePath, options) {
+    const message = 
+      imageFormatKey && filePath ? `Unsupported image format '${imageFormatKey}' for file '${filePath}'.` :
+      imageFormatKey ? `Unsupported image format: '${imageFormatKey}'.` :
+      filePath ? `Unsupported image format for file '${filePath}'.` : 
+      `Unsupported image format.`;
+    super(message, options)
+    this.name = 'UnsupportedImageFormat'
+    if(filePath) this.filePath = filePath
+    if(imageFormatKey) this.imageFormatKey = imageFormatKey
+  }
+} 
 
 export class OutputPathNotValidError extends BaseError {
   constructor(outputFile, options) {
@@ -67,24 +81,24 @@ export class OutputFileAlreadyExistsError extends BaseError {
   constructor(outputFile, options) {
     const message = `The output file '${outputFile}' already exists.`;
     super(message, options)
-    this.name = 'OutputFileExistsError'
+    this.name = 'OutputFileAlreadyExistsError'
     this.outputFile = outputFile
   }
 }
 
-export class PngParseError extends BaseError {
+export class InputFileParseError extends BaseError {
   constructor(inputFile, options, originalError) {
-    const message = `Error parsing the png input file '${inputFile}'.`;
+    const message = `Error parsing the input file '${inputFile}'.`;
     super(message, options, originalError)
-    this.name = 'PngParseError'
+    this.name = 'InputFileParseError'
     this.inputFile = inputFile
   }
 }
-export class PngProcessError extends BaseError {
+export class FileProcessError extends BaseError {
   constructor(inputFile, outputFile, options, originalError) {
-    const message = `Error processing the png input file '${inputFile}'.`;
+    const message = `Error processing the input file '${inputFile}'.`;
     super(message, options, originalError)
-    this.name = 'PngProcessError'
+    this.name = 'FileProcessError'
     this.inputFile = inputFile
     this.outputFile = outputFile
   }

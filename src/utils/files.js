@@ -1,10 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 import { promisify } from 'util';
-import { Buffer } from 'node:buffer';
 import { isAbsolutePath as isValidNominalPathValidator } from 'path-validation'
 
-import { throwBestError, InputFileNotFoundError, PngFileNotValidError, OutputFileAlreadyExistsError, OutputPathNotValidError, OutputDirectoryNotValidError, OutputDirectoryNotWritableError } from '../lib';
+import { getImageFormat } from '../lib/imageFormats';
+import { throwBestError, InputFileNotFoundError, InputFileNotValidError, OutputFileAlreadyExistsError, OutputPathNotValidError, OutputDirectoryNotValidError, OutputDirectoryNotWritableError } from '../lib';
 
 export const readFileAsync = promisify(fs.readFile)
 export const writeFileAsync = promisify(fs.writeFile)
@@ -38,11 +38,16 @@ export function isDirectoryWritable(dirPath) {
   }
 }
 
-export function isFileExtension (filePath, extension) {
-  return path.extname(filePath) === extension
+export function getFileExtension(filePath, withDot = true) {
+  return unifyFileExtension(path.extname(filePath), withDot)
 }
 
-export function ensureFileExtension(filePath, extension = '') {
+export function isFileExtension (filePath, extension) {
+  return path.extname(filePath) === unifyFileExtension(extension, true)
+}
+
+export function ensureFileExtension(filePath, extension) {
+  extension = unifyFileExtension(extension, true)
   if(!isFileExtension(filePath, extension)) {
     const { name, dir } = path.parse(filePath)
     filePath = path.join(dir, `${name}${extension}`)
@@ -50,14 +55,34 @@ export function ensureFileExtension(filePath, extension = '') {
   return filePath
 }
 
+export function unifyFileExtension(fileExtension, withDot = true) {
+  if(!fileExtension) return ''
+  const dotRE = /^\./;
+  if(withDot && !dotRE.test(fileExtension)) {
+    fileExtension = `.${fileExtension}`;
+  } else if(!withDot && dotRE.test(fileExtension)) {
+    fileExtension = fileExtension.replace(dotRE, '');
+  }
+  return fileExtension
+}
+
 export function verifyInputFile(inputFile, options) {
   if(!pathExists(inputFile)) {
     throwBestError(new InputFileNotFoundError(inputFile, options));
   }
-  if (!isValidPng(inputFile)) {
-    throwBestError(new PngFileNotValidError(inputFile, options));
+  const imageFormat = getImageFormat(options.inputFormat);
+  if(imageFormat.validate && !imageFormat.validate(inputFile)) {
+    throwBestError(new InputFileNotValidError(inputFile, options));
   }
   return true
+}
+
+export function verifyOutputFile(outputFile, options) {
+  return (
+    verifyOutputFileNominalPath(outputFile, options) &&
+    verifyOutputDirectory(outputFile, options) &&
+    verifyOutputFileDontExists(outputFile, options)
+  )
 }
 
 export function verifyOutputFileNominalPath(outputFile, options) {
@@ -83,30 +108,4 @@ export function verifyOutputFileDontExists(outputFile, options) {
     throwBestError(new OutputFileAlreadyExistsError(outputFile, options))
   }
   return true
-}
-
-export function verifyOutputFile(outputFile, options) {
-  return (
-    verifyOutputFileNominalPath(outputFile, options) &&
-    verifyOutputDirectory(outputFile, options) &&
-    verifyOutputFileDontExists(outputFile, options)
-  )
-}
-
-export function isValidPng(filePath) {
-  let buffer = Buffer.alloc(8);
-  const fileDescriptor = fs.openSync(filePath, 'r');
-  const bytesRead = fs.readSync(fileDescriptor, buffer, { length: 8 });
-
-  return (
-    bytesRead === 8 &&
-	  buffer[0] === 0x89 &&
-		buffer[1] === 0x50 &&
-		buffer[2] === 0x4E &&
-		buffer[3] === 0x47 &&
-		buffer[4] === 0x0D &&
-		buffer[5] === 0x0A &&
-		buffer[6] === 0x1A &&
-		buffer[7] === 0x0A
-  )
 }

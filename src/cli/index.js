@@ -3,7 +3,7 @@
 import { program } from 'commander';
 
 import packageInfo from '../../package.json';
-import { processPng } from '../lib';
+import { processFile } from '../lib';
 import { ensureOutputFile } from './utils/outputFilename';
 import handlers from './handlers';
 import handleError from './handleError';
@@ -40,7 +40,7 @@ function run() {
 
         outputFile = await ensureOutputFile(inputFile, outputFile, options);
 
-        await processPng(inputFile, outputFile, options);
+        await processFile(inputFile, outputFile, options);
       } catch(e) {
         handleError(e, options)
       }

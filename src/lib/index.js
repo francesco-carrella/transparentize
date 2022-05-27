@@ -1,3 +1,3 @@
 export * from './errors';
 export * from './process';
-export * from './png';
+export * from './file';
