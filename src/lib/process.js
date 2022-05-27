@@ -28,7 +28,7 @@ export function processPixel(image, x, y, options) {
     r: image.data[idx], 
     g: image.data[idx + 1], 
     b: image.data[idx + 2],
-    a: 1
+    a: image.data[idx + 3] / 255
   }
   
   const newColor = transparentify(pixelColor);
