@@ -7,7 +7,7 @@ export const whiteColor = {
   r: 255,
   g: 255,
   b: 255,
-  a: 1,
+  a: 255,
 }
 
 
@@ -19,29 +19,29 @@ export function clampColorValue(colorValue) {
 export function transparentify(top, bottom = whiteColor){
 
   // first of all remove top color alpha multiplying it by the bottom color (mimiking the multiply blend mode)
-  if(top.a < 1) {
+  if(top.a < 255) {
     rgbChannels.forEach(function(channel) {
-      clampColorValue(top[channel] = bottom[channel] + (top[channel] - bottom[channel]) * top.a)
+      clampColorValue(top[channel] = bottom[channel] + (top[channel] - bottom[channel]) * (top.a / 255))
     })
-    top.a = 1
+    top.a = 255
   }
 
   // find the maximum applicable alpha 
   let maxAlpha = Math.max(...rgbChannels.map(function(channel){
-    return (top[channel] - bottom[channel]) / ((0 < (top[channel] - bottom[channel]) ? 255 : 0) - bottom[channel]);
+    return (top[channel] - bottom[channel]) / ((0 < (top[channel] - bottom[channel]) ? 255 : 0) - bottom[channel]) * 255;
   }))
-  maxAlpha = clamp(maxAlpha, 1)
+  maxAlpha = clampColorValue(maxAlpha, 255)
 
   // Calculate the resulting color appling the alpha value
   function transparentifyChannel(channel) {
     if (!maxAlpha) return bottom[channel]
-    return clampColorValue(bottom[channel] + (top[channel] - bottom[channel]) / maxAlpha)
+    return clampColorValue(bottom[channel] + (top[channel] - bottom[channel]) / (maxAlpha / 255))
   }
 
   return {
     r: transparentifyChannel('r'),
     g: transparentifyChannel('g'),
     b: transparentifyChannel('b'),
-    a: roundFloat(maxAlpha, 3)
+    a: clampColorValue(maxAlpha)
   }
 }

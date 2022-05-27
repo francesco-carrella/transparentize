@@ -28,7 +28,7 @@ export function processPixel(image, x, y, options) {
     r: image.data[idx], 
     g: image.data[idx + 1], 
     b: image.data[idx + 2],
-    a: image.data[idx + 3] / 255
+    a: image.data[idx + 3]
   }
   
   const newColor = transparentify(pixelColor);
@@ -36,7 +36,7 @@ export function processPixel(image, x, y, options) {
   image.data[idx] = newColor.r
   image.data[idx + 1] = newColor.g
   image.data[idx + 2] = newColor.b
-  image.data[idx + 3] = newColor.a * 255
+  image.data[idx + 3] = newColor.a
 
   callIfExists(options.onPixelProcessEnd, image, x, y, options);
 }
