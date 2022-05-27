@@ -1,9 +1,9 @@
 import packageInfo from '../../package.json';
 import { exitWithError, formatObject, chalk } from './ui';
-import { GenericError, InputFileNotFoundError, InputFileNotValidError, UnsupportedImageFormatError, OutputPathNotValidError, OutputDirectoryNotValidError, OutputDirectoryNotWritableError, FileProcessError, ImageProcessError, WriteOutputFileError, InvalidBgColorError, InvalidBgColorAlphaError } from '../lib';
+import { GenericError, InputFileNotFoundError, InputFileNotValidError, UnsupportedImageFormatError, UnsupportedTiffImageFormatError, OutputPathNotValidError, OutputDirectoryNotValidError, OutputDirectoryNotWritableError, FileProcessError, ImageProcessError, WriteOutputFileError, InvalidBgColorError, InvalidBgColorAlphaError } from '../lib';
 
 export default function handleError(error, options) {
-  switch(true) {
+  switch (true) {
 
     case error instanceof InputFileNotFoundError:
       exitWithError(`The input file '${chalk.white.underline(error.inputFile)}' does not exists. Please check the <input_file> argument and retry.`);
@@ -14,6 +14,10 @@ export default function handleError(error, options) {
       break
 
     case error instanceof UnsupportedImageFormatError:
+      exitWithError(`${error.message} Please check the <input_file> argument and retry.`);
+      break
+
+    case error instanceof UnsupportedTiffImageFormatError:
       exitWithError(`${error.message} Please check the <input_file> argument and retry.`);
       break
 
@@ -30,7 +34,7 @@ export default function handleError(error, options) {
       break
 
     case error instanceof FileProcessError:
-      exitWithError(`Impossible to read the input file '${chalk.white.underline(error.inputFile)}'. Please check the <input_file> argument and retry.`, error); 
+      exitWithError(`Impossible to read the input file '${chalk.white.underline(error.inputFile)}'. Please check the <input_file> argument and retry.`, error);
       break
 
     case error instanceof ImageProcessError:
@@ -44,7 +48,7 @@ export default function handleError(error, options) {
     case error instanceof InvalidBgColorError:
       exitWithError(`Invalid background color: ${chalk.white(chalk.white(formatObject(error.bgColor, 1)))}`)
       break
-    
+
     case error instanceof InvalidBgColorAlphaError:
       exitWithError(`Invalid background color: ${chalk.white(chalk.white(formatObject(error.bgColor, 1)))}. Transparent colors are not supported (yet?).`)
       break

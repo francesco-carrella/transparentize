@@ -28,6 +28,7 @@
     "jpeg-js": "^0.4.3",
     "path-validation": "^0.2.3",
     "progress": "^2.0.3",
+    "tiff": "^5.0.3",
     "yesno": "^0.3.1"
   },
   "devDependencies": {

@@ -2,10 +2,12 @@ import { getFileExtension, unifyFileExtension } from '../../utils/files';
 import { UnsupportedImageFormatError } from '../errors';
 import png from './png';
 import jpeg from './jpeg';
+import tiff from './tiff';
 
 export const imageFormats = {
   png,
   jpeg,
+  tiff,
 };
 
 export const supportedFormats = Object.keys(imageFormats);

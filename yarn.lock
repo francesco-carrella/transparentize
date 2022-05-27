@@ -225,6 +225,14 @@ progress@^2.0.3:
   resolved "https://registry.npmjs.org/progress/-/progress-2.0.3.tgz"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
+tiff@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/tiff/-/tiff-5.0.3.tgz#965169ffe1f26b2edeef15bbc74c39472e12c13c"
+  integrity sha512-R0WckwRGhawWDNdha8iPQCjHyOiaEEmfFjhmalUVCIEELsON7Y/XO3eeGmBkoCXQp0Gg2nmTozN92Z4hlwbsow==
+  dependencies:
+    iobuffer "^5.0.4"
+    pako "^2.0.4"
+
 yesno@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/yesno/-/yesno-0.3.1.tgz#3b2150158ee9b3f192a42313dd189c439f26c0ba"
