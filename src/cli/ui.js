@@ -2,6 +2,8 @@ import { program } from 'commander';
 import { Chalk, supportsColor } from 'chalk';
 import yesno from 'yesno'
 import ProgressBar from 'progress';
+import util from 'util';
+
 
 let quiet
 let disableNonAnsi
@@ -32,6 +34,10 @@ export function showProgressMessage(message){
   process.stdout.clearLine(0);
   process.stdout.cursorTo(0);
   showMessage(message, logger = process.stdout.write.bind(process.stdout));
+}
+
+export function formatObject(obj, deep) {
+  return util.inspect(obj, false, deep, !disableNonAnsi)
 }
 
 export async function showConfirm(question, defaultValue = false) {

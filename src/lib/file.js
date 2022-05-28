@@ -1,5 +1,6 @@
 import { verifyInputFile, verifyOutputFile, getFileExtension } from '../utils/files';
 import { callIfExists } from '../utils/generic';
+import { applyDefaultOptions } from '.';
 import { getImageFormat, getBestImageFormatNameForFile } from './imageFormats';
 import { processImage } from './process';
 import { throwBestError, FileProcessError, WriteOutputFileError, InputFileParseError } from './errors';
@@ -7,8 +8,10 @@ import { throwBestError, FileProcessError, WriteOutputFileError, InputFileParseE
 async function readFile(inputFilename, options) {
   try {
     callIfExists(options.onReadInputFileStart, inputFilename, options)
+
     const inputImageFormat = getImageFormat(options.inputFormat);
     const image = inputImageFormat.read(inputFilename, options);
+
     callIfExists(options.onReadInputFileEnd, inputFilename, options)
     return image
   } catch (e) {
@@ -20,7 +23,9 @@ async function writeFile(image, outputFile, options) {
   try {
     const outputImageFormat = getImageFormat('png');
     callIfExists(options.onWriteOutputFileStart, outputFile, options);
+
     outputImageFormat.write(image, outputFile, options);
+    
     callIfExists(options.onWriteOutputFileEnd, outputFile, options);
   } catch (e) {
     throwBestError(e, new WriteOutputFileError(outputFile, options, e));
@@ -28,6 +33,7 @@ async function writeFile(image, outputFile, options) {
 }
 
 export async function processFile(inputFile, outputFile, options) {
+  applyDefaultOptions(options)
   try {
     callIfExists(options.onProcessFileStart, inputFile, outputFile, options);
     

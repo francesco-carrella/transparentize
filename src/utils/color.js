@@ -1,7 +1,6 @@
-import { clamp, roundFloat } from './generic';
+import { clamp } from './generic';
 
 export const rgbChannels = ['r', 'g', 'b']
-// export const rgbaChannels = ['r', 'g', 'b', 'a']
 
 export const whiteColor = {
   r: 255,
@@ -10,13 +9,25 @@ export const whiteColor = {
   a: 255,
 }
 
-
 export function clampColorValue(colorValue) {
   return Math.round(clamp(colorValue, 255))
 }
 
+export function validRgbColor(color) {
+  return (
+    !!color &&
+    typeof color === 'object' &&
+    rgbChannels.every((channel) => (
+      typeof color[channel] === 'number' &&
+      !isNaN(color[channel]) &&
+      color[channel] >= 0 &&
+      color[channel] <= 255
+    ))
+  )
+}
+
 // return transparent applying the best alpha channel for
-export function transparentify(top, bottom = whiteColor){
+export function transparentify(top, bottom){
 
   // first of all remove top color alpha multiplying it by the bottom color (mimiking the multiply blend mode)
   if(top.a < 255) {
@@ -29,8 +40,7 @@ export function transparentify(top, bottom = whiteColor){
   // find the maximum applicable alpha 
   let maxAlpha = Math.max(...rgbChannels.map(function(channel){
     return (top[channel] - bottom[channel]) / ((0 < (top[channel] - bottom[channel]) ? 255 : 0) - bottom[channel]) * 255;
-  }))
-  maxAlpha = clampColorValue(maxAlpha, 255)
+  }).filter(a => !isNaN(a)))
 
   // Calculate the resulting color appling the alpha value
   function transparentifyChannel(channel) {

@@ -1,6 +1,6 @@
 import packageInfo from '../../package.json';
-import { exitWithError, chalk } from './ui';
-import { GenericError, InputFileNotFoundError, InputFileNotValidError, UnsupportedImageFormatError, OutputPathNotValidError, OutputDirectoryNotValidError, OutputDirectoryNotWritableError, FileProcessError, ImageProcessError, WriteOutputFileError } from '../lib';
+import { exitWithError, formatObject, chalk } from './ui';
+import { GenericError, InputFileNotFoundError, InputFileNotValidError, UnsupportedImageFormatError, OutputPathNotValidError, OutputDirectoryNotValidError, OutputDirectoryNotWritableError, FileProcessError, ImageProcessError, WriteOutputFileError, InvalidBgColorError, InvalidBgColorAlphaError } from '../lib';
 
 export default function handleError(error, options) {
   switch(true) {
@@ -40,7 +40,15 @@ export default function handleError(error, options) {
     case error instanceof WriteOutputFileError:
       exitWithError(`Impossible to write the output file '${chalk.white.underline(error.outputFile)}'. Please check the <output_file> argument and retry.`, error);
       break
+
+    case error instanceof InvalidBgColorError:
+      exitWithError(`Invalid background color: ${chalk.white(chalk.white(formatObject(error.bgColor, 1)))}`)
+      break
     
+    case error instanceof InvalidBgColorAlphaError:
+      exitWithError(`Invalid background color: ${chalk.white(chalk.white(formatObject(error.bgColor, 1)))}. Transparent colors are not supported (yet?).`)
+      break
+
     case error instanceof GenericError:
     default:
       exitWithError(`An error occurred. Please report the issue at ${packageInfo.author.email}`, error);
