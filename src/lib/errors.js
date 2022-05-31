@@ -110,9 +110,19 @@ export class UnsupportedTiffImageFormatError extends BaseError {
     const message = `Unsupported TIFF image format on file ${inputFile}. ${originalError.message}.`;
     super(message, options, originalError)
     this.name = 'UnsupportedTiffImageFormatError'
-    if(inputFile) this.inputFile = inputFile
+    if (inputFile) this.inputFile = inputFile
   }
-} 
+}
+
+export class InvalidTiffPageError extends BaseError {
+  constructor(inputFile, documentPages, options, originalError) {
+    const message = `Invalid page '${options.page}'. The input file '${inputFile}' has ${documentPages} pages.`;
+    super(message, options, originalError)
+    this.name = 'InvalidTiffPageError'
+    if (inputFile) this.inputFile = inputFile
+    if (documentPages) this.documentPages = documentPages
+  }
+}
 
 export class OutputPathNotValidError extends BaseError {
   constructor(outputFile, options, originalError) {

@@ -1,6 +1,6 @@
 import packageInfo from '../../package.json';
 import { exitWithError, formatObject, chalk } from './ui';
-import { GenericError, InputFileNotFoundError, InputFileNotValidError, UnsupportedImageFormatError, UnsupportedTiffImageFormatError, OutputPathNotValidError, OutputDirectoryNotValidError, OutputDirectoryNotWritableError, FileProcessError, ImageProcessError, WriteOutputFileError, InvalidBgColorError, InvalidBgColorAlphaError } from '../lib';
+import { GenericError, InputFileNotFoundError, InputFileNotValidError, UnsupportedImageFormatError, UnsupportedTiffImageFormatError, InvalidTiffPageError, OutputPathNotValidError, OutputDirectoryNotValidError, OutputDirectoryNotWritableError, FileProcessError, ImageProcessError, WriteOutputFileError, InvalidBgColorError, InvalidBgColorAlphaError } from '../lib';
 
 export default function handleError(error, options) {
   switch (true) {
@@ -19,6 +19,13 @@ export default function handleError(error, options) {
 
     case error instanceof UnsupportedTiffImageFormatError:
       exitWithError(`${error.message} Please check the <input_file> argument and retry.`);
+      break
+
+    case error instanceof InvalidTiffPageError:
+      const message = isNaN(options.page) ?
+        `Invalid value value for argument '-p, --page'. It must be a number.` :
+        `Invalid page number ${options.page}. The input file '${error.inputFile}' has a maximum of ${error.documentPages} pages.`;
+      exitWithError(message);
       break
 
     case error instanceof OutputPathNotValidError:

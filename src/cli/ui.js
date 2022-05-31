@@ -66,8 +66,9 @@ export function exitWithMessage(message) {
 }
   
 export function exitWithError(message = 'An error occurred', error) {
-  if(error) {
-    if(error.image) {
+  console.log(' ')
+  if (error) {
+    if (error.image) {
       error.image = '<removed>'
     }
     console.error(error);

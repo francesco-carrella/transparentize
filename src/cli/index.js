@@ -30,6 +30,7 @@ function run() {
     ].join('\n'))
     .option('-r, --replace-input', 'Replace the input file with the transparetised version. Cannot be used with [output_file] argument.')
     .option('-o, --allow-override', 'Allow to override files without confirmation.')
+    .option('-p, --page <page>', 'Specific for TIFF format. Specify the page number to be processed.', parseInt)
     .option('-n, --no-stdout-colors', 'Suppress colors and emoji on the messages/prompts.') // remove colors from the output using chalk: https://github.com/chalk/chalk#supportscolor
     .option('-q, --quiet', 'Suppress status messages logging.')
     .version(packageInfo.version, '-v, --version', 'Output the current version.')
