@@ -14,9 +14,12 @@
     "email": "francesco.carrella@gmail.com"
   },
   "scripts": {
-    "image": "yarn workspace @transparentize/image"
+    "image": "yarn workspace @transparentize/image",
+    "lint": "eslint \"packages/**/*.js\""
   },
   "devDependencies": {
+    "eslint": "^8.16.0",
+    "eslint-gitignore": "^0.1.0"
   },
   "dependencies": {
   },
