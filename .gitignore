@@ -1,5 +1,18 @@
-node_modules
-dist
+# Logs
+yarn-debug.log*
+yarn-error.log*
+
+# Binaries
+node_modules/
+
+# Builds
+dist/
+**/dist/index.js
+
+# Temporary folders
+test_images/
+tmp/
+
+# Others
+.DS_*
 .history
-yarn-error.log
-/tmp

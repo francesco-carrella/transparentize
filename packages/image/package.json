@@ -1,0 +1,16 @@
+{
+  "name": "@transparentize/image",
+  "version": "0.1.0",
+  "description": "Lib to remove a color components from images, replacing it with transparency (alpha channel)",
+  "main": "src/index.js",
+  "repository": "https://github.com/francesco-carrella/transparentize",
+  "license": "Commons Clause",
+  "author": {
+    "name": "Francesco Carrella",
+    "email": "francesco.carrella@gmail.com"
+  },
+  "scripts": {
+  },
+  "dependencies": {
+  }
+}

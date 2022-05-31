@@ -1,38 +1,24 @@
 {
   "name": "transparentize",
-  "description": "Remove background color of an image file to make it transparent. The resulting effect mimicking the behavior of 'multiply' blend mode in Photoshop, but on transparent background",
-  "version": "0.2.0",
-  "source": "src/cli/index.js",
-  "main": "dist/main.js",
+  "version": "0.1.0",
+  "description": "Small set of tools (LIBs & CLI) to remove a color components from images, replacing it with transparency (alpha channel)",
+  "workspaces": [
+    "packages/*"
+  ],
+  "type": "module",
+  "repository": "https://github.com/francesco-carrella/transparentize",
+  "license": "Commons Clause",
+  "private": true,
   "author": {
     "name": "Francesco Carrella",
     "email": "francesco.carrella@gmail.com"
   },
-  "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "cli:build": "esbuild src/cli/index.js  --platform=node --target=node10.4 --bundle --outfile=dist/bin/transparentize",
-    "cli:watch": "yarn cli:build --watch",
-    "lib:build": "esbuild src/lib/index.js  --platform=node --target=node10.4 --bundle --outfile=dist/lib/transparentize.js",
-    "lib:watch": "yarn lib:build --watch",
-    "build": "yarn lib:build && yarn cli:build",
-    "watch": "yarn lib:watch && yarn cli:watch"
-  },
-  "dependencies": {
-    "buffer": "^6.0.3",
-    "chalk": "^5.0.1",
-    "color-rgba": "^2.4.0",
-    "commander": "^9.2.0",
-    "es6-error": "^4.1.1",
-    "fast-png": "^6.1.0",
-    "jpeg-js": "^0.4.3",
-    "path-validation": "^0.2.3",
-    "progress": "^2.0.3",
-    "tiff": "^5.0.3",
-    "yesno": "^0.3.1"
+    "image": "yarn workspace @transparentize/image"
   },
   "devDependencies": {
-    "esbuild": "^0.14.39"
+  },
+  "dependencies": {
   },
   "engines": {
     "node": ">=10"
