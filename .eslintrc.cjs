@@ -12,6 +12,17 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
+  overrides: [
+    {
+      files: ['**.spec.js'],
+      plugins: ['jest'],
+      extends: ['plugin:jest/recommended'],
+      rules: { 'jest/prefer-expect-assertions': 'off' },
+      env: {
+        'jest/globals': true
+      }
+    }
+  ],
   ignorePatterns: readGitignoreFiles({ cwd: __dirname }),
   rules: {
     'accessor-pairs': 'warn',

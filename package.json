@@ -17,15 +17,20 @@
     "image": "yarn workspace @transparentize/image",
     "common": "yarn workspace @transparentize/common",
     "lint": "eslint \"packages/**/*.js\"",
+    "test": "jest packages/*/tests",
     "build": "node ./scripts/build/index.js"
   },
   "devDependencies": {
     "chalk": "^5.0.1",
+    "@types/jest": "^27.5.1",
     "commander": "^9.3.0",
     "esbuild": "^0.14.41",
+    "esbuild-jest": "^0.5.0",
     "eslint": "^8.16.0",
     "eslint-gitignore": "^0.1.0",
+    "eslint-plugin-jest": "^26.4.5",
     "filesize": "^9.0.0",
+    "jest": "^28.1.0",
     "time-diff": "^0.3.1"
   },
   "dependencies": {
