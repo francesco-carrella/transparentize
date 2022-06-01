@@ -1,8 +1,7 @@
 {
-  "name": "@transparentize/image",
+  "name": "@transparentize/common",
   "version": "0.1.0",
-  "description": "Lib to remove a color components from images, replacing it with transparency (alpha channel)",
-  "main": "src/index.js",
+  "description": "Utils used by others @transparentify packages",
   "repository": "https://github.com/francesco-carrella/transparentize",
   "license": "Commons Clause",
   "author": {
@@ -11,6 +10,6 @@
   },
   "scripts": {},
   "dependencies": {
-    "@transparentize/common": "link:packages/common"
+    "es6-error": "^4.1.1"
   }
 }
