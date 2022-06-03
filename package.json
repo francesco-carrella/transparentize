@@ -15,6 +15,7 @@
   },
   "scripts": {
     "image": "yarn workspace @transparentize/image",
+    "common": "yarn workspace @transparentize/common",
     "lint": "eslint \"packages/**/*.js\"",
     "build": "node ./scripts/build/index.js"
   },

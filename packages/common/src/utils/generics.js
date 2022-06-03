@@ -1,24 +1,32 @@
 
-export function clamp(value, max = 1, min = 0) {
-  return Math.min(Math.max(value, min), max)
+export function isInt(val) {
+  return typeof val === 'number' && !isNaN(val) && val % 1 === 0
 }
 
-export function roundFloat(value, digits = 2) {
-  return Math.round(value * Math.pow(10, digits)) / Math.pow(10, digits)
+export function isPositiveInt(val) {
+  return isInt(val) && val > 0
 }
 
-export function isFunction(fn) {
-  return typeof fn === 'function'
+export function isIterable(val) {
+  return typeof val[Symbol.iterator] === 'function'
 }
 
-export function callIfExists(fn, ...args) {
-  if (isFunction(fn)) {
-    return fn(...args)
-  }
+export function isObject(val) {
+  return val !== null && typeof val === 'object'
 }
 
-export async function callIfExistsAsync(fn, ...args) {
-  if (isFunction(fn)) {
-    return await fn(...args)
+export function isObjectWithKeys(val, keys = []) {
+  if (keys && !isIterable(keys)) keys = [keys]
+  return isObject(val) && keys.every((key) => Object.prototype.hasOwnProperty.call(val, key))
+}
+
+
+
+export function runWithoutErrors(fn, ...args) {
+  try {
+    fn(...args)
+    return true
+  } catch {
+    return false
   }
 }

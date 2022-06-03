@@ -10,6 +10,7 @@
   },
   "scripts": {},
   "dependencies": {
+    "@transparentize/image": "link:packages/image",
     "es6-error": "^4.1.1"
   }
 }

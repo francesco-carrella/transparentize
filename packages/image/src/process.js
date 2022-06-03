@@ -1,82 +1,108 @@
 import { throwBestError } from '@transparentize/common/src/errors.js'
-import { callIfExists } from '@transparentize/common/src/utils/generics.js'
-import { rgbChannels, clampColorValue } from '@transparentize/common/src/utils/colors.js'
+import { callHandler } from '@transparentize/common/src/utils/handlers'
 
-import { applyDefaultOptions } from '.'
-import { ImageProcessError } from './errors'
-import { verifyBgColor, verifyColor } from './verifications.js'
+import { ImageProcessError, FrameDataProcessError, ColorProcessError, UnsupportedBackgroundColorAlphaError } from './errors'
+import { Color, FrameData, Image } from './classes'
 
-export function processImage(image, options) {
-  applyDefaultOptions(options)
+export const whiteColor = new Color([255, 255, 255, 255])
+export const defaultBackgroundColor = whiteColor
+
+export function processImage(image, backgroundColor = defaultBackgroundColor, options = {}) {
   try {
-    callIfExists(options.onImageProcessStart, image, options)
+    if (options.onProcessImageStart) {
+      [image, backgroundColor, options] = callHandler(options.onProcessImageStart, image, backgroundColor, options)
+    }
+    image = Image.cast(image)
+    backgroundColor = Color.cast(backgroundColor)
 
-    verifyBgColor(options.bgColor, options)
-
-    for (let x = 0; x < image.width; x++) {
-      for (let y = 0; y < image.height; y++) {
-        processPixel(image, x, y, options)
-      }
+    if (backgroundColor[3] < 255) {
+      throwBestError(new UnsupportedBackgroundColorAlphaError(null, backgroundColor, options))
     }
 
-    callIfExists(options.onImageProcessEnd, image, options)
+    image.data = processFrameData(image.data, backgroundColor, options)
+
+    if (options.onProcessImageEnd) {
+      [image, backgroundColor, options] = callHandler(options.onProcessImageEnd, image, backgroundColor, options)
+    }
     return image
   } catch (e) {
     throwBestError(e, new ImageProcessError(image, options, e))
   }
 }
 
-export function processPixel(image, x, y, options) {
-  callIfExists(options.onPixelProcessStart, image, x, y, options)
 
-  let idx = (image.width * y + x) * 4
+export function processFrameData(frameData, backgroundColor = defaultBackgroundColor, options = {}) {
+  try {
+    if (options.onProcessFrameDataStart) {
+      [frameData, backgroundColor, options] = callHandler(options.onProcessFrameDataStart, frameData, backgroundColor, options)
+    }
+    frameData = FrameData.cast(frameData)
 
-  const pixelColor = {
-    r: image.data[idx],
-    g: image.data[idx + 1],
-    b: image.data[idx + 2],
-    a: image.data[idx + 3]
+    backgroundColor = Color.cast(backgroundColor)
+
+    if (backgroundColor[3] < 255) {
+      throwBestError(new UnsupportedBackgroundColorAlphaError(null, backgroundColor, options))
+    }
+
+    const pixelsCount = frameData.length / Color.rgbaChannels.length
+
+    // process every pixel (aka color) in the frameData
+    for (let pixelIdx = 0; pixelIdx < pixelsCount; pixelIdx++) {
+      const pixelColor = frameData.colorAt(pixelIdx)
+      const processedColor = processColor(pixelColor, backgroundColor, options)
+      frameData.replaceAt(pixelIdx, processedColor)
+    }
+
+    if (options.onProcessFrameDataEnd) {
+      [frameData, backgroundColor, options] = callHandler(options.onProcessFrameDataEnd, frameData, backgroundColor, options)
+    }
+    return frameData
+  } catch (e) {
+    throwBestError(e, new FrameDataProcessError(null, frameData, options, e))
   }
-
-  const newColor = transparentizeColor(pixelColor, options.bgColor)
-
-  image.data[idx] = newColor.r
-  image.data[idx + 1] = newColor.g
-  image.data[idx + 2] = newColor.b
-  image.data[idx + 3] = newColor.a
-
-  callIfExists(options.onPixelProcessEnd, image, x, y, options)
 }
 
-export function transparentizeColor(top, bottom) {
+export function processColor(frontColor, backgroundColor = defaultBackgroundColor, options = {}) {
+  try {
+    if (options.onProcessColorStart) {
+      [frontColor, backgroundColor, options] = callHandler(options.onProcessColorStart, frontColor, backgroundColor, options)
+    }
 
-  // TODO: check performance issues on large images
-  verifyColor(top)
-  verifyBgColor(bottom)
+    frontColor = Color.cast(frontColor)
+    backgroundColor = Color.cast(backgroundColor)
 
-  // first of all remove top color alpha multiplying it by the bottom color (mimiking the multiply blend mode)
-  if (top.a < 255) {
-    rgbChannels.forEach(function (channel) {
-      top[channel] = clampColorValue(bottom[channel] + (top[channel] - bottom[channel]) * (top.a / 255))
+    if (backgroundColor[3] < 255) {
+      throwBestError(new UnsupportedBackgroundColorAlphaError(null, backgroundColor, options))
+    }
+
+    // first of all remove new color alpha multiplying it by the bottom color (mimiking the multiply blend mode)
+    if (frontColor[3] < 255) {
+      (Color.rgbIndexes).forEach(function (channel) {
+        frontColor[channel] = backgroundColor[channel] + (frontColor[channel] - backgroundColor[channel]) * (frontColor[3] / 255)
+      })
+      frontColor[3] = 255
+    }
+
+    // find the maximum applicable alpha
+    let maxAlpha = Math.max(...Color.rgbIndexes.map(function (channel) {
+      return (
+        (frontColor[channel] - backgroundColor[channel]) / ((frontColor[channel] - backgroundColor[channel] > 0 ? 255 : 0) - backgroundColor[channel]) * 255 //eslint-disable-line max-len
+      )
+    }).filter(a => !isNaN(a)))
+
+    // Calculate the resulting color appling the alpha value
+    Color.rgbIndexes.forEach(function (channel) {
+      frontColor[channel] = !maxAlpha ?
+        backgroundColor[channel] :
+        backgroundColor[channel] + (frontColor[channel] - backgroundColor[channel]) / (maxAlpha / 255)
     })
-    top.a = 255
-  }
+    frontColor[3] = maxAlpha
 
-  // find the maximum applicable alpha
-  let maxAlpha = Math.max(...rgbChannels.map(function (channel) {
-    return (top[channel] - bottom[channel]) / ((0 < (top[channel] - bottom[channel]) ? 255 : 0) - bottom[channel]) * 255
-  }).filter(a => !isNaN(a)))
-
-  // Calculate the resulting color appling the alpha value
-  function transparentifyChannel(channel) {
-    if (!maxAlpha) return bottom[channel]
-    return clampColorValue(bottom[channel] + (top[channel] - bottom[channel]) / (maxAlpha / 255))
-  }
-
-  return {
-    r: transparentifyChannel('r'),
-    g: transparentifyChannel('g'),
-    b: transparentifyChannel('b'),
-    a: clampColorValue(maxAlpha)
+    if (options.onProcessColorEnd) {
+      [frontColor, backgroundColor, options] = callHandler(options.onProcessColorEnd, frontColor, backgroundColor, options)
+    }
+    return frontColor
+  } catch (e) {
+    throwBestError(e, new ColorProcessError(null, frontColor, backgroundColor, options, e))
   }
 }

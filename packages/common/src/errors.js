@@ -20,8 +20,8 @@ export class BaseError extends ExtendableError {
 }
 
 export class GenericError extends BaseError {
-  constructor(options, originalError) {
-    const message = `An error occurred. Please report the issue at ${mainPackageInfo.author.email}`
+  constructor(message, options, originalError) {
+    if (!message) message = `An error occurred. Please report the issue at ${mainPackageInfo.author.email}`
     super(message, options, originalError)
     this.name = 'GenericError'
   }
