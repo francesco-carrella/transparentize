@@ -1,6 +1,7 @@
 import { throwBestError } from '@transparentize/common/src/errors'
 import { isInt, isIterable, isObject, isObjectWithKeys, runWithoutErrors } from '@transparentize/common/src/utils/generics'
 
+import { RGBA_CHANNELS, RGB_CHANNELS } from '../constants'
 import { InvalidColorConstructorValueError } from '../errors'
 
 export default class Color extends Uint8ClampedArray {
@@ -36,11 +37,11 @@ function validateInput(...args) {
       input[3] = 255
     }
     if (input.length !== 4) {
-      throwBestError(new InvalidColorConstructorValueError(`Invalid number of channels for the Color contructor. Expected ${Color.rgbaChannels.length}, got ${input.length}`, input))
+      throwBestError(new InvalidColorConstructorValueError(`Invalid number of channels for the Color contructor. Expected ${RGBA_CHANNELS.length}, got ${input.length}`, input))
     }
   } else if (isObject(input)) {
-    if (isObjectWithKeys(input, Color.rgbChannels)) {
-      input = Color.rgbaChannels.map(channel => input[channel])
+    if (isObjectWithKeys(input, RGB_CHANNELS)) {
+      input = RGBA_CHANNELS.map(channel => input[channel])
       if (!isInt(input[3])) input[3] = 255
     } else {
       throwBestError(new InvalidColorConstructorValueError(

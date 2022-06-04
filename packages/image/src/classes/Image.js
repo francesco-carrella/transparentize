@@ -1,9 +1,11 @@
 import { isPositiveInt, isIterable, isInt, runWithoutErrors } from '@transparentize/common/src/utils/generics'
 import { throwBestError } from '@transparentize/common/src/errors'
 
+import { RGBA_CHANNELS, RGB_CHANNELS } from '../constants'
 import { InvalidImageConstructorAttributeError } from '../errors'
 import FrameData from './FrameData'
-import Color from './Color'
+
+
 
 export default class Image {
 
@@ -22,7 +24,7 @@ export default class Image {
     this.width = width
     this.height = height
     const pixelsCount = this.width * this.height
-    const rgbDataLength = pixelsCount * Color.rgbChannels.length
+    const rgbDataLength = pixelsCount * RGB_CHANNELS.length
     this.data = data.length === rgbDataLength ?
       FrameData.fromRgbData(data) :
       FrameData.cast(data)
@@ -54,8 +56,8 @@ function validateInput(...args) {
   const pixelCount = width * height
   if (data) {
     if (isIterable(data) || isInt(data)) {
-      const rgbaDataLength = pixelCount * Color.rgbaChannels.length
-      const rgbDataLength = pixelCount * Color.rgbChannels.length
+      const rgbaDataLength = pixelCount * RGBA_CHANNELS.length
+      const rgbDataLength = pixelCount * RGB_CHANNELS.length
       const dataLength = isIterable(data) ? data.length : data
       if (dataLength !== rgbaDataLength && dataLength !== rgbDataLength) {
         throwBestError(new InvalidImageConstructorAttributeError(
@@ -70,7 +72,7 @@ function validateInput(...args) {
       ))
     }
   } else {
-    data = Buffer.alloc(pixelCount * Color.rgbaChannels.length)
+    data = Buffer.alloc(pixelCount * RGBA_CHANNELS.length)
   }
 
   return { width, height, data }

@@ -1,7 +1,7 @@
 import { throwBestError } from '@transparentize/common/src/errors'
 import { isPositiveInt, isIterable, isInt, runWithoutErrors } from '@transparentize/common/src/utils/generics'
 
-
+import { RGBA_CHANNELS, RGB_CHANNELS } from '../constants'
 import { InvalidFrameDataConstructorValueError } from '../errors'
 import Color from './Color'
 
@@ -15,8 +15,8 @@ export default class FrameData extends Uint8ClampedArray {
 
   static fromRgbData(rgbData, alpha = 255) {
     [rgbData, alpha] = FrameData.validateFromRgbDataInput(rgbData, alpha)
-    const pixelsCount = rgbData.length / Color.rgbChannels.length
-    const rgbaBuffer = new Uint8Array(pixelsCount * Color.rgbaChannels.length)
+    const pixelsCount = rgbData.length / RGB_CHANNELS.length
+    const rgbaBuffer = new Uint8Array(pixelsCount * RGBA_CHANNELS.length)
     for (let pixelIndex = 0; pixelIndex < pixelsCount; pixelIndex++) {
       const rgbIdx = pixelIndex * 3
       const rgbaIdx = pixelIndex * 4
@@ -41,8 +41,8 @@ export default class FrameData extends Uint8ClampedArray {
   colorAt(pixelIndex) {
     // return this.slice(pixelIndex * FrameData.rgbaChannels.length, (pixelIndex + 1) * FrameData.rgbaChannels.length)
     const pixel = new Color(0, 0, 0, 0)
-    const byteIdx = pixelIndex * Color.rgbaChannels.length
-    for (let channelIdx = 0; channelIdx < Color.rgbaChannels.length; channelIdx++) {
+    const byteIdx = pixelIndex * RGBA_CHANNELS.length
+    for (let channelIdx = 0; channelIdx < RGBA_CHANNELS.length; channelIdx++) {
       pixel[channelIdx] = this[byteIdx + channelIdx]
     }
     return pixel
@@ -50,11 +50,11 @@ export default class FrameData extends Uint8ClampedArray {
 
   replaceAt(pixelIndex, chunk) {
     // this.set(chunk, pixelIndex * FrameData.rgbaChannels.length)
-    if (chunk.length !== Color.rgbaChannels.length) {
-      throw new Error(`Invalid chunk size. Expected ${Color.rgbaChannels.length}, got ${chunk.length}.`)
+    if (chunk.length !== RGBA_CHANNELS.length) {
+      throw new Error(`Invalid chunk size. Expected ${RGBA_CHANNELS.length}, got ${chunk.length}.`)
     }
-    const byteIdx = pixelIndex * Color.rgbaChannels.length
-    for (let channelIdx = 0; channelIdx < Color.rgbaChannels.length; channelIdx++) {
+    const byteIdx = pixelIndex * RGBA_CHANNELS.length
+    for (let channelIdx = 0; channelIdx < RGBA_CHANNELS.length; channelIdx++) {
       this[byteIdx + channelIdx] = chunk[channelIdx]
     }
   }
@@ -69,10 +69,10 @@ function validateInput(...args) {
   if (!input) {
     throwBestError(new InvalidFrameDataConstructorValueError('Invalid number of arguments for the FrameData constructor. Expected at least 1, gotten 0.', input))
   } else if (isInt(input)) {
-    input = Buffer.alloc(Color.rgbaChannels.length * input)
+    input = Buffer.alloc(RGBA_CHANNELS.length * input)
   } else if (isIterable(input)) {
-    if (!isPositiveInt(input.length) || input.length % Color.rgbaChannels.length !== 0) {
-      throwBestError(new InvalidFrameDataConstructorValueError(`Invalid number of elements for the FrameData constructor. The input size should be a multiple of ${Color.rgbaChannels.length}, got ${dataLength}.`, input))
+    if (!isPositiveInt(input.length) || input.length % RGBA_CHANNELS.length !== 0) {
+      throwBestError(new InvalidFrameDataConstructorValueError(`Invalid number of elements for the FrameData constructor. The input size should be a multiple of ${RGBA_CHANNELS.length}, got ${dataLength}.`, input))
     }
   }
 
@@ -85,7 +85,7 @@ function validateFromRgbDataInput(...args) {
     throwBestError(new InvalidFrameDataConstructorValueError(`Invalid first arguments for the FrameData.fromRgbData constructor. Expected an iterable, got ${input}.`, input))
   }
 
-  if (!isPositiveInt(input.length) || input.length % Color.rgbChannels.length !== 0) {
+  if (!isPositiveInt(input.length) || input.length % RGB_CHANNELS.length !== 0) {
     throwBestError(new InvalidFrameDataConstructorValueError(`Invalid number of elements for the FrameData.fromRgbData constructor. The input size should be a multiple of 3, got ${input.length}.`, input))
   }
 

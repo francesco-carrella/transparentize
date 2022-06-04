@@ -1,7 +1,8 @@
+
 import { throwBestError } from '@transparentize/common/src/errors.js'
 import { callHandler } from '@transparentize/common/src/utils/handlers'
 
-
+import { RGBA_CHANNELS } from './constants'
 import { solidifyColor, transparentizeColor } from './functions'
 import { getOptions } from './options'
 import { Color, FrameData, Image } from './classes'
@@ -46,7 +47,7 @@ export function processFrameData(frameData, options) {
     frameData = FrameData.cast(frameData)
 
     // process every pixel (aka color) in the frameData
-    const pixelsCount = frameData.length / Color.rgbaChannels.length
+    const pixelsCount = frameData.length / RGBA_CHANNELS.length
     for (let pixelIdx = 0; pixelIdx < pixelsCount; pixelIdx++) {
       const pixelColor = frameData.colorAt(pixelIdx)
       const processedColor = processColor(pixelColor, options)
