@@ -2,9 +2,7 @@ import { BaseError } from '@transparentize/common/src/errors.js'
 
 export class InvalidColorConstructorValueError extends BaseError {
   constructor(message, valueContructor, options, originalError) {
-    if (!message) message = valueContructor ?
-      `Invalid input value '${valueContructor}' in Color contructor.` :
-      'Invalid input value for Color contructor.'
+    if (!message) message = `Invalid input value '${valueContructor}' in Color contructor.`
     super(message, options, originalError)
     this.name = 'InvalidColorConstructorValueError'
     this.valueContructor = valueContructor

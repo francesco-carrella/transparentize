@@ -31,9 +31,7 @@ export default class Color extends Uint8ClampedArray {
 function validateInput(...args) {
   let input = args.length > 1 ? [...args] : args[0] // normalize arguments as input to ease further checks
 
-  if (!input) {
-    input = [0, 0, 0, 0]
-  } else if (isIterable(input)) {
+  if (isIterable(input)) {
     if (input.length === 3) {   // if it seems an rgb color, add the alpha channel
       input[3] = 255
     }

@@ -40,7 +40,7 @@ export default class FrameData extends Uint8ClampedArray {
 
   colorAt(pixelIndex) {
     // return this.slice(pixelIndex * FrameData.rgbaChannels.length, (pixelIndex + 1) * FrameData.rgbaChannels.length)
-    const pixel = new Color()
+    const pixel = new Color(0, 0, 0, 0)
     const byteIdx = pixelIndex * Color.rgbaChannels.length
     for (let channelIdx = 0; channelIdx < Color.rgbaChannels.length; channelIdx++) {
       pixel[channelIdx] = this[byteIdx + channelIdx]

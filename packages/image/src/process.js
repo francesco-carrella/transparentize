@@ -1,28 +1,35 @@
 import { throwBestError } from '@transparentize/common/src/errors.js'
 import { callHandler } from '@transparentize/common/src/utils/handlers'
 
-import { ImageProcessError, FrameDataProcessError, ColorProcessError, UnsupportedBackgroundColorAlphaError } from './errors'
+
+import { solidifyColor, transparentizeColor } from './functions'
+import { getOptions } from './options'
 import { Color, FrameData, Image } from './classes'
+import { ImageProcessError, FrameDataProcessError, ColorProcessError, UnsupportedBackgroundColorAlphaError } from './errors'
 
-export const whiteColor = new Color([255, 255, 255, 255])
-export const defaultBackgroundColor = whiteColor
+// TODO: Where to move it ?
+function ensureBackgroundColor(backgroundColor, options) {
+  backgroundColor = Color.cast(backgroundColor)
 
-export function processImage(image, backgroundColor = defaultBackgroundColor, options = {}) {
+  if (backgroundColor[3] < 255) {
+    throwBestError(new UnsupportedBackgroundColorAlphaError(null, backgroundColor, options))
+  }
+
+  return backgroundColor
+}
+
+export function processImage(image, options) {
   try {
     if (options.onProcessImageStart) {
-      [image, backgroundColor, options] = callHandler(options.onProcessImageStart, image, backgroundColor, options)
+      [image, options] = callHandler(options.onProcessImageStart, image, options)
     }
+
     image = Image.cast(image)
-    backgroundColor = Color.cast(backgroundColor)
 
-    if (backgroundColor[3] < 255) {
-      throwBestError(new UnsupportedBackgroundColorAlphaError(null, backgroundColor, options))
-    }
-
-    image.data = processFrameData(image.data, backgroundColor, options)
+    image.data = processFrameData(image.data, options)
 
     if (options.onProcessImageEnd) {
-      [image, backgroundColor, options] = callHandler(options.onProcessImageEnd, image, backgroundColor, options)
+      [image, options] = callHandler(options.onProcessImageEnd, image, options)
     }
     return image
   } catch (e) {
@@ -30,31 +37,24 @@ export function processImage(image, backgroundColor = defaultBackgroundColor, op
   }
 }
 
-
-export function processFrameData(frameData, backgroundColor = defaultBackgroundColor, options = {}) {
+export function processFrameData(frameData, options) {
   try {
     if (options.onProcessFrameDataStart) {
-      [frameData, backgroundColor, options] = callHandler(options.onProcessFrameDataStart, frameData, backgroundColor, options)
+      [frameData, options] = callHandler(options.onProcessFrameDataStart, frameData, options)
     }
+
     frameData = FrameData.cast(frameData)
 
-    backgroundColor = Color.cast(backgroundColor)
-
-    if (backgroundColor[3] < 255) {
-      throwBestError(new UnsupportedBackgroundColorAlphaError(null, backgroundColor, options))
-    }
-
-    const pixelsCount = frameData.length / Color.rgbaChannels.length
-
     // process every pixel (aka color) in the frameData
+    const pixelsCount = frameData.length / Color.rgbaChannels.length
     for (let pixelIdx = 0; pixelIdx < pixelsCount; pixelIdx++) {
       const pixelColor = frameData.colorAt(pixelIdx)
-      const processedColor = processColor(pixelColor, backgroundColor, options)
+      const processedColor = processColor(pixelColor, options)
       frameData.replaceAt(pixelIdx, processedColor)
     }
 
     if (options.onProcessFrameDataEnd) {
-      [frameData, backgroundColor, options] = callHandler(options.onProcessFrameDataEnd, frameData, backgroundColor, options)
+      [frameData, options] = callHandler(options.onProcessFrameDataEnd, frameData, options)
     }
     return frameData
   } catch (e) {
@@ -62,47 +62,31 @@ export function processFrameData(frameData, backgroundColor = defaultBackgroundC
   }
 }
 
-export function processColor(frontColor, backgroundColor = defaultBackgroundColor, options = {}) {
+export function processColor(color, options) {
   try {
     if (options.onProcessColorStart) {
-      [frontColor, backgroundColor, options] = callHandler(options.onProcessColorStart, frontColor, backgroundColor, options)
+      [color, options] = callHandler(options.onProcessColorStart, color, options)
     }
 
-    frontColor = Color.cast(frontColor)
-    backgroundColor = Color.cast(backgroundColor)
+    color = Color.cast(color)
+    options = getOptions(options)
 
-    if (backgroundColor[3] < 255) {
-      throwBestError(new UnsupportedBackgroundColorAlphaError(null, backgroundColor, options))
-    }
+    let { backgroundColor, initialBackgroundColor } = options
+    backgroundColor = ensureBackgroundColor(backgroundColor)
 
     // first of all remove new color alpha multiplying it by the bottom color (mimiking the multiply blend mode)
-    if (frontColor[3] < 255) {
-      (Color.rgbIndexes).forEach(function (channel) {
-        frontColor[channel] = backgroundColor[channel] + (frontColor[channel] - backgroundColor[channel]) * (frontColor[3] / 255)
-      })
-      frontColor[3] = 255
+    if (color[3] < 255 && initialBackgroundColor) {
+      initialBackgroundColor = ensureBackgroundColor(initialBackgroundColor)
+      color = solidifyColor(color, initialBackgroundColor)
     }
 
-    // find the maximum applicable alpha
-    let maxAlpha = Math.max(...Color.rgbIndexes.map(function (channel) {
-      return (
-        (frontColor[channel] - backgroundColor[channel]) / ((frontColor[channel] - backgroundColor[channel] > 0 ? 255 : 0) - backgroundColor[channel]) * 255 //eslint-disable-line max-len
-      )
-    }).filter(a => !isNaN(a)))
-
-    // Calculate the resulting color appling the alpha value
-    Color.rgbIndexes.forEach(function (channel) {
-      frontColor[channel] = !maxAlpha ?
-        backgroundColor[channel] :
-        backgroundColor[channel] + (frontColor[channel] - backgroundColor[channel]) / (maxAlpha / 255)
-    })
-    frontColor[3] = maxAlpha
+    color = transparentizeColor(color, backgroundColor)
 
     if (options.onProcessColorEnd) {
-      [frontColor, backgroundColor, options] = callHandler(options.onProcessColorEnd, frontColor, backgroundColor, options)
+      [color, backgroundColor, options] = callHandler(options.onProcessColorEnd, color, backgroundColor, options)
     }
-    return frontColor
+    return color
   } catch (e) {
-    throwBestError(e, new ColorProcessError(null, frontColor, backgroundColor, options, e))
+    throwBestError(e, new ColorProcessError(null, color, options, e))
   }
 }

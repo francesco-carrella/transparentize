@@ -29,7 +29,7 @@ export default class Image {
   }
 
   toString() {
-    return `Image(width: ${this.width}, height: ${this.height}, data: ${this.data.toString()})`
+    return `Image(width: ${this.width}, height: ${this.height}, data: ${this.data})`
   }
 }
 

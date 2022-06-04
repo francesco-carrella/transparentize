@@ -8,7 +8,7 @@ export function isPositiveInt(val) {
 }
 
 export function isIterable(val) {
-  return typeof val[Symbol.iterator] === 'function'
+  return val && typeof val[Symbol.iterator] === 'function'
 }
 
 export function isObject(val) {
