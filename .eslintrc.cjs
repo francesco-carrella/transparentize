@@ -14,7 +14,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['**.spec.js'],
+      files: ['**.{test,spec}.js'],
       plugins: ['jest'],
       extends: ['plugin:jest/recommended'],
       rules: { 'jest/prefer-expect-assertions': 'off' },
