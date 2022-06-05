@@ -1,79 +1,59 @@
-import { isPositiveInt, isIterable, isInt, runWithoutErrors } from '@transparentize/common/src/utils/generics'
+import { isPositiveInt, isIterable, runWithoutErrors, isObjectWithKeys } from '@transparentize/common/src/utils/generics'
 import { throwBestError } from '@transparentize/common/src/errors'
 
 import { RGBA_CHANNELS, RGB_CHANNELS } from '../constants'
-import { InvalidImageConstructorAttributeError } from '../errors'
+import { InvalidImageError } from '../errors'
 import FrameData from './FrameData'
 
 
 
 export default class Image {
 
+  static validateInput(...args) {
+    const input = args[0]
+    if (!isObjectWithKeys(args[0], ['width', 'height', 'data'])) {
+      throwBestError(new InvalidImageError(`Invalid input value for Image constructor. It should have a structure like { width, height, data }. Got ${input}`))
+    }
 
-  static validateInput = validateInput
+    let { width, height, data } = input
+    if (!isPositiveInt(width)) {
+      throwBestError(new InvalidImageError('Invalid width attribute for Image constructor', input))
+    }
 
-  static isValidInput = runWithoutErrors.bind(null, validateInput)
+    if (!isPositiveInt(height)) {
+      throwBestError(new InvalidImageError('Invalid height attribute for Image constructor', input))
+    }
 
-  static cast(value) {
-    if (value instanceof Image) return value
-    return new Image(value)
+    if (!isIterable(data)) {
+      throwBestError(new InvalidImageError('Invalid data attribute for Image constructor. It should be a buffer (preferably) or an iterable', input))
+    }
+
+    const pixelCount = width * height
+    const rgbaDataLength = pixelCount * RGBA_CHANNELS.length
+    const rgbDataLength = pixelCount * RGB_CHANNELS.length
+    if (data.length !== rgbaDataLength && data.length !== rgbDataLength) {
+      throwBestError(new InvalidImageError(`Invalid data attribute for Image constructor. Expected length of ${rgbaDataLength} (for rgba) or ${rgbDataLength} (for rgb), got ${data.length}`, input))
+    }
+
+    return input
   }
 
+  static isValidInput = runWithoutErrors.bind(null, Image.validateInput)
+
   constructor(...args) {
-    const { width, height, data } = Image.validateInput(...args)
+    const input = Image.validateInput(...args)
+    if (input instanceof Image) return input
+    const { width, height, data } = input
     this.width = width
     this.height = height
     const pixelsCount = this.width * this.height
     const rgbDataLength = pixelsCount * RGB_CHANNELS.length
     this.data = data.length === rgbDataLength ?
-      FrameData.fromRgbData(data) :
-      FrameData.cast(data)
+      FrameData.fromRgb(data) :
+      FrameData.fromRgba(data)
   }
 
   toString() {
     return `Image(width: ${this.width}, height: ${this.height}, data: ${this.data})`
   }
-}
-
-function validateInput(...args) {
-  if (args.length !== 1) {
-    throwBestError(new InvalidImageConstructorAttributeError(`Invalid number of arguments for Image contructor. Expected 1, got ${args.length}`))
-  }
-
-  const input = args[0]
-  if (!input || typeof input !== 'object') {
-    throwBestError(new InvalidImageConstructorAttributeError(`Invalid input value for Image contructor. It should have a structure like { width, height, data }. Got ${input}`))
-  }
-
-  let { width, height, data } = input
-  if (!isPositiveInt(width)) {
-    throwBestError(new InvalidImageConstructorAttributeError(null, 'width', width))
-  }
-  if (!isPositiveInt(height)) {
-    throwBestError(new InvalidImageConstructorAttributeError(null, 'height', height))
-  }
-
-  const pixelCount = width * height
-  if (data) {
-    if (isIterable(data) || isInt(data)) {
-      const rgbaDataLength = pixelCount * RGBA_CHANNELS.length
-      const rgbDataLength = pixelCount * RGB_CHANNELS.length
-      const dataLength = isIterable(data) ? data.length : data
-      if (dataLength !== rgbaDataLength && dataLength !== rgbDataLength) {
-        throwBestError(new InvalidImageConstructorAttributeError(
-          `Invalid input for attribute 'data' in Image contructor. Expected length of ${rgbaDataLength} (rgba) or ${rgbDataLength} (rgb), got ${data.length}`,
-          'data', data
-        ))
-      }
-    } else {
-      throwBestError(new InvalidImageConstructorAttributeError(
-        `Invalid input value '${data}' for attribute 'data' in Image contructor. It should be an iterable, or a nullish to create an empty image.`,
-        'data', data
-      ))
-    }
-  } else {
-    data = Buffer.alloc(pixelCount * RGBA_CHANNELS.length)
-  }
-
-  return { width, height, data }
 }

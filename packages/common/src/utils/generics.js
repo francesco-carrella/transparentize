@@ -20,8 +20,6 @@ export function isObjectWithKeys(val, keys = []) {
   return isObject(val) && keys.every((key) => Object.prototype.hasOwnProperty.call(val, key))
 }
 
-
-
 export function runWithoutErrors(fn, ...args) {
   try {
     fn(...args)

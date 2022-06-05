@@ -1,34 +1,31 @@
+export * from '@transparentize/common/src/errors'
+
 import { BaseError } from '@transparentize/common/src/errors.js'
 
-export class InvalidColorConstructorValueError extends BaseError {
-  constructor(message, valueContructor, options, originalError) {
-    if (!message) message = `Invalid input value '${valueContructor}' in Color contructor.`
+export class InvalidImageError extends BaseError {
+  constructor(message, input, options, originalError) {
+    if (!message) message = `Invalid Image with input '${input}'.`
     super(message, options, originalError)
-    this.name = 'InvalidColorConstructorValueError'
-    this.valueContructor = valueContructor
+    this.name = 'InvalidImageError'
+    this.input = input
   }
 }
 
-export class InvalidFrameDataConstructorValueError extends BaseError {
-  constructor(message, valueContructor, options, originalError) {
-    if (!message) message = valueContructor ?
-      `Invalid input value '${valueContructor}' in FrameData contructor.` :
-      'Invalid input value for FrameData contructor.'
+export class InvalidFrameDataError extends BaseError {
+  constructor(message, input, options, originalError) {
+    if (!message) message = `Invalid FrameData with input '${input}'.`
     super(message, options, originalError)
-    this.name = 'InvalidFrameDataConstructorValueError'
-    this.valueContructor = valueContructor
+    this.name = 'InvalidFrameDataError'
+    this.input = input
   }
 }
 
-export class InvalidImageConstructorAttributeError extends BaseError {
-  constructor(message, attributeName, attributeValue, options, originalError) {
-    if (!message) message = attributeName ?
-      `Invalid input value '${attributeValue}' for attribute '${attributeName}' in Image contructor.` :
-      'Invalid input value for Image contructor.'
+export class InvalidColorError extends BaseError {
+  constructor(message, input, options, originalError) {
+    if (!message) message = `Invalid Color with input '${input}'.`
     super(message, options, originalError)
-    this.name = 'InvalidImageConstructorAttributeError'
-    this.attributeName = attributeName
-    this.attributeValue = attributeValue
+    this.name = 'InvalidColorError'
+    this.input = input
   }
 }
 
@@ -51,40 +48,28 @@ export class FrameDataProcessError extends BaseError {
 }
 
 export class ColorProcessError extends BaseError {
-  constructor(message, frontColor, backgroundColor, options, originalError) {
+  constructor(message, color, options, originalError) {
     if (!message) message = 'Error processing the color.'
     super(message, options, originalError)
     this.name = 'ColorProcessError'
-    this.frontColor = frontColor
-    this.backgroundColor = backgroundColor
-  }
-}
-
-export class UnsupportedBackgroundColorAlphaError extends BaseError {
-  constructor(message, color, options, originalError) {
-    if (!message) message = `Background color with alpha are not supported (yet): '${color}'.`
-    super(message, options, originalError)
-    this.name = 'UnsupportedBackgroundColorAlphaError'
     this.color = color
   }
 }
 
+export class InvalidBackgroundColorError extends BaseError {
+  constructor(message, input, options, originalError) {
+    if (!message) message = `Invalid Background Color with input '${input}'.`
+    super(message, options, originalError)
+    this.name = 'InvalidBackgroundColorError'
+    this.input = input
+  }
+}
 
-
-// export class InvalidColorError extends BaseError {
-//   constructor(color, options, originalError) {
-//     const message = `Invalid color: '${JSON.stringify(color)}'.`
-//     super(message, options, originalError)
-//     this.name = 'InvalidColorError'
-//     this.color = color
-//   }
-// }
-
-// export class InvalidBgColorError extends BaseError {
-//   constructor(bgColor, options, originalError) {
-//     const message = `Invalid background color: '${JSON.stringify(bgColor)}'.`
-//     super(message, options, originalError)
-//     this.name = 'InvalidBgColorError'
-//     this.bgColor = bgColor
-//   }
-// }
+export class UnsupportedBackgroundColorAlphaError extends BaseError {
+  constructor(message, input, options, originalError) {
+    if (!message) message = `Unsupported Background Color with (semi)transparent Alpha Channel for input '${input}'.`
+    super(message, options, originalError)
+    this.name = 'UnsupportedBackgroundColorAlphaError'
+    this.input = input
+  }
+}

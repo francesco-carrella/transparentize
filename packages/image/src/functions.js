@@ -1,29 +1,37 @@
-import { Color } from './classes'
+import { RGB_INDEXES, RGBA_INDEXES, ALPHA_INDEX } from './constants'
 
-export function solidifyColor(frontColor, backgroundColor) {
-  (Color.rgbIndexes).forEach(function (channel) {
-    frontColor[channel] = backgroundColor[channel] + (frontColor[channel] - backgroundColor[channel]) * (frontColor[3] / 255)
-  })
-  frontColor[3] = 255
+export function solidifyColor(frameData, pixelIdx, backgroundColor) {
+  const pixelStartPos = pixelIdx * RGBA_INDEXES.length
+  const pixelAlphaPos = pixelStartPos + ALPHA_INDEX
 
-  return frontColor
+  for (let channelPos = 0; channelPos < RGB_INDEXES.length; channelPos++) {
+    const pixelChannelPos = pixelStartPos + channelPos
+    frameData[pixelChannelPos] = backgroundColor[channelPos] + (frameData[pixelChannelPos] - backgroundColor[channelPos]) * (frameData[pixelAlphaPos] / 255) //eslint-disable-line max-len
+  }
+  frameData[pixelAlphaPos] = 255
 }
 
-export function transparentizeColor(frontColor, backgroundColor) {
+
+export function transparentizeColor(frameData, pixelIdx, backgroundColor) {
+  const pixelStartPos = pixelIdx * RGBA_INDEXES.length
+
   // find the maximum applicable alpha
-  let maxAlpha = Math.max(...Color.rgbIndexes.map(function (channel) {
-    return (
-      (frontColor[channel] - backgroundColor[channel]) / ((frontColor[channel] - backgroundColor[channel] > 0 ? 255 : 0) - backgroundColor[channel]) * 255 //eslint-disable-line max-len
-    )
-  }).filter(a => !isNaN(a)))
+  let maxAlpha = 0
+  for (let channelPos = 0; channelPos < RGB_INDEXES.length; channelPos++) {
+    const pixelChannelPos = pixelStartPos + channelPos
+    const maxChannelAlpha = (frameData[pixelChannelPos] - backgroundColor[channelPos]) / ((frameData[pixelChannelPos] - backgroundColor[channelPos] > 0 ? 255 : 0) - backgroundColor[channelPos]) * 255 //eslint-disable-line max-len
+    if (!isNaN(maxChannelAlpha) && maxChannelAlpha > maxAlpha) {
+      maxAlpha = maxChannelAlpha
+    }
+  }
 
   // Calculate the resulting color applying the alpha value
-  Color.rgbIndexes.forEach(function (channel) {
-    frontColor[channel] = !maxAlpha ?
-      backgroundColor[channel] :
-      backgroundColor[channel] + (frontColor[channel] - backgroundColor[channel]) / (maxAlpha / 255)
-  })
-  frontColor[3] = maxAlpha
-
-  return frontColor
+  for (let channelPos = 0; channelPos < RGB_INDEXES.length; channelPos++) {
+    const pixelChannelPos = pixelStartPos + channelPos
+    frameData[pixelChannelPos] = !maxAlpha ?
+      backgroundColor[channelPos] :
+      backgroundColor[channelPos] + (frameData[pixelChannelPos] - backgroundColor[channelPos]) / (maxAlpha / 255)
+  }
+  const pixelAlphaPos = pixelStartPos + ALPHA_INDEX
+  frameData[pixelAlphaPos] = maxAlpha
 }

@@ -1,57 +1,67 @@
-import { throwBestError } from '@transparentize/common/src/errors'
-import { isInt, isIterable, isObject, isObjectWithKeys, runWithoutErrors } from '@transparentize/common/src/utils/generics'
+import { GenericError, throwBestError } from '@transparentize/common/src/errors'
+import { isInt, isIterable, isObjectWithKeys, runWithoutErrors } from '@transparentize/common/src/utils/generics'
 
-import { RGBA_CHANNELS, RGB_CHANNELS } from '../constants'
-import { InvalidColorConstructorValueError } from '../errors'
+import { RGBA_CHANNELS, RGB_CHANNELS, ALPHA_INDEX } from '../constants'
+import { InvalidColorError, InvalidBackgroundColorError, UnsupportedBackgroundColorAlphaError } from '../errors'
 
-export default class Color extends Uint8ClampedArray {
+export default class Color {
 
-  static rgbaChannels = ['r', 'g', 'b', 'a']
-  static rgbaIndexes = [0, 1, 2, 3]
-  static rgbChannels = ['r', 'g', 'b']
-  static rgbIndexes = [0, 1, 2]
+  static validateInput(...args) {
+    let input = args.length > 1 ? [...args] : args[0] // normalize arguments as input to ease further checks
 
-  static validateInput = validateInput
-  static isValidInput = runWithoutErrors.bind(null, Color.validateInput)
-
-  static cast(value) {
-    if (value instanceof Color) return value
-    return new Color(value)
-  }
-
-  constructor(...args) {
-    let input = Color.validateInput(...args)
-    super(input)
-  }
-
-  toString() {
-    return `Color(${super.toString()})`
-  }
-}
-
-function validateInput(...args) {
-  let input = args.length > 1 ? [...args] : args[0] // normalize arguments as input to ease further checks
-
-  if (isIterable(input)) {
-    if (input.length === 3) {   // if it seems an rgb color, add the alpha channel
-      input[3] = 255
-    }
-    if (input.length !== 4) {
-      throwBestError(new InvalidColorConstructorValueError(`Invalid number of channels for the Color contructor. Expected ${RGBA_CHANNELS.length}, got ${input.length}`, input))
-    }
-  } else if (isObject(input)) {
     if (isObjectWithKeys(input, RGB_CHANNELS)) {
       input = RGBA_CHANNELS.map(channel => input[channel])
-      if (!isInt(input[3])) input[3] = 255
-    } else {
-      throwBestError(new InvalidColorConstructorValueError(
-        `Invalid value '${JSON.stringify(input)}' as {r,g,b,a?} object for Color constructor.`,
-        input
-      ))
+      if (!isInt(input[ALPHA_INDEX])) input[ALPHA_INDEX] = 255
+    } else if (isIterable(input) && input.length === RGB_CHANNELS.length) {   // if it seems an rgb color, add the alpha channel
+      input[ALPHA_INDEX] = 255
     }
-  } else {
-    throwBestError(new InvalidColorConstructorValueError(null, input))
+
+    // TODO: add [[r,g,b], 127] and [{r,g,b}, 127] for custom alpha ?
+
+    if (!input || !isIterable(input) || input.length !== RGBA_CHANNELS.length) {
+      throwBestError(new InvalidColorError(null, input))
+    }
+
+    return input
   }
 
-  return input
+  static validateInputForBackground(...args) {
+    let input
+    try {
+      input = Color.validateInput(...args)
+    } catch (e) {
+      throwBestError(new InvalidBackgroundColorError(null, args, null, e))
+    }
+    if (input[ALPHA_INDEX] < 255) {
+      throwBestError(new UnsupportedBackgroundColorAlphaError(null, input, null))
+    }
+    return input
+  }
+
+  static isValidInput = runWithoutErrors.bind(null, Color.validateInput)
+  static isValidInputForBackground = runWithoutErrors.bind(null, Color.validateInputForBackground)
+
+  static from(...args) {
+    const input = Color.validateInput(...args)
+    if (input instanceof Buffer) return input
+    return Buffer.from(input)
+  }
+
+  static fromBackground(...args) {
+    const input = Color.validateInputForBackground(...args)
+    if (input instanceof Buffer) return input
+    return Buffer.from(input)
+  }
+
+  static clone(...args) {
+    const input = Color.validateInput(...args)
+    if (!(input instanceof Buffer)) {
+      throwBestError(new InvalidColorError(null, input))
+    }
+    return Buffer.from(input)
+  }
+
+  constructor() {
+    throw new GenericError('Color is an static class and cannot be instantiated. Use .from() instead in order to create a new Color<Buffer>.')
+  }
 }
