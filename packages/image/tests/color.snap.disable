@@ -1,0 +1,4321 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test transparentizeColor() results Testing semitransparent colors 1`] = `
+Object {
+  "a": 128,
+  "b": 0,
+  "g": 0,
+  "r": 0,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 2`] = `
+Object {
+  "a": 96,
+  "b": 0,
+  "g": 0,
+  "r": 0,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 3`] = `
+Object {
+  "a": 64,
+  "b": 0,
+  "g": 0,
+  "r": 0,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 4`] = `
+Object {
+  "a": 32,
+  "b": 0,
+  "g": 0,
+  "r": 0,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 5`] = `
+Object {
+  "a": 0,
+  "b": 255,
+  "g": 255,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 6`] = `
+Object {
+  "a": 128,
+  "b": 0,
+  "g": 0,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 7`] = `
+Object {
+  "a": 128,
+  "b": 0,
+  "g": 255,
+  "r": 0,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 8`] = `
+Object {
+  "a": 128,
+  "b": 255,
+  "g": 0,
+  "r": 0,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 9`] = `
+Object {
+  "a": 87,
+  "b": 0,
+  "g": 0,
+  "r": 100,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 10`] = `
+Object {
+  "a": 77,
+  "b": 109,
+  "g": 0,
+  "r": 132,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 11`] = `
+Object {
+  "a": 128,
+  "b": 120,
+  "g": 155,
+  "r": 0,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 12`] = `
+Object {
+  "a": 110,
+  "b": 0,
+  "g": 35,
+  "r": 216,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 13`] = `
+Object {
+  "a": 88,
+  "b": 55,
+  "g": 0,
+  "r": 194,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 14`] = `
+Object {
+  "a": 94,
+  "b": 141,
+  "g": 157,
+  "r": 0,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 15`] = `
+Object {
+  "a": 88,
+  "b": 0,
+  "g": 162,
+  "r": 232,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 16`] = `
+Object {
+  "a": 82,
+  "b": 115,
+  "g": 3,
+  "r": 0,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 17`] = `
+Object {
+  "a": 110,
+  "b": 21,
+  "g": 0,
+  "r": 139,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 18`] = `
+Object {
+  "a": 33,
+  "b": 0,
+  "g": 70,
+  "r": 131,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 19`] = `
+Object {
+  "a": 85,
+  "b": 135,
+  "g": 141,
+  "r": 0,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 20`] = `
+Object {
+  "a": 94,
+  "b": 0,
+  "g": 35,
+  "r": 214,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 21`] = `
+Object {
+  "a": 64,
+  "b": 155,
+  "g": 155,
+  "r": 0,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 22`] = `
+Object {
+  "a": 110,
+  "b": 28,
+  "g": 0,
+  "r": 176,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 23`] = `
+Object {
+  "a": 94,
+  "b": 73,
+  "g": 0,
+  "r": 174,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 24`] = `
+Object {
+  "a": 52,
+  "b": 147,
+  "g": 69,
+  "r": 0,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 25`] = `
+Object {
+  "a": 127,
+  "b": 255,
+  "g": 255,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 26`] = `
+Object {
+  "a": 159,
+  "b": 255,
+  "g": 255,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 27`] = `
+Object {
+  "a": 191,
+  "b": 255,
+  "g": 255,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 28`] = `
+Object {
+  "a": 223,
+  "b": 255,
+  "g": 255,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 29`] = `
+Object {
+  "a": 255,
+  "b": 255,
+  "g": 255,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 30`] = `
+Object {
+  "a": 255,
+  "b": 127,
+  "g": 127,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 31`] = `
+Object {
+  "a": 255,
+  "b": 127,
+  "g": 255,
+  "r": 127,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 32`] = `
+Object {
+  "a": 255,
+  "b": 255,
+  "g": 127,
+  "r": 127,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 33`] = `
+Object {
+  "a": 202,
+  "b": 212,
+  "g": 212,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 34`] = `
+Object {
+  "a": 218,
+  "b": 247,
+  "g": 208,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 35`] = `
+Object {
+  "a": 205,
+  "b": 233,
+  "g": 255,
+  "r": 158,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 36`] = `
+Object {
+  "a": 238,
+  "b": 155,
+  "g": 171,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 37`] = `
+Object {
+  "a": 234,
+  "b": 203,
+  "g": 182,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 38`] = `
+Object {
+  "a": 219,
+  "b": 248,
+  "g": 255,
+  "r": 187,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 39`] = `
+Object {
+  "a": 247,
+  "b": 172,
+  "g": 230,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 40`] = `
+Object {
+  "a": 210,
+  "b": 255,
+  "g": 211,
+  "r": 210,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 41`] = `
+Object {
+  "a": 205,
+  "b": 192,
+  "g": 180,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 42`] = `
+Object {
+  "a": 239,
+  "b": 237,
+  "g": 246,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 43`] = `
+Object {
+  "a": 217,
+  "b": 253,
+  "g": 255,
+  "r": 200,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 44`] = `
+Object {
+  "a": 240,
+  "b": 171,
+  "g": 185,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 45`] = `
+Object {
+  "a": 230,
+  "b": 255,
+  "g": 255,
+  "r": 212,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 46`] = `
+Object {
+  "a": 221,
+  "b": 181,
+  "g": 167,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 47`] = `
+Object {
+  "a": 225,
+  "b": 213,
+  "g": 182,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 48`] = `
+Object {
+  "a": 233,
+  "b": 255,
+  "g": 237,
+  "r": 222,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 49`] = `
+Object {
+  "a": 0,
+  "b": 127,
+  "g": 127,
+  "r": 127,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 50`] = `
+Object {
+  "a": 64,
+  "b": 255,
+  "g": 255,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 51`] = `
+Object {
+  "a": 128,
+  "b": 255,
+  "g": 255,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 52`] = `
+Object {
+  "a": 191,
+  "b": 255,
+  "g": 255,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 53`] = `
+Object {
+  "a": 255,
+  "b": 255,
+  "g": 255,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 54`] = `
+Object {
+  "a": 255,
+  "b": 127,
+  "g": 127,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 55`] = `
+Object {
+  "a": 255,
+  "b": 127,
+  "g": 255,
+  "r": 127,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 56`] = `
+Object {
+  "a": 255,
+  "b": 255,
+  "g": 127,
+  "r": 127,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 57`] = `
+Object {
+  "a": 149,
+  "b": 197,
+  "g": 197,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 58`] = `
+Object {
+  "a": 181,
+  "b": 245,
+  "g": 199,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 59`] = `
+Object {
+  "a": 155,
+  "b": 225,
+  "g": 255,
+  "r": 127,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 60`] = `
+Object {
+  "a": 221,
+  "b": 148,
+  "g": 165,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 61`] = `
+Object {
+  "a": 213,
+  "b": 198,
+  "g": 175,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 62`] = `
+Object {
+  "a": 183,
+  "b": 247,
+  "g": 255,
+  "r": 174,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 63`] = `
+Object {
+  "a": 239,
+  "b": 170,
+  "g": 229,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 64`] = `
+Object {
+  "a": 165,
+  "b": 255,
+  "g": 199,
+  "r": 198,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 65`] = `
+Object {
+  "a": 155,
+  "b": 171,
+  "g": 157,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 66`] = `
+Object {
+  "a": 223,
+  "b": 236,
+  "g": 246,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 67`] = `
+Object {
+  "a": 179,
+  "b": 252,
+  "g": 255,
+  "r": 188,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 68`] = `
+Object {
+  "a": 225,
+  "b": 166,
+  "g": 180,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 69`] = `
+Object {
+  "a": 205,
+  "b": 255,
+  "g": 255,
+  "r": 207,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 70`] = `
+Object {
+  "a": 187,
+  "b": 168,
+  "g": 152,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 71`] = `
+Object {
+  "a": 195,
+  "b": 207,
+  "g": 171,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 72`] = `
+Object {
+  "a": 211,
+  "b": 255,
+  "g": 236,
+  "r": 219,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 73`] = `
+Object {
+  "a": 128,
+  "b": 253,
+  "g": 253,
+  "r": 0,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 74`] = `
+Object {
+  "a": 159,
+  "b": 255,
+  "g": 255,
+  "r": 101,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 75`] = `
+Object {
+  "a": 191,
+  "b": 255,
+  "g": 255,
+  "r": 170,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 76`] = `
+Object {
+  "a": 223,
+  "b": 255,
+  "g": 255,
+  "r": 218,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 77`] = `
+Object {
+  "a": 255,
+  "b": 255,
+  "g": 255,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 78`] = `
+Object {
+  "a": 127,
+  "b": 255,
+  "g": 255,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 79`] = `
+Object {
+  "a": 255,
+  "b": 127,
+  "g": 255,
+  "r": 127,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 80`] = `
+Object {
+  "a": 255,
+  "b": 255,
+  "g": 127,
+  "r": 127,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 81`] = `
+Object {
+  "a": 168,
+  "b": 255,
+  "g": 255,
+  "r": 175,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 82`] = `
+Object {
+  "a": 211,
+  "b": 255,
+  "g": 215,
+  "r": 210,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 83`] = `
+Object {
+  "a": 205,
+  "b": 233,
+  "g": 255,
+  "r": 96,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 84`] = `
+Object {
+  "a": 160,
+  "b": 231,
+  "g": 255,
+  "r": 228,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 85`] = `
+Object {
+  "a": 186,
+  "b": 255,
+  "g": 229,
+  "r": 226,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 86`] = `
+Object {
+  "a": 219,
+  "b": 248,
+  "g": 255,
+  "r": 146,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 87`] = `
+Object {
+  "a": 223,
+  "b": 191,
+  "g": 255,
+  "r": 246,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 88`] = `
+Object {
+  "a": 210,
+  "b": 255,
+  "g": 211,
+  "r": 155,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 89`] = `
+Object {
+  "a": 154,
+  "b": 255,
+  "g": 240,
+  "r": 172,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 90`] = `
+Object {
+  "a": 231,
+  "b": 245,
+  "g": 255,
+  "r": 237,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 91`] = `
+Object {
+  "a": 217,
+  "b": 253,
+  "g": 255,
+  "r": 155,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 92`] = `
+Object {
+  "a": 174,
+  "b": 236,
+  "g": 255,
+  "r": 233,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 93`] = `
+Object {
+  "a": 230,
+  "b": 255,
+  "g": 255,
+  "r": 184,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 94`] = `
+Object {
+  "a": 157,
+  "b": 255,
+  "g": 236,
+  "r": 200,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 95`] = `
+Object {
+  "a": 188,
+  "b": 255,
+  "g": 218,
+  "r": 214,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 96`] = `
+Object {
+  "a": 233,
+  "b": 255,
+  "g": 237,
+  "r": 198,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 97`] = `
+Object {
+  "a": 119,
+  "b": 180,
+  "g": 53,
+  "r": 0,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 98`] = `
+Object {
+  "a": 115,
+  "b": 255,
+  "g": 119,
+  "r": 62,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 99`] = `
+Object {
+  "a": 162,
+  "b": 255,
+  "g": 190,
+  "r": 163,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 100`] = `
+Object {
+  "a": 208,
+  "b": 255,
+  "g": 230,
+  "r": 219,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 101`] = `
+Object {
+  "a": 255,
+  "b": 255,
+  "g": 255,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 102`] = `
+Object {
+  "a": 255,
+  "b": 127,
+  "g": 127,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 103`] = `
+Object {
+  "a": 255,
+  "b": 127,
+  "g": 255,
+  "r": 127,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 104`] = `
+Object {
+  "a": 255,
+  "b": 255,
+  "g": 127,
+  "r": 127,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 105`] = `
+Object {
+  "a": 128,
+  "b": 255,
+  "g": 144,
+  "r": 165,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 106`] = `
+Object {
+  "a": 191,
+  "b": 255,
+  "g": 173,
+  "r": 211,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 107`] = `
+Object {
+  "a": 156,
+  "b": 255,
+  "g": 213,
+  "r": 56,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 108`] = `
+Object {
+  "a": 95,
+  "b": 255,
+  "g": 106,
+  "r": 236,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 109`] = `
+Object {
+  "a": 154,
+  "b": 255,
+  "g": 151,
+  "r": 231,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 110`] = `
+Object {
+  "a": 194,
+  "b": 255,
+  "g": 228,
+  "r": 136,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 111`] = `
+Object {
+  "a": 128,
+  "b": 254,
+  "g": 254,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 112`] = `
+Object {
+  "a": 189,
+  "b": 255,
+  "g": 168,
+  "r": 150,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 113`] = `
+Object {
+  "a": 108,
+  "b": 255,
+  "g": 81,
+  "r": 159,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 114`] = `
+Object {
+  "a": 207,
+  "b": 255,
+  "g": 240,
+  "r": 239,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 115`] = `
+Object {
+  "a": 197,
+  "b": 255,
+  "g": 224,
+  "r": 150,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 116`] = `
+Object {
+  "a": 118,
+  "b": 255,
+  "g": 153,
+  "r": 241,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 117`] = `
+Object {
+  "a": 219,
+  "b": 255,
+  "g": 236,
+  "r": 183,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 118`] = `
+Object {
+  "a": 112,
+  "b": 255,
+  "g": 85,
+  "r": 198,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 119`] = `
+Object {
+  "a": 157,
+  "b": 255,
+  "g": 142,
+  "r": 216,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 120`] = `
+Object {
+  "a": 223,
+  "b": 255,
+  "g": 221,
+  "r": 198,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 121`] = `
+Object {
+  "a": 80,
+  "b": 29,
+  "g": 3,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 122`] = `
+Object {
+  "a": 124,
+  "b": 145,
+  "g": 133,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 123`] = `
+Object {
+  "a": 168,
+  "b": 201,
+  "g": 195,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 124`] = `
+Object {
+  "a": 211,
+  "b": 234,
+  "g": 231,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 125`] = `
+Object {
+  "a": 255,
+  "b": 255,
+  "g": 255,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 126`] = `
+Object {
+  "a": 255,
+  "b": 127,
+  "g": 127,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 127`] = `
+Object {
+  "a": 255,
+  "b": 127,
+  "g": 255,
+  "r": 127,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 128`] = `
+Object {
+  "a": 255,
+  "b": 255,
+  "g": 127,
+  "r": 127,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 129`] = `
+Object {
+  "a": 183,
+  "b": 166,
+  "g": 162,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 130`] = `
+Object {
+  "a": 205,
+  "b": 221,
+  "g": 177,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 131`] = `
+Object {
+  "a": 80,
+  "b": 220,
+  "g": 251,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 132`] = `
+Object {
+  "a": 232,
+  "b": 142,
+  "g": 158,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 133`] = `
+Object {
+  "a": 226,
+  "b": 188,
+  "g": 165,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 134`] = `
+Object {
+  "a": 127,
+  "b": 254,
+  "g": 254,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 135`] = `
+Object {
+  "a": 244,
+  "b": 167,
+  "g": 225,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 136`] = `
+Object {
+  "a": 143,
+  "b": 240,
+  "g": 166,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 137`] = `
+Object {
+  "a": 187,
+  "b": 147,
+  "g": 131,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 138`] = `
+Object {
+  "a": 233,
+  "b": 227,
+  "g": 235,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 139`] = `
+Object {
+  "a": 139,
+  "b": 251,
+  "g": 245,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 140`] = `
+Object {
+  "a": 235,
+  "b": 160,
+  "g": 173,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 141`] = `
+Object {
+  "a": 178,
+  "b": 255,
+  "g": 250,
+  "r": 244,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 142`] = `
+Object {
+  "a": 209,
+  "b": 154,
+  "g": 136,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 143`] = `
+Object {
+  "a": 214,
+  "b": 191,
+  "g": 157,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 144`] = `
+Object {
+  "a": 187,
+  "b": 255,
+  "g": 229,
+  "r": 252,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 145`] = `
+Object {
+  "a": 110,
+  "b": 44,
+  "g": 21,
+  "r": 0,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 146`] = `
+Object {
+  "a": 73,
+  "b": 82,
+  "g": 40,
+  "r": 0,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 147`] = `
+Object {
+  "a": 37,
+  "b": 197,
+  "g": 96,
+  "r": 0,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 148`] = `
+Object {
+  "a": 129,
+  "b": 255,
+  "g": 239,
+  "r": 223,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 149`] = `
+Object {
+  "a": 255,
+  "b": 255,
+  "g": 255,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 150`] = `
+Object {
+  "a": 255,
+  "b": 127,
+  "g": 127,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 151`] = `
+Object {
+  "a": 255,
+  "b": 127,
+  "g": 255,
+  "r": 127,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 152`] = `
+Object {
+  "a": 255,
+  "b": 255,
+  "g": 127,
+  "r": 127,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 153`] = `
+Object {
+  "a": 48,
+  "b": 73,
+  "g": 0,
+  "r": 112,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 154`] = `
+Object {
+  "a": 82,
+  "b": 255,
+  "g": 117,
+  "r": 208,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 155`] = `
+Object {
+  "a": 110,
+  "b": 183,
+  "g": 202,
+  "r": 0,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 156`] = `
+Object {
+  "a": 120,
+  "b": 94,
+  "g": 107,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 157`] = `
+Object {
+  "a": 88,
+  "b": 178,
+  "g": 91,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 158`] = `
+Object {
+  "a": 90,
+  "b": 255,
+  "g": 241,
+  "r": 48,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 159`] = `
+Object {
+  "a": 191,
+  "b": 159,
+  "g": 228,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 160`] = `
+Object {
+  "a": 78,
+  "b": 255,
+  "g": 100,
+  "r": 61,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 161`] = `
+Object {
+  "a": 76,
+  "b": 70,
+  "g": 0,
+  "r": 163,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 162`] = `
+Object {
+  "a": 128,
+  "b": 254,
+  "g": 255,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 163`] = `
+Object {
+  "a": 98,
+  "b": 255,
+  "g": 233,
+  "r": 85,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 164`] = `
+Object {
+  "a": 135,
+  "b": 135,
+  "g": 145,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 165`] = `
+Object {
+  "a": 157,
+  "b": 255,
+  "g": 244,
+  "r": 171,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 166`] = `
+Object {
+  "a": 76,
+  "b": 80,
+  "g": 0,
+  "r": 216,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 167`] = `
+Object {
+  "a": 57,
+  "b": 181,
+  "g": 0,
+  "r": 232,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 168`] = `
+Object {
+  "a": 169,
+  "b": 255,
+  "g": 222,
+  "r": 193,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 169`] = `
+Object {
+  "a": 127,
+  "b": 135,
+  "g": 99,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 170`] = `
+Object {
+  "a": 159,
+  "b": 183,
+  "g": 161,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 171`] = `
+Object {
+  "a": 191,
+  "b": 215,
+  "g": 203,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 172`] = `
+Object {
+  "a": 223,
+  "b": 238,
+  "g": 233,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 173`] = `
+Object {
+  "a": 255,
+  "b": 255,
+  "g": 255,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 174`] = `
+Object {
+  "a": 255,
+  "b": 127,
+  "g": 127,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 175`] = `
+Object {
+  "a": 255,
+  "b": 127,
+  "g": 255,
+  "r": 127,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 176`] = `
+Object {
+  "a": 255,
+  "b": 255,
+  "g": 127,
+  "r": 127,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 177`] = `
+Object {
+  "a": 202,
+  "b": 181,
+  "g": 171,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 178`] = `
+Object {
+  "a": 218,
+  "b": 227,
+  "g": 182,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 179`] = `
+Object {
+  "a": 128,
+  "b": 255,
+  "g": 255,
+  "r": 254,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 180`] = `
+Object {
+  "a": 238,
+  "b": 147,
+  "g": 160,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 181`] = `
+Object {
+  "a": 234,
+  "b": 192,
+  "g": 168,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 182`] = `
+Object {
+  "a": 176,
+  "b": 255,
+  "g": 248,
+  "r": 233,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 183`] = `
+Object {
+  "a": 247,
+  "b": 169,
+  "g": 225,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 184`] = `
+Object {
+  "a": 173,
+  "b": 253,
+  "g": 183,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 185`] = `
+Object {
+  "a": 205,
+  "b": 163,
+  "g": 143,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 186`] = `
+Object {
+  "a": 239,
+  "b": 229,
+  "g": 236,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 187`] = `
+Object {
+  "a": 180,
+  "b": 255,
+  "g": 243,
+  "r": 241,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 188`] = `
+Object {
+  "a": 240,
+  "b": 164,
+  "g": 175,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 189`] = `
+Object {
+  "a": 208,
+  "b": 255,
+  "g": 247,
+  "r": 234,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 190`] = `
+Object {
+  "a": 221,
+  "b": 163,
+  "g": 143,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 191`] = `
+Object {
+  "a": 225,
+  "b": 197,
+  "g": 162,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 192`] = `
+Object {
+  "a": 214,
+  "b": 255,
+  "g": 229,
+  "r": 242,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 193`] = `
+Object {
+  "a": 102,
+  "b": 0,
+  "g": 48,
+  "r": 90,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 194`] = `
+Object {
+  "a": 64,
+  "b": 0,
+  "g": 96,
+  "r": 180,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 195`] = `
+Object {
+  "a": 97,
+  "b": 157,
+  "g": 209,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 196`] = `
+Object {
+  "a": 176,
+  "b": 228,
+  "g": 242,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 197`] = `
+Object {
+  "a": 255,
+  "b": 255,
+  "g": 255,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 198`] = `
+Object {
+  "a": 255,
+  "b": 127,
+  "g": 127,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 199`] = `
+Object {
+  "a": 255,
+  "b": 127,
+  "g": 255,
+  "r": 127,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 200`] = `
+Object {
+  "a": 255,
+  "b": 255,
+  "g": 127,
+  "r": 127,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 201`] = `
+Object {
+  "a": 124,
+  "b": 121,
+  "g": 155,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 202`] = `
+Object {
+  "a": 163,
+  "b": 210,
+  "g": 177,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 203`] = `
+Object {
+  "a": 85,
+  "b": 137,
+  "g": 255,
+  "r": 77,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 204`] = `
+Object {
+  "a": 213,
+  "b": 132,
+  "g": 156,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 205`] = `
+Object {
+  "a": 203,
+  "b": 179,
+  "g": 164,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 206`] = `
+Object {
+  "a": 133,
+  "b": 214,
+  "g": 255,
+  "r": 169,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 207`] = `
+Object {
+  "a": 235,
+  "b": 163,
+  "g": 227,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 208`] = `
+Object {
+  "a": 52,
+  "b": 202,
+  "g": 151,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 209`] = `
+Object {
+  "a": 131,
+  "b": 99,
+  "g": 112,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 210`] = `
+Object {
+  "a": 215,
+  "b": 224,
+  "g": 240,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 211`] = `
+Object {
+  "a": 126,
+  "b": 218,
+  "g": 255,
+  "r": 188,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 212`] = `
+Object {
+  "a": 218,
+  "b": 152,
+  "g": 173,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 213`] = `
+Object {
+  "a": 170,
+  "b": 239,
+  "g": 255,
+  "r": 211,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 214`] = `
+Object {
+  "a": 171,
+  "b": 130,
+  "g": 128,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 215`] = `
+Object {
+  "a": 181,
+  "b": 178,
+  "g": 153,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 216`] = `
+Object {
+  "a": 126,
+  "b": 254,
+  "g": 255,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 217`] = `
+Object {
+  "a": 97,
+  "b": 0,
+  "g": 0,
+  "r": 127,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 218`] = `
+Object {
+  "a": 64,
+  "b": 21,
+  "g": 21,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 219`] = `
+Object {
+  "a": 128,
+  "b": 177,
+  "g": 177,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 220`] = `
+Object {
+  "a": 191,
+  "b": 229,
+  "g": 229,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 221`] = `
+Object {
+  "a": 255,
+  "b": 255,
+  "g": 255,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 222`] = `
+Object {
+  "a": 255,
+  "b": 127,
+  "g": 127,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 223`] = `
+Object {
+  "a": 255,
+  "b": 127,
+  "g": 255,
+  "r": 127,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 224`] = `
+Object {
+  "a": 255,
+  "b": 255,
+  "g": 127,
+  "r": 127,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 225`] = `
+Object {
+  "a": 149,
+  "b": 142,
+  "g": 142,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 226`] = `
+Object {
+  "a": 181,
+  "b": 213,
+  "g": 167,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 227`] = `
+Object {
+  "a": 22,
+  "b": 0,
+  "g": 205,
+  "r": 127,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 228`] = `
+Object {
+  "a": 221,
+  "b": 136,
+  "g": 153,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 229`] = `
+Object {
+  "a": 213,
+  "b": 182,
+  "g": 160,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 230`] = `
+Object {
+  "a": 71,
+  "b": 234,
+  "g": 255,
+  "r": 248,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 231`] = `
+Object {
+  "a": 239,
+  "b": 164,
+  "g": 224,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 232`] = `
+Object {
+  "a": 92,
+  "b": 219,
+  "g": 119,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 233`] = `
+Object {
+  "a": 155,
+  "b": 121,
+  "g": 107,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 234`] = `
+Object {
+  "a": 223,
+  "b": 224,
+  "g": 235,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 235`] = `
+Object {
+  "a": 86,
+  "b": 235,
+  "g": 241,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 236`] = `
+Object {
+  "a": 225,
+  "b": 155,
+  "g": 170,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 237`] = `
+Object {
+  "a": 128,
+  "b": 255,
+  "g": 255,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 238`] = `
+Object {
+  "a": 187,
+  "b": 140,
+  "g": 123,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 239`] = `
+Object {
+  "a": 195,
+  "b": 183,
+  "g": 148,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing semitransparent colors 240`] = `
+Object {
+  "a": 151,
+  "b": 252,
+  "g": 225,
+  "r": 255,
+}
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 1`] = `
+_Color [
+  0,
+  0,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 2`] = `
+_Color [
+  0,
+  0,
+  0,
+  191,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 3`] = `
+_Color [
+  0,
+  0,
+  0,
+  128,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 4`] = `
+_Color [
+  0,
+  0,
+  0,
+  64,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 5`] = `
+_Color [
+  255,
+  255,
+  255,
+  0,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 6`] = `
+_Color [
+  255,
+  0,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 7`] = `
+_Color [
+  0,
+  255,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 8`] = `
+_Color [
+  0,
+  0,
+  255,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 9`] = `
+_Color [
+  100,
+  1,
+  0,
+  174,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 10`] = `
+_Color [
+  132,
+  0,
+  109,
+  154,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 11`] = `
+_Color [
+  0,
+  155,
+  119,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 12`] = `
+_Color [
+  215,
+  34,
+  0,
+  219,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 13`] = `
+_Color [
+  195,
+  0,
+  55,
+  175,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 14`] = `
+_Color [
+  0,
+  158,
+  142,
+  187,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 15`] = `
+_Color [
+  232,
+  163,
+  0,
+  175,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 16`] = `
+_Color [
+  0,
+  5,
+  117,
+  164,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 17`] = `
+_Color [
+  139,
+  0,
+  21,
+  220,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 18`] = `
+_Color [
+  129,
+  67,
+  0,
+  65,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 19`] = `
+_Color [
+  0,
+  142,
+  136,
+  170,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 20`] = `
+_Color [
+  214,
+  34,
+  0,
+  187,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 21`] = `
+_Color [
+  0,
+  155,
+  155,
+  128,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 22`] = `
+_Color [
+  177,
+  0,
+  28,
+  219,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 23`] = `
+_Color [
+  173,
+  0,
+  74,
+  187,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 24`] = `
+_Color [
+  0,
+  69,
+  149,
+  103,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 25`] = `
+_Color [
+  0,
+  0,
+  0,
+  0,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 26`] = `
+_Color [
+  255,
+  255,
+  255,
+  64,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 27`] = `
+_Color [
+  255,
+  255,
+  255,
+  127,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 28`] = `
+_Color [
+  255,
+  255,
+  255,
+  191,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 29`] = `
+_Color [
+  255,
+  255,
+  255,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 30`] = `
+_Color [
+  255,
+  0,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 31`] = `
+_Color [
+  0,
+  255,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 32`] = `
+_Color [
+  0,
+  0,
+  255,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 33`] = `
+_Color [
+  255,
+  140,
+  139,
+  149,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 34`] = `
+_Color [
+  255,
+  142,
+  235,
+  181,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 35`] = `
+_Color [
+  0,
+  255,
+  196,
+  155,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 36`] = `
+_Color [
+  255,
+  75,
+  42,
+  221,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 37`] = `
+_Color [
+  255,
+  95,
+  141,
+  214,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 38`] = `
+_Color [
+  94,
+  255,
+  238,
+  184,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 39`] = `
+_Color [
+  255,
+  205,
+  85,
+  239,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 40`] = `
+_Color [
+  140,
+  144,
+  255,
+  166,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 41`] = `
+_Color [
+  255,
+  58,
+  87,
+  155,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 42`] = `
+_Color [
+  255,
+  237,
+  217,
+  223,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 43`] = `
+_Color [
+  120,
+  255,
+  249,
+  180,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 44`] = `
+_Color [
+  255,
+  105,
+  77,
+  225,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 45`] = `
+_Color [
+  158,
+  255,
+  255,
+  205,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 46`] = `
+_Color [
+  255,
+  49,
+  81,
+  188,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 47`] = `
+_Color [
+  255,
+  89,
+  160,
+  195,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 48`] = `
+_Color [
+  183,
+  217,
+  255,
+  212,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 49`] = `
+_Color [
+  0,
+  0,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 50`] = `
+_Color [
+  0,
+  0,
+  0,
+  126,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 51`] = `
+_Color [
+  127,
+  127,
+  127,
+  0,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 52`] = `
+_Color [
+  255,
+  255,
+  255,
+  128,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 53`] = `
+_Color [
+  255,
+  255,
+  255,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 54`] = `
+_Color [
+  255,
+  0,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 55`] = `
+_Color [
+  0,
+  255,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 56`] = `
+_Color [
+  0,
+  0,
+  255,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 57`] = `
+_Color [
+  188,
+  3,
+  0,
+  92,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 58`] = `
+_Color [
+  255,
+  65,
+  222,
+  108,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 59`] = `
+_Color [
+  0,
+  155,
+  119,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 60`] = `
+_Color [
+  255,
+  43,
+  3,
+  187,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 61`] = `
+_Color [
+  255,
+  58,
+  114,
+  173,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 62`] = `
+_Color [
+  0,
+  250,
+  224,
+  118,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 63`] = `
+_Color [
+  255,
+  201,
+  73,
+  223,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 64`] = `
+_Color [
+  9,
+  19,
+  255,
+  78,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 65`] = `
+_Color [
+  166,
+  0,
+  25,
+  185,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 66`] = `
+_Color [
+  255,
+  234,
+  211,
+  191,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 67`] = `
+_Color [
+  26,
+  255,
+  245,
+  106,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 68`] = `
+_Color [
+  255,
+  83,
+  50,
+  195,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 69`] = `
+_Color [
+  127,
+  255,
+  255,
+  155,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 70`] = `
+_Color [
+  212,
+  0,
+  33,
+  183,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 71`] = `
+_Color [
+  255,
+  16,
+  118,
+  135,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 72`] = `
+_Color [
+  165,
+  207,
+  255,
+  169,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 73`] = `
+_Color [
+  0,
+  0,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 74`] = `
+_Color [
+  0,
+  85,
+  85,
+  191,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 75`] = `
+_Color [
+  0,
+  253,
+  253,
+  128,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 76`] = `
+_Color [
+  170,
+  255,
+  255,
+  191,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 77`] = `
+_Color [
+  255,
+  255,
+  255,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 78`] = `
+_Color [
+  255,
+  0,
+  0,
+  0,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 79`] = `
+_Color [
+  0,
+  255,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 80`] = `
+_Color [
+  0,
+  0,
+  255,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 81`] = `
+_Color [
+  0,
+  197,
+  195,
+  106,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 82`] = `
+_Color [
+  142,
+  154,
+  255,
+  167,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 83`] = `
+_Color [
+  0,
+  155,
+  119,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 84`] = `
+_Color [
+  122,
+  255,
+  141,
+  65,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 85`] = `
+_Color [
+  166,
+  173,
+  255,
+  118,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 86`] = `
+_Color [
+  0,
+  251,
+  235,
+  187,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 87`] = `
+_Color [
+  234,
+  255,
+  106,
+  192,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 88`] = `
+_Color [
+  3,
+  144,
+  255,
+  166,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 89`] = `
+_Color [
+  0,
+  89,
+  135,
+  100,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 90`] = `
+_Color [
+  216,
+  255,
+  234,
+  207,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 91`] = `
+_Color [
+  14,
+  255,
+  249,
+  180,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 92`] = `
+_Color [
+  173,
+  255,
+  186,
+  93,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 93`] = `
+_Color [
+  96,
+  255,
+  255,
+  205,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 94`] = `
+_Color [
+  0,
+  137,
+  228,
+  67,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 95`] = `
+_Color [
+  130,
+  142,
+  255,
+  122,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 96`] = `
+_Color [
+  131,
+  217,
+  255,
+  212,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 97`] = `
+_Color [
+  0,
+  0,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 98`] = `
+_Color [
+  0,
+  17,
+  58,
+  187,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 99`] = `
+_Color [
+  0,
+  53,
+  180,
+  119,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 100`] = `
+_Color [
+  163,
+  190,
+  255,
+  162,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 101`] = `
+_Color [
+  255,
+  255,
+  255,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 102`] = `
+_Color [
+  255,
+  0,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 103`] = `
+_Color [
+  0,
+  255,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 104`] = `
+_Color [
+  0,
+  0,
+  255,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 105`] = `
+_Color [
+  82,
+  0,
+  82,
+  146,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 106`] = `
+_Color [
+  122,
+  9,
+  255,
+  127,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 107`] = `
+_Color [
+  0,
+  155,
+  119,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 108`] = `
+_Color [
+  212,
+  0,
+  13,
+  169,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 109`] = `
+_Color [
+  196,
+  0,
+  145,
+  149,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 110`] = `
+_Color [
+  0,
+  181,
+  209,
+  182,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 111`] = `
+_Color [
+  239,
+  192,
+  80,
+  0,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 112`] = `
+_Color [
+  0,
+  34,
+  219,
+  158,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 113`] = `
+_Color [
+  136,
+  0,
+  47,
+  209,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 114`] = `
+_Color [
+  214,
+  216,
+  255,
+  160,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 115`] = `
+_Color [
+  0,
+  173,
+  229,
+  164,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 116`] = `
+_Color [
+  212,
+  0,
+  57,
+  131,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 117`] = `
+_Color [
+  82,
+  210,
+  255,
+  182,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 118`] = `
+_Color [
+  176,
+  0,
+  55,
+  207,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 119`] = `
+_Color [
+  171,
+  0,
+  145,
+  165,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 120`] = `
+_Color [
+  124,
+  176,
+  255,
+  192,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 121`] = `
+_Color [
+  0,
+  0,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 122`] = `
+_Color [
+  62,
+  0,
+  6,
+  166,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 123`] = `
+_Color [
+  255,
+  3,
+  29,
+  80,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 124`] = `
+_Color [
+  255,
+  195,
+  201,
+  168,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 125`] = `
+_Color [
+  255,
+  255,
+  255,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 126`] = `
+_Color [
+  255,
+  0,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 127`] = `
+_Color [
+  0,
+  255,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 128`] = `
+_Color [
+  0,
+  0,
+  255,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 129`] = `
+_Color [
+  214,
+  0,
+  8,
+  141,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 130`] = `
+_Color [
+  255,
+  47,
+  164,
+  154,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 131`] = `
+_Color [
+  0,
+  155,
+  119,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 132`] = `
+_Color [
+  255,
+  39,
+  6,
+  209,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 133`] = `
+_Color [
+  255,
+  51,
+  103,
+  199,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 134`] = `
+_Color [
+  68,
+  184,
+  172,
+  0,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 135`] = `
+_Color [
+  255,
+  193,
+  71,
+  233,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 136`] = `
+_Color [
+  115,
+  0,
+  160,
+  125,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 137`] = `
+_Color [
+  175,
+  0,
+  25,
+  206,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 138`] = `
+_Color [
+  255,
+  212,
+  194,
+  211,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 139`] = `
+_Color [
+  255,
+  140,
+  216,
+  23,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 140`] = `
+_Color [
+  255,
+  76,
+  48,
+  214,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 141`] = `
+_Color [
+  216,
+  237,
+  255,
+  101,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 142`] = `
+_Color [
+  217,
+  0,
+  33,
+  205,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 143`] = `
+_Color [
+  255,
+  13,
+  98,
+  173,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 144`] = `
+_Color [
+  242,
+  176,
+  255,
+  123,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 145`] = `
+_Color [
+  0,
+  0,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 146`] = `
+_Color [
+  0,
+  6,
+  13,
+  182,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 147`] = `
+_Color [
+  0,
+  21,
+  44,
+  110,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 148`] = `
+_Color [
+  0,
+  96,
+  197,
+  37,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 149`] = `
+_Color [
+  255,
+  255,
+  255,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 150`] = `
+_Color [
+  255,
+  0,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 151`] = `
+_Color [
+  0,
+  255,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 152`] = `
+_Color [
+  0,
+  0,
+  255,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 153`] = `
+_Color [
+  100,
+  0,
+  9,
+  154,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 154`] = `
+_Color [
+  141,
+  0,
+  145,
+  131,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 155`] = `
+_Color [
+  0,
+  155,
+  119,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 156`] = `
+_Color [
+  221,
+  32,
+  0,
+  207,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 157`] = `
+_Color [
+  208,
+  0,
+  73,
+  156,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 158`] = `
+_Color [
+  0,
+  174,
+  164,
+  177,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 159`] = `
+_Color [
+  251,
+  181,
+  0,
+  148,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 160`] = `
+_Color [
+  0,
+  16,
+  149,
+  151,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 161`] = `
+_Color [
+  141,
+  0,
+  25,
+  212,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 162`] = `
+_Color [
+  223,
+  207,
+  190,
+  0,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 163`] = `
+_Color [
+  0,
+  163,
+  167,
+  158,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 164`] = `
+_Color [
+  226,
+  29,
+  0,
+  164,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 165`] = `
+_Color [
+  0,
+  202,
+  225,
+  110,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 166`] = `
+_Color [
+  181,
+  0,
+  33,
+  211,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 167`] = `
+_Color [
+  181,
+  0,
+  89,
+  171,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 168`] = `
+_Color [
+  13,
+  127,
+  255,
+  86,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 169`] = `
+_Color [
+  0,
+  0,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 170`] = `
+_Color [
+  109,
+  0,
+  25,
+  150,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 171`] = `
+_Color [
+  255,
+  99,
+  135,
+  127,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 172`] = `
+_Color [
+  255,
+  203,
+  215,
+  191,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 173`] = `
+_Color [
+  255,
+  255,
+  255,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 174`] = `
+_Color [
+  255,
+  0,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 175`] = `
+_Color [
+  0,
+  255,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 176`] = `
+_Color [
+  0,
+  0,
+  255,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 177`] = `
+_Color [
+  255,
+  30,
+  54,
+  149,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 178`] = `
+_Color [
+  255,
+  79,
+  187,
+  181,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 179`] = `
+_Color [
+  0,
+  155,
+  119,
+  0,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 180`] = `
+_Color [
+  255,
+  51,
+  23,
+  221,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 181`] = `
+_Color [
+  255,
+  66,
+  118,
+  214,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 182`] = `
+_Color [
+  174,
+  229,
+  255,
+  99,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 183`] = `
+_Color [
+  255,
+  194,
+  77,
+  239,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 184`] = `
+_Color [
+  231,
+  0,
+  238,
+  100,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 185`] = `
+_Color [
+  200,
+  0,
+  34,
+  197,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 186`] = `
+_Color [
+  255,
+  214,
+  200,
+  223,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 187`] = `
+_Color [
+  203,
+  215,
+  255,
+  107,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 188`] = `
+_Color [
+  255,
+  85,
+  61,
+  225,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 189`] = `
+_Color [
+  201,
+  234,
+  255,
+  161,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 190`] = `
+_Color [
+  245,
+  0,
+  42,
+  196,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 191`] = `
+_Color [
+  255,
+  41,
+  123,
+  195,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 192`] = `
+_Color [
+  222,
+  192,
+  255,
+  174,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 193`] = `
+_Color [
+  0,
+  0,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 194`] = `
+_Color [
+  26,
+  14,
+  0,
+  178,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 195`] = `
+_Color [
+  90,
+  48,
+  0,
+  102,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 196`] = `
+_Color [
+  255,
+  209,
+  157,
+  97,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 197`] = `
+_Color [
+  255,
+  255,
+  255,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 198`] = `
+_Color [
+  255,
+  0,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 199`] = `
+_Color [
+  0,
+  255,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 200`] = `
+_Color [
+  0,
+  0,
+  255,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 201`] = `
+_Color [
+  147,
+  21,
+  0,
+  158,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 202`] = `
+_Color [
+  218,
+  0,
+  109,
+  112,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 203`] = `
+_Color [
+  0,
+  155,
+  119,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 204`] = `
+_Color [
+  235,
+  41,
+  0,
+  212,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 205`] = `
+_Color [
+  255,
+  14,
+  56,
+  153,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 206`] = `
+_Color [
+  0,
+  187,
+  140,
+  141,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 207`] = `
+_Color [
+  255,
+  194,
+  56,
+  215,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 208`] = `
+_Color [
+  24,
+  0,
+  116,
+  122,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 209`] = `
+_Color [
+  156,
+  0,
+  15,
+  205,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 210`] = `
+_Color [
+  255,
+  219,
+  180,
+  176,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 211`] = `
+_Color [
+  0,
+  180,
+  130,
+  112,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 212`] = `
+_Color [
+  255,
+  57,
+  9,
+  181,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 213`] = `
+_Color [
+  77,
+  255,
+  191,
+  85,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 214`] = `
+_Color [
+  197,
+  0,
+  22,
+  204,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 215`] = `
+_Color [
+  221,
+  0,
+  67,
+  159,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 216`] = `
+_Color [
+  152,
+  180,
+  212,
+  0,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 217`] = `
+_Color [
+  0,
+  0,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 218`] = `
+_Color [
+  35,
+  0,
+  0,
+  175,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 219`] = `
+_Color [
+  127,
+  0,
+  0,
+  97,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 220`] = `
+_Color [
+  255,
+  177,
+  177,
+  128,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 221`] = `
+_Color [
+  255,
+  255,
+  255,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 222`] = `
+_Color [
+  255,
+  0,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 223`] = `
+_Color [
+  0,
+  255,
+  0,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 224`] = `
+_Color [
+  0,
+  0,
+  255,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 225`] = `
+_Color [
+  163,
+  2,
+  0,
+  154,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 226`] = `
+_Color [
+  233,
+  0,
+  130,
+  129,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 227`] = `
+_Color [
+  0,
+  155,
+  119,
+  255,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 228`] = `
+_Color [
+  241,
+  35,
+  0,
+  210,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 229`] = `
+_Color [
+  255,
+  21,
+  77,
+  173,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 230`] = `
+_Color [
+  0,
+  160,
+  134,
+  118,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 231`] = `
+_Color [
+  255,
+  190,
+  62,
+  223,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 232`] = `
+_Color [
+  61,
+  0,
+  133,
+  138,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 233`] = `
+_Color [
+  161,
+  0,
+  22,
+  211,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 234`] = `
+_Color [
+  255,
+  208,
+  185,
+  191,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 235`] = `
+_Color [
+  0,
+  129,
+  117,
+  84,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 236`] = `
+_Color [
+  255,
+  59,
+  26,
+  195,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 237`] = `
+_Color [
+  127,
+  205,
+  205,
+  0,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 238`] = `
+_Color [
+  201,
+  0,
+  29,
+  210,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 239`] = `
+_Color [
+  229,
+  0,
+  81,
+  170,
+]
+`;
+
+exports[`test transparentizeColor() results Testing solid colors 240`] = `
+_Color [
+  255,
+  77,
+  241,
+  50,
+]
+`;
