@@ -1,75 +1,125 @@
-import chalk from 'chalk'
+import { Color } from '../src'
 
-import { Color } from '../src/classes'
+const validRgbaArrays = [
+  [255, 255, 255, 255],
+  [0, 0, 0, 0],
+  [127, 127, 127, 255],
+  [255, 0, 0, 255],
+  [127, 127, 127, 127],
+]
 
 
-// import { rgbChannels, clampColorValue } from '@transparentize/common/src/utils/colors'
-import { processColor } from '../src'
-import { backgroundSelection, colorSelection, colorSelectionTransparent } from './fixtures/colors'
+const validRgbaObjects = validRgbaArrays.map(([r, g, b, a]) => ({ r, g, b, a }))
 
-// TODO: use the one in functions.js
-function solidifyColor(color, background) {
-  if (color[3] === 255) return color
-  const newColor = new Color(0, 0, 0, 0)
-  {
-    [0, 1, 2].forEach(function (channel) {
-      newColor[channel] = background[channel] + (color[channel] - background[channel]) * (color[3] / 255)
-    })
-  }
-  newColor[3] = 255
+const validRgbArrays = [
+  [255, 255, 255],
+  [0, 0, 0],
+  [127, 127, 127],
+  [255, 0, 0],
+]
 
-  return newColor
-}
+const validRgbObjects = validRgbArrays.map(([r, g, b]) => ({ r, g, b }))
 
-function renderColorFlag(color, background, pattern = [0, 1, 1, 0]) {
-  color = solidifyColor(color, background)
-  color = [...color].slice(0, -1)
-  background = [...background].slice(0, -1)
-  return pattern.reduce((output, showColor) => {
-    return `${output}${chalk.bgRgb(
-      ...(showColor ? color : background)
-    )(' ')}`
-  }, '')
-}
+const invalidRgbaArrays = [
+  [255],
+  [0, 0],
+  [127, 127, 127, 255, 255],
+  [255, 0, 0, 255, 255, 0, 0, 255],
+  [null],
+  [''],
+]
 
-function renderColorsFlagsMatrix(matrix, pattern) {
-  const backgroundNames = Object.keys(matrix)
-  return backgroundNames.reduce((result, backgroundName) => {
-    const background = backgroundSelection[backgroundName]
-    const colors = matrix[backgroundName]
-    const colorsFlag = Object.values(colors).map((color) => renderColorFlag(color, background, pattern)).join('')
-    return result + colorsFlag + '\n'
-  }, '')
-}
+const invalidObjects = [
+  null,
+  {},
+  { r: 127 },
+  { r: 255, g: 127, x: 255 },
+  { r: 255, g: 127, a: 255 },
+]
 
-function testsForColorsOverBackgroundsNew(testName, colors, backgrounds) {
-  const colorNames = Object.keys(colors)
-  const backgroundNames = Object.keys(backgrounds)
-  const resultMatrix = {}
 
-  // testName = `${testName}: ${Object.keys(colors).length} colors over ${Object.keys(backgrounds).length} backgrounds`
+describe('test Color class', () => {
+  describe('.from() constructor', () => {
 
-  test(testName, () => {
-    backgroundNames.forEach((backgroundName) => {
-      const background = new Color(backgrounds[backgroundName])
-      resultMatrix[backgroundName] = {}
+    describe('valid arguments', () => {
 
-      colorNames.forEach((colorName) => {
-        const color = new Color(colors[colorName])
-        resultMatrix[backgroundName][colorName] = processColor(color, background)
-        expect(resultMatrix[backgroundName][colorName]).toBeTruthy()
-        // expect(resultMatrix[backgroundName][colorName]).toMatchSnapshot()
+      test('from valid 4 channels ...arguments', () => {
+        validRgbaArrays.forEach(rgbaColorArray => {
+          expect(Color.from(...rgbaColorArray)).toStrictEqual(Buffer.from(rgbaColorArray))
+        })
+      })
+
+      test('from valid 4 channels array', () => {
+        validRgbaArrays.forEach(rgbaColorArray => {
+          expect(Color.from([...rgbaColorArray])).toStrictEqual(Buffer.from(rgbaColorArray))
+        })
+      })
+
+      test('from valid 4 channels object', () => {
+        validRgbaObjects.forEach((rgbaColorObject, i) => {
+          expect(Color.from({ ...rgbaColorObject })).toStrictEqual(Buffer.from(validRgbaArrays[i]))
+        })
+      })
+
+      test('from valid 3 channels ...arguments', () => {
+        validRgbArrays.forEach(rgbColorArray => {
+          const expected = [...rgbColorArray, 255]
+          expect(Color.from(...rgbColorArray)).toStrictEqual(Buffer.from(expected))
+        })
+      })
+
+      test('from valid 3 channels array', () => {
+        validRgbArrays.forEach(rgbColorArray => {
+          const expected = [...rgbColorArray, 255]
+          expect(Color.from([...rgbColorArray])).toStrictEqual(Buffer.from(expected))
+        })
+      })
+
+      test('from valid channels object', () => {
+        validRgbObjects.forEach((rgbColorObject, i) => {
+          const expected = [...validRgbArrays[i], 255]
+          expect(Color.from({ ...rgbColorObject })).toStrictEqual(Buffer.from(expected))
+        })
       })
 
     })
-    process.stdout.write(`Visual test table for ${testName}\n${renderColorsFlagsMatrix(resultMatrix)}\n`)
+
+    describe('invalid arguments', () => {
+
+      test('without arguments, throw error', () => {
+        invalidRgbaArrays.forEach(invalidArray => {
+          expect(() => Color.from()).toThrow()
+        })
+      })
+
+      test('from invalid ...arguments, throw error', () => {
+        invalidRgbaArrays.forEach(invalidArray => {
+          expect(() => Color.from(...invalidArray)).toThrow()
+        })
+      })
+
+      test('from invalid array, throw error', () => {
+        invalidRgbaArrays.forEach(invalidArray => {
+          expect(() => Color.from([...invalidArray])).toThrow()
+        })
+      })
+
+      test('from invalid object, throw error', () => {
+        invalidObjects.forEach(invalidObject => {
+          expect(() => Color.from([...invalidObject])).toThrow()
+          expect(() => Color.from(...invalidObject)).toThrow()
+        })
+      })
+
+    })
   })
 
-}
+  describe('.fromBackground() constructor', () => {
 
+    describe('valid arguments', () => {
 
-// Start test
-describe('test transparentizeColor() results', () => {
-  // testsForColorsOverBackgroundsNew('Testing solid colors', colorSelection, backgroundSelection)
-  testsForColorsOverBackgroundsNew('Testing semitransparent colors', colorSelectionTransparent, backgroundSelection)
+    })
+
+  })
+
 })
