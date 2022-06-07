@@ -46,7 +46,7 @@ export function transparentify(top, bottom) {
   // first of all remove top color alpha multiplying it by the bottom color (mimiking the multiply blend mode)
   if (top.a < 255) {
     rgbChannels.forEach(function (channel) {
-      clampColorValue(top[channel] = bottom[channel] + (top[channel] - bottom[channel]) * (top.a / 255))
+      top[channel] = clampColorValue(bottom[channel] + (top[channel] - bottom[channel]) * (top.a / 255))
     })
     top.a = 255
   }
