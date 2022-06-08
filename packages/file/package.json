@@ -1,0 +1,28 @@
+{
+  "name": "@transparentize/file",
+  "version": "0.1.0",
+  "description": "Lib to remove a color components from an images file, replacing it with transparency (alpha channel)",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "type": "module",
+  "platform": "node",
+  "repository": "https://github.com/francesco-carrella/transparentize",
+  "license": "Commons Clause",
+  "author": {
+    "name": "Francesco Carrella",
+    "email": "francesco.carrella@gmail.com"
+  },
+  "scripts": {
+    "lint": "eslint src/**/*.js",
+    "build": "node ./scripts/build.js"
+  },
+  "dependencies": {
+    "@transparentize/common": "link:packages/common",
+    "@transparentize/image": "link:packages/image",
+    "fast-png": "^6.1.0",
+    "valid-filename": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=10"
+  }
+}
