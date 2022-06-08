@@ -1,8 +1,12 @@
-import { throwBestError, GenericError } from '@transparentize/common/src/errors'
 import { isIterable, runWithoutErrors } from '@transparentize/common/src/utils/generics'
+import { callHandler } from '@transparentize/common/src/utils/handlers'
+import { throwBestError, GenericError } from '@transparentize/common/src/errors'
 
 import { RGBA_CHANNELS, RGB_CHANNELS, ALPHA_INDEX } from '../constants'
-import { InvalidFrameDataError } from '../errors'
+import { InvalidFrameDataError, FrameDataProcessError } from '../errors'
+import { getOptions } from '../options'
+import Pixel from './Pixel'
+
 export default class FrameData {
 
   static validateRgbInput(...args) {
@@ -60,6 +64,33 @@ export default class FrameData {
     const pixelsCount = frameData.length / RGBA_CHANNELS.length
     for (let pixelIdx = 0; pixelIdx < pixelsCount; pixelIdx++) {
       callback(pixelIdx)
+    }
+  }
+
+  static transparentize(frameData, options, disableChecks) {
+    if (!disableChecks) options = getOptions(options)
+
+    try {
+      if (options.onProcessFrameDataStart) {
+        [frameData, options] = callHandler(options.onProcessFrameDataStart, frameData, options)
+      }
+
+      if (!disableChecks && !(FrameData.isValidRgbaInput(frameData) || FrameData.isValidRgbInput(frameData))) {
+        throwBestError(new FrameDataProcessError(null, frameData, options))
+      }
+
+      // process every pixel (aka color) in the frameData
+      FrameData.forEachPixel(frameData, (pixelIdx) => {
+        Pixel.transparentize(frameData, pixelIdx, options, true)
+      })
+
+      if (options.onProcessFrameDataEnd) {
+        [frameData, options] = callHandler(options.onProcessFrameDataEnd, frameData, options)
+      }
+
+      return frameData
+    } catch (e) {
+      throwBestError(e, new FrameDataProcessError(null, frameData, options, e))
     }
   }
 

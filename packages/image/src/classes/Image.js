@@ -1,11 +1,11 @@
 import { isPositiveInt, isIterable, runWithoutErrors, isObjectWithKeys } from '@transparentize/common/src/utils/generics'
+import { callHandler } from '@transparentize/common/src/utils/handlers'
 import { throwBestError } from '@transparentize/common/src/errors'
 
 import { RGBA_CHANNELS, RGB_CHANNELS } from '../constants'
-import { InvalidImageError } from '../errors'
+import { InvalidImageError, ImageProcessError } from '../errors'
+import { getOptions } from '../options'
 import FrameData from './FrameData'
-
-
 
 export default class Image {
 
@@ -52,6 +52,26 @@ export default class Image {
     this.data = data.length === rgbDataLength ?
       FrameData.fromRgb(data) :
       FrameData.fromRgba(data)
+  }
+
+  transparentize(options, disableChecks) {
+    if (!disableChecks) options = getOptions(options)
+
+    try {
+      if (options.onProcessImageStart) {
+        [options] = callHandler(options.onProcessImageStart, this, options)
+      }
+
+      this.data = FrameData.transparentize(this.data, options, true)
+
+      if (options.onProcessImageEnd) {
+        [options] = callHandler(options.onProcessImageEnd, this, options)
+      }
+
+      return this
+    } catch (e) {
+      throwBestError(e, new ImageProcessError(null, this, options, e))
+    }
   }
 
   toString() {
