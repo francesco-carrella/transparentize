@@ -5,6 +5,12 @@ export const whiteColor = Color.from([255, 255, 255, 255])
 export const defaultOptions = {
   backgroundColor: whiteColor,
   initialBackgroundColor: whiteColor,
+  // onProcessImageStart (image, options) => [image, options] | undefined
+  // onProcessImageEnd (image, options) => [image, options] | undefined
+  // onProcessFrameDataStart (frameData, options) => [frameData, options] | undefined
+  // onProcessFrameDataEnd (frameData, options) => [frameData, options] | undefined
+  // onProcessColorStart (frameData, pixelIdx, options) => [frameData, pixelIdx, options] | undefined
+  // onProcessColorEnd (frameData, pixelIdx, options) => [frameData, pixelIdx, options] | undefined
 }
 
 export function getOptions(options = {}) {
