@@ -31,7 +31,7 @@ export default class FrameData {
 
   static isValidRgbInput = runWithoutErrors.bind(FrameData, FrameData.validateRgbInput)
 
-  static isValidRgbaInput = runWithoutErrors.bind(FrameData, FrameData.validateFromRgbDataInput)
+  static isValidRgbaInput = runWithoutErrors.bind(FrameData, FrameData.validateRgbaInput)
 
   static fromRgb(...args) {
     const [input, alpha] = FrameData.validateRgbInput(...args)

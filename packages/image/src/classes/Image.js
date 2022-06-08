@@ -28,6 +28,7 @@ export default class Image {
       throwBestError(new InvalidImageError('Invalid data attribute for Image constructor. It should be a buffer (preferably) or an iterable', input))
     }
 
+    // ensure the data buffer length is accord with the expected pixels count, in either RGB or RGBA format
     const pixelCount = width * height
     const rgbaDataLength = pixelCount * RGBA_CHANNELS.length
     const rgbDataLength = pixelCount * RGB_CHANNELS.length

@@ -5,7 +5,6 @@
   "workspaces": [
     "packages/*"
   ],
-  "type": "module",
   "repository": "https://github.com/francesco-carrella/transparentize",
   "license": "Commons Clause",
   "private": true,

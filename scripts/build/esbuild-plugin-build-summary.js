@@ -29,7 +29,7 @@ const esbuildPluginBuildSummary = {
       console.log(`🔨 Building package${globalName ? ': ' + chalk.bold(build.initialOptions.globalName) : '...'}\n`)
     })
     build.onEnd((result) => {
-      Object.keys(result.metafile.outputs).forEach((output) => {
+      Object.keys(result.metafile?.outputs || []).forEach((output) => {
         const fileName = formatFileName(output)
         const fileSize = formatFileSize(result.metafile.outputs[output].bytes)
         console.log(`   ${fileName}  ${fileSize}`)
