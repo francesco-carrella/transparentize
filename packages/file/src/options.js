@@ -1,14 +1,22 @@
 
 export const defaultOptions = {
+  allowOverride: false,
+  // onReadInputFileStart(inputFilename, options) => { }
+  // onReadInputFileEnd(inputFilename, options) => { }
+  // onWriteOutputFileStart(outputFile, options) => { }
+  // onWriteOutputFileEnd(outputFile, options) => { }
+  // onProcessFileStart(fileInstance, options) => { }
+  // onProcessFileEnd(fileInstance, options) => { }
+
+  // - inherit by @transparentize/image package
   // backgroundColor: whiteColor,
   // initialBackgroundColor: whiteColor,
-  // onProcessFIleStart (input, output, options) => [input, options] | undefined
-  // onProcessFIleEnd (input, output, options) => [input, output, options] | undefined
-  // onReadFileStart (input, options) => [input, options] | undefined
-  // onReadFileEnd (input, options) => [input, options] | undefined
-  // onWriteFileStart (output, options) => [input, options] | undefined
-  // onWriteFileEnd (output, options) => [output, options] | undefined
-  // async onOutputFileExists(output, options)
+  // onProcessImageStart: (image, options) => { }
+  // onProcessImageEnd: (image, options) => { }
+  // onProcessFrameDataStart: (frameData, options) => { }
+  // onProcessFrameDataEnd: (frameData, options) => { }
+  // onProcessPixelStart: (frameData, pixelIdx, options) => { }
+  // onProcessPixelEnd: (frameData, pixelIdx, options) => { }
 }
 
 export function getOptions(options = {}) {
@@ -17,8 +25,6 @@ export function getOptions(options = {}) {
       options[key] = defaultOptions[key]
     }
   }
-
-  // TODO: normalize options
 
   return options
 }

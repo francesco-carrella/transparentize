@@ -79,16 +79,12 @@ export default class File {
 
   read() {
     try {
-      if (this.options.onReadInputFileStart) {
-        callHandler(this.options.onReadInputFileStart, this.inputFilename, this.options)
-      }
+      callHandler(this.options.onReadInputFileStart, this.inputFile, this.options)
 
       const imageData = FileExecutor.read(this.inputFile, this.options)
       this.image = new Image(imageData)
 
-      if (this.options.onReadInputFileEnd) {
-        callHandler(this.options.onReadInputFileEnd, this.inputFilename, this.options)
-      }
+      callHandler(this.options.onReadInputFileEnd, this.inputFile, this.options)
     } catch (e) {
       throwBestError(e, new InputFileParseError(this.inputFilename, this.options, e))
     }
@@ -96,15 +92,11 @@ export default class File {
 
   write() {
     try {
-      if (this.options.onWriteOutputFileStart) {
-        callHandler(this.options.onWriteOutputFileStart, this.outputFile, this.options)
-      }
+      callHandler(this.options.onWriteOutputFileStart, this.outputFile, this.options)
 
       FileExecutor.write(this.image, this.outputFile, this.options)
 
-      if (this.options.onWriteOutputFileEnd) {
-        callHandler(this.options.onWriteOutputFileEnd, this.outputFile, this.options)
-      }
+      callHandler(this.options.onWriteOutputFileEnd, this.outputFile, this.options)
     } catch (e) {
       throwBestError(e, new WriteOutputFileError(this.outputFile, this.options, e))
     }
@@ -114,9 +106,7 @@ export default class File {
     if (!disableChecks) options = getOptions(options)
 
     try {
-      if (options.onProcessFileStart) {
-        [options] = callHandler(options.onProcessFileStart, this, options)
-      }
+      callHandler(this.options.onProcessFileStart, this, this.options)
 
       if (!this.image) {
         this.read()
@@ -126,9 +116,7 @@ export default class File {
 
       this.write()
 
-      if (options.onProcessFileEnd) {
-        [options] = callHandler(options.onProcessFileEnd, this, options)
-      }
+      callHandler(this.options.onProcessFileEnd, this, this.options)
 
       return this
     } catch (e) {
