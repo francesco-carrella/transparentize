@@ -1,4 +1,4 @@
-// export default from './File'
-export { default as File } from './File'
+export { File as default } from './classes'
+export * from './classes'
 export * from './options'
 export * from './errors'
