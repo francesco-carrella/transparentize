@@ -9,8 +9,16 @@
     "name": "Francesco Carrella",
     "email": "francesco.carrella@gmail.com"
   },
-  "scripts": {},
+  "scripts": {
+    "build": "echo \"Error: no build available for @transparentize/common package. Ìt is intended to be imported as source from other modules.\" && exit 1"
+  },
   "dependencies": {
     "es6-error": "^4.1.1"
+  },
+  "devDependencies": {
+    "chalk": "^5.0.1",
+    "filesize": "^9.0.9",
+    "path": "^0.12.7",
+    "time-diff": "^0.3.1"
   }
 }

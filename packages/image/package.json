@@ -1,17 +1,24 @@
 {
   "name": "@transparentize/image",
   "version": "0.1.0",
-  "description": "Lib to remove a color components from images, replacing it with transparency (alpha channel)",
+  "description": "Lib to remove a color components from images, replacing it with transparency (rgba alpha channel)",
   "type": "module",
   "main": "src/index.js",
+  "module": "src/index.js",
+  "platform": "node",
   "repository": "https://github.com/francesco-carrella/transparentize",
   "license": "Commons Clause",
   "author": {
     "name": "Francesco Carrella",
     "email": "francesco.carrella@gmail.com"
   },
-  "scripts": {},
+  "scripts": {
+    "build": "node ./scripts/build.js"
+  },
   "dependencies": {
     "@transparentize/common": "link:packages/common"
+  },
+  "devDependencies": {
+    "esbuild": "^0.14.46"
   }
 }

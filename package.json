@@ -15,17 +15,11 @@
   "scripts": {
     "image": "yarn workspace @transparentize/image",
     "common": "yarn workspace @transparentize/common",
-    "lint": "eslint \"packages/**/*.js\"",
-    "build": "node ./scripts/build/index.js"
+    "lint": "eslint \"packages/**/*.js\""
   },
   "devDependencies": {
-    "chalk": "^5.0.1",
-    "commander": "^9.3.0",
-    "esbuild": "^0.14.41",
     "eslint": "^8.16.0",
-    "eslint-gitignore": "^0.1.0",
-    "filesize": "^9.0.0",
-    "time-diff": "^0.3.1"
+    "eslint-gitignore": "^0.1.0"
   },
   "dependencies": {
   },
