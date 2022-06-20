@@ -2,7 +2,6 @@ export * from '@transparentize/image/src/errors'
 
 import { BaseError } from '@transparentize/common/src/errors'
 
-
 // export class InvalidPathError extends BaseError {
 //   constructor(message, path, options, originalError) {
 //     if (!message) message = `Invalid path '${path}'.`
@@ -12,45 +11,18 @@ import { BaseError } from '@transparentize/common/src/errors'
 //   }
 // }
 
-export class ImageProcessError extends BaseError {
-  constructor(image, options, originalError) {
-    const message = 'Error processing the image.'
-    super(message, options, originalError)
-    this.name = 'ImageProcessError'
-    this.image = image
-  }
-}
-
-// export class InvalidBgColorError extends BaseError {
-//   constructor(bgColor, options, originalError) {
-//     const message = `Invalid background color: '${JSON.stringify(bgColor)}'.`
-//     super(message, options, originalError)
-//     this.name = 'InvalidBgColorError'
-//     this.bgColor = bgColor
-//   }
-// }
-
-// export class InvalidBgColorAlphaError extends BaseError {
-//   constructor(bgColor, options, originalError) {
-//     const message = `Background color with alpha are not supported: '${JSON.stringify(bgColor)}'.`
-//     super(message, options, originalError)
-//     this.name = 'InvalidBgColorAlphaError'
-//     this.bgColor = bgColor
-//   }
-// }
-
 export class FileProcessError extends BaseError {
-  constructor(inputFile, options, originalError) {
-    const message = `The input file '${inputFile}' does not exists.`
-    super(message, options, originalError)
+  constructor(message, fileInstance, originalError) {
+    if (!message) message = `The input file '${fileInstance.inputFile}' does not exists.`
+    super(message, null, originalError)
     this.name = 'FileProcessError'
     this.inputFile = inputFile
   }
 }
 
 export class InputFileNotFoundError extends BaseError {
-  constructor(inputFile, options, originalError) {
-    const message = `The input file '${inputFile}' does not exists.`
+  constructor(message, inputFile, options, originalError) {
+    if (!message) message = `The input file '${inputFile}' does not exists.`
     super(message, options, originalError)
     this.name = 'InputFileNotFoundError'
     this.inputFile = inputFile
@@ -58,8 +30,8 @@ export class InputFileNotFoundError extends BaseError {
 }
 
 export class InputFileNotValidError extends BaseError {
-  constructor(inputFile, options, originalError) {
-    const message = `The file '${inputFile}' does seems to be in a valid ${options.inputFormat} format.`
+  constructor(message, inputFile, options, originalError) {
+    if (!message) message = `The file '${inputFile}' does seems to be in a valid ${options.inputFormat} format.`
     super(message, options, originalError)
     this.name = 'InputFileNotValidError'
     this.inputFile = inputFile
@@ -67,8 +39,8 @@ export class InputFileNotValidError extends BaseError {
 }
 
 export class InputFileParseError extends BaseError {
-  constructor(inputFile, options, originalError) {
-    const message = `Error parsing the input file '${inputFile}'.`
+  constructor(message, inputFile, options, originalError) {
+    if (!message) message = `Error parsing the input file '${inputFile}'.`
     super(message, options, originalError)
     this.name = 'InputFileParseError'
     this.inputFile = inputFile
@@ -76,8 +48,8 @@ export class InputFileParseError extends BaseError {
 }
 
 export class UnsupportedImageFormatError extends BaseError {
-  constructor(imageFormatKey, filePath, options, originalError) {
-    const message =
+  constructor(message, imageFormatKey, filePath, options, originalError) {
+    if (!message) message =
       imageFormatKey && filePath ? `Unsupported image format '${imageFormatKey}' for the file '${filePath}'.` :
         imageFormatKey ? `Unsupported image format: '${imageFormatKey}'.` :
           filePath ? `Unsupported image format for the file '${filePath}'.` :
@@ -90,8 +62,8 @@ export class UnsupportedImageFormatError extends BaseError {
 }
 
 // export class UnsupportedTiffImageFormatError extends BaseError {
-//   constructor(inputFile, options, originalError) {
-//     const message = `Unsupported TIFF image format on file ${inputFile}. ${originalError.message}.`
+//   constructor(message, inputFile, options, originalError) {
+//     if(!message) message = `Unsupported TIFF image format on file ${inputFile}. ${originalError.message}.`
 //     super(message, options, originalError)
 //     this.name = 'UnsupportedTiffImageFormatError'
 //     if (inputFile) this.inputFile = inputFile
@@ -99,8 +71,8 @@ export class UnsupportedImageFormatError extends BaseError {
 // }
 
 // export class InvalidTiffPageError extends BaseError {
-//   constructor(inputFile, documentPages, options, originalError) {
-//     const message = `Invalid page '${options.page}'. The input file '${inputFile}' has ${documentPages} pages.`
+//   constructor(message, inputFile, documentPages, options, originalError) {
+//     if(!message) message = `Invalid page '${options.page}'. The input file '${inputFile}' has ${documentPages} pages.`
 //     super(message, options, originalError)
 //     this.name = 'InvalidTiffPageError'
 //     if (inputFile) this.inputFile = inputFile
@@ -109,8 +81,8 @@ export class UnsupportedImageFormatError extends BaseError {
 // }
 
 export class OutputPathNotValidError extends BaseError {
-  constructor(outputFile, options, originalError) {
-    const message = `The output file '${outputFile}' is not a valid file path.`
+  constructor(message, outputFile, options, originalError) {
+    if (!message) message = `The output file '${outputFile}' is not a valid file path.`
     super(message, options, originalError)
     this.name = 'OutputPathNotValidError'
     this.outputFile = outputFile
@@ -118,8 +90,8 @@ export class OutputPathNotValidError extends BaseError {
 }
 
 export class OutputDirectoryNotValidError extends BaseError {
-  constructor(outputFile, options, originalError) {
-    const message = `The output directory '${outputFile}' is not valid.`
+  constructor(message, outputFile, options, originalError) {
+    if (!message) message = `The output directory '${outputFile}' is not valid.`
     super(message, options, originalError)
     this.name = 'OutputDirectoryNotValidError'
     this.outputFile = outputFile
@@ -127,8 +99,8 @@ export class OutputDirectoryNotValidError extends BaseError {
 }
 
 export class OutputDirectoryNotWritableError extends BaseError {
-  constructor(outputFile, options, originalError) {
-    const message = `The output directory '${outputFile}' is not writeable.`
+  constructor(message, outputFile, options, originalError) {
+    if (!message) message = `The output directory '${outputFile}' is not writeable.`
     super(message, options, originalError)
     this.name = 'OutputDirectoryNotWritableError'
     this.outputFile = outputFile
@@ -136,8 +108,8 @@ export class OutputDirectoryNotWritableError extends BaseError {
 }
 
 export class OutputFileAlreadyExistsError extends BaseError {
-  constructor(outputFile, options, originalError) {
-    const message = `The output file '${outputFile}' already exists.`
+  constructor(message, outputFile, options, originalError) {
+    if (!message) message = `The output file '${outputFile}' already exists.`
     super(message, options, originalError)
     this.name = 'OutputFileAlreadyExistsError'
     this.outputFile = outputFile
@@ -145,8 +117,8 @@ export class OutputFileAlreadyExistsError extends BaseError {
 }
 
 export class WriteOutputFileError extends BaseError {
-  constructor(outputFile, options, originalError) {
-    const message = `Error writing the output file '${outputFile}'.`
+  constructor(message, outputFile, options, originalError) {
+    if (!message) message = `Error writing the output file '${outputFile}'.`
     super(message, options, originalError)
     this.name = 'WriteOutputFileError'
     this.outputFile = outputFile

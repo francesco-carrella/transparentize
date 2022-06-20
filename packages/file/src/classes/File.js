@@ -120,7 +120,7 @@ export default class File {
 
       return this
     } catch (e) {
-      throwBestError(e, new FileProcessError(null, this, options, e))
+      throwBestError(e, new FileProcessError(null, this, e))
     }
   }
 
