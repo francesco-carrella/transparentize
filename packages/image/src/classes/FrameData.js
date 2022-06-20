@@ -71,9 +71,7 @@ export default class FrameData {
     if (!disableChecks) options = getOptions(options)
 
     try {
-      if (options.onProcessFrameDataStart) {
-        [frameData, options] = callHandler(options.onProcessFrameDataStart, frameData, options)
-      }
+      callHandler(options.onProcessFrameDataStart, frameData, options)
 
       if (!disableChecks && !(FrameData.isValidRgbaInput(frameData) || FrameData.isValidRgbInput(frameData))) {
         throwBestError(new FrameDataProcessError(null, frameData, options))
@@ -84,9 +82,7 @@ export default class FrameData {
         Pixel.transparentize(frameData, pixelIdx, options, true)
       })
 
-      if (options.onProcessFrameDataEnd) {
-        [frameData, options] = callHandler(options.onProcessFrameDataEnd, frameData, options)
-      }
+      callHandler(options.onProcessFrameDataEnd, frameData, options)
 
       return frameData
     } catch (e) {

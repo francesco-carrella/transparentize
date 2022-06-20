@@ -12,9 +12,7 @@ export default class Pixel {
     try {
       if (!disableChecks) options = getOptions(options)
 
-      if (options.onProcessPixelStart) {
-        [frameData, pixelIdx, options] = callHandler(options.onProcessPixelStart, frameData, pixelIdx, options)
-      }
+      callHandler(options.onProcessPixelStart, frameData, pixelIdx, options)
 
       const pixelAlphaPos = pixelStartPos + ALPHA_INDEX
 
@@ -24,9 +22,7 @@ export default class Pixel {
 
       Pixel.transparentizePixelColor(frameData, pixelIdx, options.backgroundColor)
 
-      if (options.onProcessPixelEnd) {
-        [frameData, pixelIdx, options] = callHandler(options.onProcessPixelEnd, frameData, pixelIdx, options)
-      }
+      callHandler(options.onProcessPixelEnd, frameData, pixelIdx, options)
     } catch (e) {
       throwBestError(e, new ColorProcessError(null, frameData.slice(pixelStartPos, pixelStartPos + RGBA_INDEXES.length), options))
     }

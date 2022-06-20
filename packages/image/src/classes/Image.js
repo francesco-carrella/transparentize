@@ -58,15 +58,11 @@ export default class Image {
     if (!disableChecks) options = getOptions(options)
 
     try {
-      if (options.onProcessImageStart) {
-        [options] = callHandler(options.onProcessImageStart, this, options)
-      }
+      callHandler(options.onProcessImageStart, this, options)
 
       this.data = FrameData.transparentize(this.data, options, true)
 
-      if (options.onProcessImageEnd) {
-        [options] = callHandler(options.onProcessImageEnd, this, options)
-      }
+      callHandler(options.onProcessImageEnd, this, options)
 
       return this
     } catch (e) {
