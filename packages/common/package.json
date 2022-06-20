@@ -10,6 +10,7 @@
     "email": "francesco.carrella@gmail.com"
   },
   "scripts": {
+    "lint": "eslint src/**/*.js",
     "build": "echo \"Error: no build available for @transparentize/common package. Ìt is intended to be imported as source from other modules.\" && exit 1"
   },
   "dependencies": {

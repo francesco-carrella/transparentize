@@ -14,8 +14,7 @@
   },
   "scripts": {
     "image": "yarn workspace @transparentize/image",
-    "common": "yarn workspace @transparentize/common",
-    "lint": "eslint \"packages/**/*.js\""
+    "common": "yarn workspace @transparentize/common"
   },
   "devDependencies": {
     "eslint": "^8.16.0",
