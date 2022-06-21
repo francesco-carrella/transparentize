@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useCallback } from 'react'
+import React, { useEffect, useRef, useCallback, useMemo } from 'react'
 import { Box } from '@chakra-ui/react'
 
 import { SHOW_ORIGINAL } from '../../constants'
-import { useAppState } from '../../AppState'
+import { useAppState, useAppStateRef } from '../../AppState'
 import stylesOverlay from './stylesOverlay'
 import useViewportZoomPan from './useViewportZoomPan'
 import ImageCanvas from './ImageCanvas'
@@ -20,6 +20,7 @@ const styles = {
 
 const ImageViewport = (props) => {
   const [state] = useAppState()
+  const [stateRef] = useAppStateRef()
 
   const viewportRef = useRef()
   const canvasRef = useRef()
@@ -53,14 +54,6 @@ const ImageViewport = (props) => {
   window.fitToContent = fitToContent
   window.fitToContent = forceUpdate
 
-  useEffect(() => {
-    const imageData = state.show === SHOW_ORIGINAL ? state.imageData.original : state.imageData.processed
-
-    if(state.isLoaded && viewportRef.current && canvasRef.current && imageData) {
-      fitToContent(1)
-    }
-  }, [viewportRef.current, state.isLoaded])
-
   useViewportZoomKeyBindings({ zoomIn, zoomOut, fitToContent })
 
   const handleDoubleClick = useCallback((e) => {
@@ -89,6 +82,10 @@ const ImageViewport = (props) => {
         canvasRef={canvasRef}
         transform={transform}
         zoom={zoom}
+        onLoad= {() => {
+          console.log('onload!!')
+          fitToContent(1)
+        }}
       />
 
       <ImageViewportTools

@@ -25,7 +25,7 @@ const ImageArea = (props) => {
 
   const showAwaitFileScreen = (!state.isLoaded && !state.isBusy) || state.dragging.active
   const showLoadingScreen = (
-    ((!state.isLoaded || !state.isProcessed) && state.isBusy) ||
+    // ((!state.isLoaded || !state.isProcessed) && state.isBusy) ||
     state.isSaving
   )
 
@@ -38,7 +38,7 @@ const ImageArea = (props) => {
     >
       <ImageViewport />
       { showAwaitFileScreen && <ImageAwaitFileMessage /> }
-      { showLoadingScreen && <ImageLoadingScreen /> }
+      {/* { showLoadingScreen && <ImageLoadingScreen /> } */}
     </ImageDropzone>
   )
 }

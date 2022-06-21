@@ -1,37 +1,23 @@
 
 import { useCallback } from 'react'
+import parseColorString from 'color-rgba'
 
 import { AppStateDefaults, useAppStateRef } from '../AppState'
 
+import { Image as TransparentizeImage } from '@transparentize/image'
 
-function simulateImageProcess(
-  originalImageData,
-  transparentizeColor = AppStateDefaults.transparentizeColor,
-  solidifyColor = AppStateDefaults.solidifyColor,
-  colorSpace = AppStateDefaults.colorSpace
-) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
+export function ensureColor(colorString) {
+  const hexColorWithoutHashRE = /^([0-9a-f]{3}|[0-9a-f]{6})$/i
+  if(hexColorWithoutHashRE.test(colorString)) {
+    colorString = `#${colorString}`
+  }
 
-      let { width, height, data } = originalImageData
+  let colorArray = parseColorString(colorString)
+  colorArray[3] = colorArray[3] * 255
 
-      if(data.length !== width * height * 4) {
-        throw new Error(`ImageData data size mismatch. Expected size ${width * height * 4}, got ${data.length}. Is it a RGBA ImageData?`)
-      }
-
-      data = new Uint8ClampedArray(data)
-      for(let pixelIdx = 0; pixelIdx < (width * height); pixelIdx++) {
-        const pixelStart = pixelIdx * 4
-        data[pixelStart] = 255 - data[pixelStart]
-        data[pixelStart + 1] = 255 - data[pixelStart + 1]
-        data[pixelStart + 2] = 255 - data[pixelStart + 2]
-        data[pixelStart + 3] = 127
-      }
-
-      resolve(new ImageData(data, width, height, { colorSpace }))
-    })
-  })
+  return colorArray
 }
+
 
 const useUpdateProcessedImage = () => {
   const [stateRef, updateState] = useAppStateRef()
@@ -39,29 +25,45 @@ const useUpdateProcessedImage = () => {
   const updateProcessedImage = useCallback(async function (
     originalImageData = stateRef.current.imageData.original,
   ) {
-    console.time('updateProcessedImage')
-    if(originalImageData) {
 
+    if(originalImageData) {
       updateState((draft) => {
         draft.isBusy = true
         draft.isProcessed = false
         draft.imageData.processed = null
       })
 
-      const processedImageData = await simulateImageProcess(
-        originalImageData,
-        stateRef.current.transparentizeColor,
-        stateRef.current.solidifyColor,
-        stateRef.current.colorSpace,
-      )
+      // ensureGlobalBuffer()
 
-      updateState((draft) => {
-        draft.imageData.processed = processedImageData
-        draft.isProcessed = true
-        draft.isBusy = false
+      setTimeout(() => {
+        console.time('updateProcessedImage')
+
+        const transpOptions = {
+          backgroundColor: ensureColor(stateRef.current.transparentizeColor),
+        }
+
+        let transpImage = new TransparentizeImage({
+          width: originalImageData.width,
+          height: originalImageData.height,
+          data: originalImageData.data
+        }).transparentize(transpOptions)
+
+        const processedImageData = new ImageData(
+          transpImage.data,
+          transpImage.width,
+          transpImage.height
+        )
+
+        console.timeEnd('updateProcessedImage')
+
+        updateState((draft) => {
+          draft.imageData.processed = processedImageData
+          draft.isProcessed = true
+          draft.isBusy = false
+        })
+
       })
     }
-    console.timeEnd('updateProcessedImage')
 
   }, [
     stateRef.current,

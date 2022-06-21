@@ -38,6 +38,7 @@
     "@mdi/react": "^1.6.0",
     "@transparentize/image": "link:packages/image",
     "canvas-size": "^1.2.5",
+    "color-rgba": "^2.4.0",
     "file-saver": "^2.0.5",
     "framer-motion": "^6.3.11",
     "immer": "^9.0.14",

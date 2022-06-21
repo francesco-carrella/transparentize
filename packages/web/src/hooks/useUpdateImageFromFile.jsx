@@ -85,6 +85,8 @@ const useUpdateImageFromFile = () => {
         title: 'Error processing the image',
         message: 'It usually happen when the image is too big and your browser is unable to process it. Please use a smaller image or try with another browser / system.',
       })
+
+      throw e
     }
 
   }, [stateRef, updateState, confirm])
