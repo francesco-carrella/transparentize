@@ -15,6 +15,8 @@
   "scripts": {
     "lint": "eslint src/**/*.js",
     "build": "node ./scripts/build.js",
+    "predeploy": "yarn build",
+    "deploy": "netlify deploy --dir=dist --prod",
     "dev-server": "npx reload-server -i dist",
     "dev": "concurrently 'yarn:build --dev' 'yarn:dev-server' --kill-others"
   },
@@ -25,6 +27,7 @@
     "eslint": "^8.17.0",
     "eslint-plugin-html": "^6.2.0",
     "eslint-plugin-react": "^7.30.0",
+    "netlify-cli": "^10.5.1",
     "reload-server": "^0.2.0-alpha.3"
   },
   "dependencies": {
