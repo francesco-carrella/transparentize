@@ -1,0 +1,48 @@
+{
+  "name": "@transparentize/web",
+  "productName": "Transparentize",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/index.html",
+  "module": "src/index.html",
+  "platform": "browser",
+  "repository": "https://github.com/francesco-carrella/transparentize",
+  "license": "Commons Clause",
+  "author": {
+    "name": "Francesco Carrella",
+    "email": "francesco.carrella@gmail.com"
+  },
+  "scripts": {
+    "lint": "eslint src/**/*.js",
+    "build": "node ./scripts/build.js",
+    "dev-server": "npx reload-server -i dist",
+    "dev": "concurrently 'yarn:build --dev' 'yarn:dev-server' --kill-others"
+  },
+  "devDependencies": {
+    "@chialab/esbuild-plugin-html": "^0.16.1",
+    "@transparentize/common": "link:packages/common",
+    "concurrently": "^7.2.1",
+    "eslint": "^8.17.0",
+    "eslint-plugin-html": "^6.2.0",
+    "eslint-plugin-react": "^7.30.0",
+    "reload-server": "^0.2.0-alpha.3"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^2.2.1",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mdi/js": "^6.7.96",
+    "@mdi/react": "^1.6.0",
+    "@transparentize/image": "link:packages/image",
+    "canvas-size": "^1.2.5",
+    "file-saver": "^2.0.5",
+    "framer-motion": "^6.3.11",
+    "immer": "^9.0.14",
+    "mousetrap": "^1.6.5",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-dropzone": "^14.2.1",
+    "use-immer": "^0.7.0",
+    "use-pan-and-zoom": "^0.6.5"
+  }
+}

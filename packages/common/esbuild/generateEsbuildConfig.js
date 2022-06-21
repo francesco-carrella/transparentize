@@ -5,7 +5,6 @@ export function generateEsbuildConfig(packageInfo, options = {}) {
   const isDev = options.isDev || args.includes('--dev')
 
   const config = {
-    // globalName: packageInfo.packageName || packageInfo.name,
     globalName: String(packageInfo.name).replace(/^@/, '').replace('/', '.'),
     entryPoints: [packageInfo.module],
     outdir: './dist',
@@ -17,7 +16,6 @@ export function generateEsbuildConfig(packageInfo, options = {}) {
     sourcemap: isDev,
     watch: isDev,
     plugins: [
-      ...options.plugins || [],
       esbuildPluginBuildSummary,
     ],
   }

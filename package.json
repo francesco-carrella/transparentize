@@ -13,8 +13,9 @@
     "email": "francesco.carrella@gmail.com"
   },
   "scripts": {
+    "common": "yarn workspace @transparentize/common",
     "image": "yarn workspace @transparentize/image",
-    "common": "yarn workspace @transparentize/common"
+    "web": "yarn workspace @transparentize/web"
   },
   "devDependencies": {
     "eslint": "^8.16.0",
